@@ -17,10 +17,10 @@
             </objects>
             <point key="canvasLocation" x="-286" y="-311"/>
         </scene>
-        <!--View Controller-->
+        <!--Quotes Template View Controller-->
         <scene sceneID="Ui2-gB-SOp">
             <objects>
-                <viewController id="0YT-5A-j32" sceneMemberID="viewController">
+                <viewController id="0YT-5A-j32" customClass="QuotesTemplateViewController" customModule="Quotewall" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hXb-iH-gcU"/>
                         <viewControllerLayoutGuide type="bottom" id="zR7-Lf-Zxe"/>

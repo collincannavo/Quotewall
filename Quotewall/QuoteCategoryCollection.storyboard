@@ -12,7 +12,7 @@
         <!--My Quotes-->
         <scene sceneID="AcY-2u-8qr">
             <objects>
-                <viewController id="m1Z-gx-zgS" sceneMemberID="viewController">
+                <viewController id="m1Z-gx-zgS" customClass="QuoteCategoryViewController" customModule="Quotewall" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sJr-1g-X21"/>
                         <viewControllerLayoutGuide type="bottom" id="NBk-qH-kry"/>
@@ -66,15 +66,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v42-it-PL6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157.59999999999999" y="123.68815592203899"/>
+            <point key="canvasLocation" x="1096.8" y="123.68815592203899"/>
         </scene>
-        <!--QuotesCollection-->
+        <!--QuoteCollection-->
         <scene sceneID="TwN-hp-WjO">
             <objects>
-                <viewControllerPlaceholder storyboardName="QuotesCollection" id="3sL-UQ-7Iv" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="QuoteCollection" id="3sL-UQ-7Iv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5nD-FW-ljd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="804" y="113"/>
+            <point key="canvasLocation" x="1742.4000000000001" y="112.44377811094454"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

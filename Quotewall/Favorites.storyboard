@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8dZ-VE-QaW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Favorites-->
         <scene sceneID="ZPz-pf-YgS">
             <objects>
-                <viewController id="8dZ-VE-QaW" sceneMemberID="viewController">
+                <viewController id="8dZ-VE-QaW" customClass="FavoritesViewController" customModule="Quotewall" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s3c-B6-DYt"/>
                         <viewControllerLayoutGuide type="bottom" id="dhz-gl-c0U"/>
@@ -60,7 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ah1-ro-Xkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="152.80000000000001" y="124.58770614692655"/>
+            <point key="canvasLocation" x="1092" y="124.58770614692655"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="PqE-h3-EcY">
@@ -68,7 +68,7 @@
                 <viewControllerPlaceholder id="ENu-HX-mzv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrE-8V-gXl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="751" y="-151"/>
+            <point key="canvasLocation" x="1688.8" y="-151.12443778110946"/>
         </scene>
     </scenes>
 </document>

@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="740" y="333"/>
         </scene>
-        <!--View Controller-->
+        <!--Quote Collection View Controller-->
         <scene sceneID="9ak-Ac-3rW">
             <objects>
-                <viewController id="Izg-oK-G3u" sceneMemberID="viewController">
+                <viewController id="Izg-oK-G3u" customClass="QuoteCollectionViewController" customModule="Quotewall" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2kt-dT-bES"/>
                         <viewControllerLayoutGuide type="bottom" id="geT-Xr-Ws6"/>
