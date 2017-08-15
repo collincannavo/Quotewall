@@ -9,7 +9,7 @@
 import Foundation
 import CloudKit
 
-class Quotewall {
+public class Quotewall {
     
     public static let nameKey = "name"
     public static let categoryKey = "category"
@@ -29,22 +29,23 @@ class Quotewall {
     public let initialQuotesFetchComplete = false
     public let intialPersonalQuotesFetchComplete = false
     
-    init(name: String, category: String, quoteCount: Double) {
+    public init(name: String, userCKReference: CKReference, category: String, quoteCount: Double) {
         self.name = name
+        self.userReference = userCKReference
         self.category = category
         self.quoteCount = quoteCount
         
     }
     
-    public init(name: String, userCKReference: CKReference) {
-        self.name = name
-        self.userReference = userCKReference
-    }
-    
     public init?(CKRecord: CKRecord) {
-        guard let name = CKRecord[Quotewall.nameKey] as? String else { return nil }
-        self.name = name
+        guard let name = CKRecord[Quotewall.nameKey] as? String,
+            let category = CKRecord[Quotewall.categoryKey] as? String,
+            let quoteCount = CKRecord[Quotewall.quoteCountKey] as? Double
+        else { return nil }
         
+        self.name = name
+        self.category = category
+        self.quoteCount = quoteCount
         self.userReference = CKRecord[Quotewall.appleUserReferenceKey] as? CKReference
         
         let receivedQuotes = CKRecord[Quotewall.receivedQuotesKey] as? [CKReference] ?? []
@@ -64,4 +65,10 @@ class Quotewall {
         }
     }
     
+}
+
+extension Quotewall: Equatable {
+    public static func ==(lhs: Quotewall, rhs: Quotewall) -> Bool {
+        return lhs.name == rhs.name && lhs.ckRecordID == rhs.ckRecordID
+    }
 }

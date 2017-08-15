@@ -10,7 +10,7 @@ import Foundation
 import CloudKit
 
 
-class Quote {
+public class Quote {
     
     public static let nameKey = "name"
     public static let recordTypeKey = "Quote"
