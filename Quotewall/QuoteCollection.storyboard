@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Izg-oK-G3u">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--QuoteCategoryCollection-->
+        <scene sceneID="RKH-DZ-4OW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="QuoteCategoryCollection" id="gQc-Z3-0mR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="teq-uM-TKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="819" y="133"/>
+        </scene>
+        <!--QuotesTemplate1-->
+        <scene sceneID="5pZ-jJ-mFu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="QuotesTemplate1" id="Wer-Yq-9Iz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y3w-9U-ROi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="740" y="333"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9ak-Ac-3rW">
+            <objects>
+                <viewController id="Izg-oK-G3u" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2kt-dT-bES"/>
+                        <viewControllerLayoutGuide type="bottom" id="geT-Xr-Ws6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OXb-wE-Hvh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v2N-Kd-I6s">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="Nc8-Xt-Diw">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="iZC-bE-Mk4">
+                                            <connections>
+                                                <segue destination="gQc-Z3-0mR" kind="show" identifier="backToQuoteCollection" id="eKQ-fN-HMg"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Aly-zw-cfL">
+                                            <connections>
+                                                <segue destination="ybX-h6-3bv" kind="show" identifier="addQuote" id="R1L-iC-A6B"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="X07-RJ-Vln">
+                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CLW-WA-OIs">
+                                    <size key="itemSize" width="154" height="143"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="quoteCollectionCell" id="EQa-AL-kL3">
+                                        <rect key="frame" x="0.0" y="0.0" width="154" height="143"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="154" height="143"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6T-3Z-byW">
+                                                    <rect key="frame" x="0.0" y="115" width="154" height="28"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="t6T-3Z-byW" secondAttribute="trailing" id="QhU-e5-P04"/>
+                                            <constraint firstAttribute="bottom" secondItem="t6T-3Z-byW" secondAttribute="bottom" id="Zyb-QO-3rC"/>
+                                            <constraint firstItem="t6T-3Z-byW" firstAttribute="top" secondItem="EQa-AL-kL3" secondAttribute="top" constant="115" id="hlB-NP-UsM"/>
+                                            <constraint firstItem="t6T-3Z-byW" firstAttribute="leading" secondItem="EQa-AL-kL3" secondAttribute="leading" id="l2B-Xc-v91"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="Wer-Yq-9Iz" kind="show" identifier="editQuote" id="oZx-Ls-Pix"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ToF-nc-bAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141.59999999999999" y="115.59220389805098"/>
+        </scene>
+        <!--QuotesTemplate1-->
+        <scene sceneID="vMa-bB-EZZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="QuotesTemplate1" id="ybX-h6-3bv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVb-bN-Cs7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="740" y="-69"/>
+        </scene>
+    </scenes>
+</document>

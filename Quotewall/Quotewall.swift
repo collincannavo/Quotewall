@@ -16,6 +16,7 @@ public class Quotewall {
     public static let quoteCountKey = "count"
     public static let appleUserReferenceKey = "appleUserReference"
     public static let receivedQuotesKey = "receivedQuotes"
+    public static let recordTypeKey = "Quotewall"
     
     public var ckRecordID: CKRecordID?
     public var userReference: CKReference?
@@ -28,6 +29,34 @@ public class Quotewall {
     
     public let initialQuotesFetchComplete = false
     public let intialPersonalQuotesFetchComplete = false
+    
+    public var sortedPersonalQuote: [Quote] {
+        return personalQuotes.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
+    }
+    
+    public var sortedQuotes: [Quote] {
+        return quotes.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
+    }
+    
+    public var ckReference: CKReference? {
+        guard let ckRecordID = ckRecordID else { return nil }
+        return CKReference(recordID: ckRecordID, action: .none)
+    }
+    
+    public var CKrecord: CKRecord {
+     let recordID = self.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
+        
+        let record = CKRecord(recordType: Quotewall.recordTypeKey, recordID: recordID)
+        
+        record[Quotewall.nameKey] = name as CKRecordValue?
+        record[Quotewall.appleUserReferenceKey] = userReference as CKRecordValue?
+        
+        if !receivedQuotes.isEmpty {
+            record[Quotewall.receivedQuotesKey] = receivedQuotes as CKRecordValue?
+        }
+        self.ckRecordID = recordID
+        return record
+    }
     
     public init(name: String, userCKReference: CKReference, category: String, quoteCount: Double) {
         self.name = name

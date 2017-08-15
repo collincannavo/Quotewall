@@ -17,6 +17,15 @@
 		B6E726961F4374360067B6F5 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726951F4374360067B6F5 /* Quote.swift */; };
 		B6E726981F43966D0067B6F5 /* QuotewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726971F43966D0067B6F5 /* QuotewallController.swift */; };
 		B6E7269A1F4396990067B6F5 /* QuoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726991F4396990067B6F5 /* QuoteController.swift */; };
+		B6E7269E1F43A1A80067B6F5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E7269D1F43A1A80067B6F5 /* CloudKit.framework */; };
+		B6E726A01F43AC6F0067B6F5 /* SharedQuotes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E7269F1F43AC6F0067B6F5 /* SharedQuotes.storyboard */; };
+		B6E726A21F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726A11F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard */; };
+		B6E726A41F43ADE70067B6F5 /* QuotesTemplate1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726A31F43ADE70067B6F5 /* QuotesTemplate1.storyboard */; };
+		B6E726A61F43AE3B0067B6F5 /* QuoteCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726A51F43AE3B0067B6F5 /* QuoteCollection.storyboard */; };
+		B6E726A81F43B1E10067B6F5 /* QuoteToShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726A71F43B1E10067B6F5 /* QuoteToShare.storyboard */; };
+		B6E726AA1F43B2E60067B6F5 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726A91F43B2E60067B6F5 /* Favorites.storyboard */; };
+		B6E726AC1F43B3720067B6F5 /* RemoveQuote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726AB1F43B3720067B6F5 /* RemoveQuote.storyboard */; };
+		B6E726AE1F43B4150067B6F5 /* SearchQuotes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726AD1F43B4150067B6F5 /* SearchQuotes.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +41,16 @@
 		B6E726951F4374360067B6F5 /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		B6E726971F43966D0067B6F5 /* QuotewallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotewallController.swift; sourceTree = "<group>"; };
 		B6E726991F4396990067B6F5 /* QuoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteController.swift; sourceTree = "<group>"; };
+		B6E7269B1F43A19F0067B6F5 /* Quotewall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Quotewall.entitlements; sourceTree = "<group>"; };
+		B6E7269D1F43A1A80067B6F5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B6E7269F1F43AC6F0067B6F5 /* SharedQuotes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SharedQuotes.storyboard; sourceTree = "<group>"; };
+		B6E726A11F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuoteCategoryCollection.storyboard; sourceTree = "<group>"; };
+		B6E726A31F43ADE70067B6F5 /* QuotesTemplate1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuotesTemplate1.storyboard; sourceTree = "<group>"; };
+		B6E726A51F43AE3B0067B6F5 /* QuoteCollection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuoteCollection.storyboard; sourceTree = "<group>"; };
+		B6E726A71F43B1E10067B6F5 /* QuoteToShare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuoteToShare.storyboard; sourceTree = "<group>"; };
+		B6E726A91F43B2E60067B6F5 /* Favorites.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
+		B6E726AB1F43B3720067B6F5 /* RemoveQuote.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RemoveQuote.storyboard; sourceTree = "<group>"; };
+		B6E726AD1F43B4150067B6F5 /* SearchQuotes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchQuotes.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6E7269E1F43A1A80067B6F5 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +70,7 @@
 			children = (
 				B6E726761F436DBB0067B6F5 /* Quotewall */,
 				B6E726751F436DBB0067B6F5 /* Products */,
+				B6E7269C1F43A1A80067B6F5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +85,7 @@
 		B6E726761F436DBB0067B6F5 /* Quotewall */ = {
 			isa = PBXGroup;
 			children = (
+				B6E7269B1F43A19F0067B6F5 /* Quotewall.entitlements */,
 				B6E726901F4371830067B6F5 /* ViewController */,
 				B6E7268F1F4371790067B6F5 /* ModelController */,
 				B6E7268E1F4371620067B6F5 /* Model */,
@@ -76,6 +98,8 @@
 		B6E7268C1F4371530067B6F5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B6E7267B1F436DBB0067B6F5 /* Main.storyboard */,
+				B6E726831F436DBB0067B6F5 /* LaunchScreen.storyboard */,
 				B6E726771F436DBB0067B6F5 /* AppDelegate.swift */,
 				B6E726811F436DBB0067B6F5 /* Assets.xcassets */,
 				B6E726861F436DBB0067B6F5 /* Info.plist */,
@@ -87,8 +111,14 @@
 		B6E7268D1F43715B0067B6F5 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				B6E7267B1F436DBB0067B6F5 /* Main.storyboard */,
-				B6E726831F436DBB0067B6F5 /* LaunchScreen.storyboard */,
+				B6E7269F1F43AC6F0067B6F5 /* SharedQuotes.storyboard */,
+				B6E726A11F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard */,
+				B6E726A31F43ADE70067B6F5 /* QuotesTemplate1.storyboard */,
+				B6E726A51F43AE3B0067B6F5 /* QuoteCollection.storyboard */,
+				B6E726A71F43B1E10067B6F5 /* QuoteToShare.storyboard */,
+				B6E726A91F43B2E60067B6F5 /* Favorites.storyboard */,
+				B6E726AB1F43B3720067B6F5 /* RemoveQuote.storyboard */,
+				B6E726AD1F43B4150067B6F5 /* SearchQuotes.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -117,6 +147,14 @@
 			children = (
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		B6E7269C1F43A1A80067B6F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6E7269D1F43A1A80067B6F5 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +191,14 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = F83BXD8Z2Y;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -180,8 +226,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6E726851F436DBB0067B6F5 /* LaunchScreen.storyboard in Resources */,
+				B6E726A61F43AE3B0067B6F5 /* QuoteCollection.storyboard in Resources */,
+				B6E726AE1F43B4150067B6F5 /* SearchQuotes.storyboard in Resources */,
+				B6E726AA1F43B2E60067B6F5 /* Favorites.storyboard in Resources */,
+				B6E726A81F43B1E10067B6F5 /* QuoteToShare.storyboard in Resources */,
 				B6E726821F436DBB0067B6F5 /* Assets.xcassets in Resources */,
+				B6E726AC1F43B3720067B6F5 /* RemoveQuote.storyboard in Resources */,
+				B6E726A21F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard in Resources */,
+				B6E726A01F43AC6F0067B6F5 /* SharedQuotes.storyboard in Resources */,
 				B6E7267D1F436DBB0067B6F5 /* Main.storyboard in Resources */,
+				B6E726A41F43ADE70067B6F5 /* QuotesTemplate1.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +377,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Quotewall/Quotewall.entitlements;
 				DEVELOPMENT_TEAM = F83BXD8Z2Y;
 				INFOPLIST_FILE = Quotewall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -336,6 +391,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Quotewall/Quotewall.entitlements;
 				DEVELOPMENT_TEAM = F83BXD8Z2Y;
 				INFOPLIST_FILE = Quotewall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
