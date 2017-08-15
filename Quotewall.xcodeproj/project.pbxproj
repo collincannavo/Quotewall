@@ -15,6 +15,8 @@
 		B6E726921F4371EF0067B6F5 /* CloudKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726911F4371EF0067B6F5 /* CloudKitController.swift */; };
 		B6E726941F4372BC0067B6F5 /* Quotewall.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726931F4372BC0067B6F5 /* Quotewall.swift */; };
 		B6E726961F4374360067B6F5 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726951F4374360067B6F5 /* Quote.swift */; };
+		B6E726981F43966D0067B6F5 /* QuotewallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726971F43966D0067B6F5 /* QuotewallController.swift */; };
+		B6E7269A1F4396990067B6F5 /* QuoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726991F4396990067B6F5 /* QuoteController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		B6E726911F4371EF0067B6F5 /* CloudKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitController.swift; sourceTree = "<group>"; };
 		B6E726931F4372BC0067B6F5 /* Quotewall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quotewall.swift; sourceTree = "<group>"; };
 		B6E726951F4374360067B6F5 /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		B6E726971F43966D0067B6F5 /* QuotewallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotewallController.swift; sourceTree = "<group>"; };
+		B6E726991F4396990067B6F5 /* QuoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				B6E726911F4371EF0067B6F5 /* CloudKitController.swift */,
+				B6E726971F43966D0067B6F5 /* QuotewallController.swift */,
+				B6E726991F4396990067B6F5 /* QuoteController.swift */,
 			);
 			name = ModelController;
 			sourceTree = "<group>";
@@ -186,6 +192,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6E7269A1F4396990067B6F5 /* QuoteController.swift in Sources */,
+				B6E726981F43966D0067B6F5 /* QuotewallController.swift in Sources */,
 				B6E726941F4372BC0067B6F5 /* Quotewall.swift in Sources */,
 				B6E726801F436DBB0067B6F5 /* Quotewall.xcdatamodeld in Sources */,
 				B6E726921F4371EF0067B6F5 /* CloudKitController.swift in Sources */,
@@ -356,6 +364,7 @@
 				B6E7268B1F436DBB0067B6F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

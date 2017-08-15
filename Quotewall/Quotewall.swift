@@ -23,7 +23,7 @@ public class Quotewall {
     public let category: String
     public var quoteCount: Double
     public var receivedQuotes: [CKReference] = []
-    public var personalQuotes: [CKReference] = []
+    public var personalQuotes: [Quote] = []
     public var quotes: [Quote] = []
     
     public let initialQuotesFetchComplete = false
