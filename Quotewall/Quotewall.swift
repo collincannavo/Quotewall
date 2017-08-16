@@ -31,11 +31,11 @@ public class Quotewall {
     public let initialQuotesFetchComplete = false
     public let intialPersonalQuotesFetchComplete = false
     
-//    public var parentCKReference: CKReference?
-//    
-//    public var parentCKRecordID: CKRecordID? {
-//        return parentCKReference?.recordID
-//    }
+    public var parentCKReference: CKReference?
+    
+    public var parentCKRecordID: CKRecordID? {
+        return parentCKReference?.recordID
+    }
     
     public var sortedPersonalQuote: [Quote] {
         return personalQuotes.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })

@@ -9,14 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--QuoteCategoryCollection-->
-        <scene sceneID="RKH-DZ-4OW">
-            <objects>
-                <viewControllerPlaceholder storyboardName="QuoteCategoryCollection" id="gQc-Z3-0mR" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="teq-uM-TKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1756.8" y="132.23388305847078"/>
-        </scene>
         <!--QuotesTemplate1-->
         <scene sceneID="5pZ-jJ-mFu">
             <objects>
@@ -44,7 +36,7 @@
                                     <navigationItem title="Title" id="Nc8-Xt-Diw">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="iZC-bE-Mk4">
                                             <connections>
-                                                <segue destination="gQc-Z3-0mR" kind="presentation" identifier="backToQuoteCollection" id="eKQ-fN-HMg"/>
+                                                <action selector="backButtonTapped:" destination="Izg-oK-G3u" id="T7S-qk-5EP"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Aly-zw-cfL">

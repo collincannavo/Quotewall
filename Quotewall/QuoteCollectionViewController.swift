@@ -11,6 +11,9 @@ import UIKit
 
 class QuoteCollectionViewController: UIViewController {
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
 }

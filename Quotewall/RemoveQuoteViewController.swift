@@ -11,6 +11,14 @@ import UIKit
 
 class RemoveQuoteViewController: UIViewController {
     
+    @IBAction func removeButtonTapped(_ sender: Any) {
+    
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    
+    }
     
     
 }

@@ -20,5 +20,10 @@ class QuotesTemplateViewController: UIViewController {
     @IBAction func addBackgroundImageButtonTapped(_ sender: Any) {
     }
     
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
 }

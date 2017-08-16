@@ -28,7 +28,7 @@
                                     <navigationItem title="Title" id="afW-7y-CcT">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="PFd-Jr-vje">
                                             <connections>
-                                                <segue destination="NdP-gB-79H" kind="show" id="ESO-D9-FI0"/>
+                                                <action selector="backButtonTapped:" destination="9Py-Y3-FdV" id="Uuy-a0-2Ur"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Share" id="Kk1-4t-HqQ">
@@ -95,14 +95,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6JH-CK-5LB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="743" y="-238"/>
-        </scene>
-        <!--QuoteCollection-->
-        <scene sceneID="VJj-7V-qWO">
-            <objects>
-                <viewControllerPlaceholder storyboardName="QuoteCollection" id="NdP-gB-79H" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VMm-Wu-tSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="762" y="141"/>
         </scene>
     </scenes>
 </document>

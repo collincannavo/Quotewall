@@ -28,11 +28,12 @@
                                     <navigationItem title="Title" id="dJ3-qi-KQV">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="kQt-PE-QOS">
                                             <connections>
-                                                <segue destination="zIq-mU-Zsq" kind="show" id="1a3-TP-aSA"/>
+                                                <action selector="cancelButtonTapped:" destination="Iik-4P-4fx" id="QQ6-az-lp1"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Remove" id="98w-0Z-89p">
                                             <connections>
+                                                <action selector="removeButtonTapped:" destination="Iik-4P-4fx" id="TOM-wl-vbT"/>
                                                 <segue destination="y7t-t7-0iv" kind="show" identifier="removeSegue" id="ucU-tp-LoI"/>
                                             </connections>
                                         </barButtonItem>
@@ -65,14 +66,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5t-Hp-X6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="120.8" y="114.69265367316342"/>
-        </scene>
-        <!--Favorites-->
-        <scene sceneID="zmU-3E-eAb">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Favorites" id="zIq-mU-Zsq" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0lz-Be-bLH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="686" y="218"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="xFF-8v-lCW">
