@@ -47,6 +47,15 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q2G-eC-ukr">
+                                <rect key="frame" x="49" y="145" width="282" height="165"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZhX-av-1Ib">
+                                <rect key="frame" x="49" y="145" width="282" height="165"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zb3-YK-fY5">
                                 <rect key="frame" x="67" y="163" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -74,10 +83,20 @@
                                 <rect key="frame" x="67" y="494" width="240" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Background Image"/>
+                                <connections>
+                                    <action selector="addBackgroundImageButtonTapped:" destination="0YT-5A-j32" eventType="touchUpInside" id="BeI-d9-giZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="addBackgroundImage" destination="nWi-8B-g82" id="DBM-HE-aFM"/>
+                        <outlet property="backgroundImage" destination="Q2G-eC-ukr" id="BTk-PI-DOc"/>
+                        <outlet property="imageTransparentView" destination="ZhX-av-1Ib" id="ffV-12-msZ"/>
+                        <outlet property="personNameTextField" destination="Ea5-RZ-1e7" id="bbx-aG-4GB"/>
+                        <outlet property="quoteTextField" destination="zb3-YK-fY5" id="jkJ-eT-Zfk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVU-x6-beK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

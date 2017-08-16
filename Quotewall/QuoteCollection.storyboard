@@ -75,7 +75,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6T-3Z-byW">
                                                     <rect key="frame" x="0.0" y="115" width="154" height="28"/>
-                                                    <state key="normal" title="Button"/>
+                                                    <state key="normal" title="Add To Favorite"/>
                                                 </button>
                                             </subviews>
                                         </view>

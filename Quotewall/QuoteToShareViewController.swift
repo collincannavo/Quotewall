@@ -11,6 +11,15 @@ import UIKit
 
 class QuoteToShareViewController : UIViewController {
     
+    @IBOutlet weak var imageTransparentView: UIView!
+    
+    @IBOutlet weak var backgroundImage: UIImageView!
+    
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+    
+    }
     
     
 }
