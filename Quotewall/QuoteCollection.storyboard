@@ -15,7 +15,7 @@
                 <viewControllerPlaceholder storyboardName="QuoteCategoryCollection" id="gQc-Z3-0mR" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teq-uM-TKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="819" y="133"/>
+            <point key="canvasLocation" x="1756.8" y="132.23388305847078"/>
         </scene>
         <!--QuotesTemplate1-->
         <scene sceneID="5pZ-jJ-mFu">
@@ -23,7 +23,7 @@
                 <viewControllerPlaceholder storyboardName="QuotesTemplate1" id="Wer-Yq-9Iz" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3w-9U-ROi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740" y="333"/>
+            <point key="canvasLocation" x="1679.2" y="332.83358320839585"/>
         </scene>
         <!--Quote Collection View Controller-->
         <scene sceneID="9ak-Ac-3rW">
@@ -44,7 +44,7 @@
                                     <navigationItem title="Title" id="Nc8-Xt-Diw">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="iZC-bE-Mk4">
                                             <connections>
-                                                <segue destination="gQc-Z3-0mR" kind="show" identifier="backToQuoteCollection" id="eKQ-fN-HMg"/>
+                                                <segue destination="gQc-Z3-0mR" kind="presentation" identifier="backToQuoteCollection" id="eKQ-fN-HMg"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Aly-zw-cfL">
@@ -94,10 +94,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ToF-nc-bAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141.59999999999999" y="115.59220389805098"/>
+            <point key="canvasLocation" x="1080.8" y="115.59220389805098"/>
         </scene>
         <!--QuotesTemplate1-->
         <scene sceneID="vMa-bB-EZZ">
@@ -105,7 +106,7 @@
                 <viewControllerPlaceholder storyboardName="QuotesTemplate1" id="ybX-h6-3bv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVb-bN-Cs7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740" y="-69"/>
+            <point key="canvasLocation" x="1679.2" y="-69.265367316341838"/>
         </scene>
     </scenes>
 </document>

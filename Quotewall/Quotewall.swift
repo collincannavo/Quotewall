@@ -17,6 +17,7 @@ public class Quotewall {
     public static let appleUserReferenceKey = "appleUserReference"
     public static let receivedQuotesKey = "receivedQuotes"
     public static let recordTypeKey = "Quotewall"
+     public static let parentKey = "parent"
     
     public var ckRecordID: CKRecordID?
     public var userReference: CKReference?
@@ -29,6 +30,12 @@ public class Quotewall {
     
     public let initialQuotesFetchComplete = false
     public let intialPersonalQuotesFetchComplete = false
+    
+//    public var parentCKReference: CKReference?
+//    
+//    public var parentCKRecordID: CKRecordID? {
+//        return parentCKReference?.recordID
+//    }
     
     public var sortedPersonalQuote: [Quote] {
         return personalQuotes.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
@@ -50,6 +57,7 @@ public class Quotewall {
         
         record[Quotewall.nameKey] = name as CKRecordValue?
         record[Quotewall.appleUserReferenceKey] = userReference as CKRecordValue?
+        
         
         if !receivedQuotes.isEmpty {
             record[Quotewall.receivedQuotesKey] = receivedQuotes as CKRecordValue?
