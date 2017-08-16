@@ -22,6 +22,7 @@ public class Person {
     public var receivedQuotes: [CKReference] = []
     public var personalQuotes: [Quote] = []
     public var quotes: [Quote] = []
+    public var favoriteQuotes: [Quote] = []
     
     public var sortedPersonalQuotes: [Quote] {
         return personalQuotes.sorted(by: {$0.name.lowercased() < $1.name.lowercased() })

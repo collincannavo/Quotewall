@@ -87,7 +87,17 @@ public class Quote {
         self.ckRecordID = ckRecord.recordID
         self.parentCKReference = parentCKReference
     }
-    
+
+}
+
+func ==(lhs: Quote, rhs: Quote) -> Bool {
+    if lhs.name != rhs.name { return false }
+    if lhs.image != rhs.image { return false }
+    if lhs.text != rhs.text { return false }
+    if lhs.quoteData != rhs.quoteData { return false }
+    if lhs.vote != rhs.vote { return false }
+
+    return true
     
 }
 
