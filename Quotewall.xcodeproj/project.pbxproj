@@ -34,6 +34,7 @@
 		B6E726BA1F43C1140067B6F5 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726B91F43C1140067B6F5 /* FavoritesViewController.swift */; };
 		B6E726BC1F43C1380067B6F5 /* RemoveQuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726BB1F43C1380067B6F5 /* RemoveQuoteViewController.swift */; };
 		B6E726BE1F43C1760067B6F5 /* SearchQuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726BD1F43C1760067B6F5 /* SearchQuotesViewController.swift */; };
+		B6E726C01F43EFCA0067B6F5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726BF1F43EFCA0067B6F5 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		B6E726B91F43C1140067B6F5 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		B6E726BB1F43C1380067B6F5 /* RemoveQuoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveQuoteViewController.swift; sourceTree = "<group>"; };
 		B6E726BD1F43C1760067B6F5 /* SearchQuotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchQuotesViewController.swift; sourceTree = "<group>"; };
+		B6E726BF1F43EFCA0067B6F5 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			children = (
 				B6E726931F4372BC0067B6F5 /* Quotewall.swift */,
 				B6E726951F4374360067B6F5 /* Quote.swift */,
+				B6E726BF1F43EFCA0067B6F5 /* Person.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				B6E726961F4374360067B6F5 /* Quote.swift in Sources */,
 				B6E726B21F43C03C0067B6F5 /* QuoteCategoryCollection.swift in Sources */,
 				B6E726781F436DBB0067B6F5 /* AppDelegate.swift in Sources */,
+				B6E726C01F43EFCA0067B6F5 /* Person.swift in Sources */,
 				B6E726B41F43C07A0067B6F5 /* QuotesTemplateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
