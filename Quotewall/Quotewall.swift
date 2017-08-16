@@ -17,7 +17,7 @@ public class Quotewall {
     public static let appleUserReferenceKey = "appleUserReference"
     public static let receivedQuotesKey = "receivedQuotes"
     public static let recordTypeKey = "Quotewall"
-     public static let parentKey = "parent"
+    public static let parentKey = "parent"
     
     public var ckRecordID: CKRecordID?
     public var userReference: CKReference?

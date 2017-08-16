@@ -35,6 +35,9 @@
 		B6E726BC1F43C1380067B6F5 /* RemoveQuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726BB1F43C1380067B6F5 /* RemoveQuoteViewController.swift */; };
 		B6E726BE1F43C1760067B6F5 /* SearchQuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726BD1F43C1760067B6F5 /* SearchQuotesViewController.swift */; };
 		B6E726C01F43EFCA0067B6F5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726BF1F43EFCA0067B6F5 /* Person.swift */; };
+		B6E726C21F449E5C0067B6F5 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726C11F449E5C0067B6F5 /* NetworkController.swift */; };
+		B6E726C41F449EF10067B6F5 /* NetworkQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726C31F449EF10067B6F5 /* NetworkQuotes.swift */; };
+		B6E726C61F44A0590067B6F5 /* NetworkQuotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726C51F44A0590067B6F5 /* NetworkQuotesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +72,9 @@
 		B6E726BB1F43C1380067B6F5 /* RemoveQuoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveQuoteViewController.swift; sourceTree = "<group>"; };
 		B6E726BD1F43C1760067B6F5 /* SearchQuotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchQuotesViewController.swift; sourceTree = "<group>"; };
 		B6E726BF1F43EFCA0067B6F5 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		B6E726C11F449E5C0067B6F5 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		B6E726C31F449EF10067B6F5 /* NetworkQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkQuotes.swift; sourceTree = "<group>"; };
+		B6E726C51F44A0590067B6F5 /* NetworkQuotesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkQuotesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,7 @@
 		B6E7268C1F4371530067B6F5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B6E726C11F449E5C0067B6F5 /* NetworkController.swift */,
 				B6E7267B1F436DBB0067B6F5 /* Main.storyboard */,
 				B6E726831F436DBB0067B6F5 /* LaunchScreen.storyboard */,
 				B6E726771F436DBB0067B6F5 /* AppDelegate.swift */,
@@ -144,6 +151,7 @@
 		B6E7268E1F4371620067B6F5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B6E726C31F449EF10067B6F5 /* NetworkQuotes.swift */,
 				B6E726931F4372BC0067B6F5 /* Quotewall.swift */,
 				B6E726951F4374360067B6F5 /* Quote.swift */,
 				B6E726BF1F43EFCA0067B6F5 /* Person.swift */,
@@ -157,6 +165,7 @@
 				B6E726911F4371EF0067B6F5 /* CloudKitController.swift */,
 				B6E726971F43966D0067B6F5 /* QuotewallController.swift */,
 				B6E726991F4396990067B6F5 /* QuoteController.swift */,
+				B6E726C51F44A0590067B6F5 /* NetworkQuotesController.swift */,
 			);
 			name = ModelController;
 			sourceTree = "<group>";
@@ -276,11 +285,14 @@
 				B6E726BA1F43C1140067B6F5 /* FavoritesViewController.swift in Sources */,
 				B6E726B81F43C0E80067B6F5 /* QuoteToShareViewController.swift in Sources */,
 				B6E726B61F43C0B60067B6F5 /* QuoteCollectionViewController.swift in Sources */,
+				B6E726C21F449E5C0067B6F5 /* NetworkController.swift in Sources */,
 				B6E7269A1F4396990067B6F5 /* QuoteController.swift in Sources */,
 				B6E726BE1F43C1760067B6F5 /* SearchQuotesViewController.swift in Sources */,
 				B6E726981F43966D0067B6F5 /* QuotewallController.swift in Sources */,
 				B6E726BC1F43C1380067B6F5 /* RemoveQuoteViewController.swift in Sources */,
+				B6E726C61F44A0590067B6F5 /* NetworkQuotesController.swift in Sources */,
 				B6E726941F4372BC0067B6F5 /* Quotewall.swift in Sources */,
+				B6E726C41F449EF10067B6F5 /* NetworkQuotes.swift in Sources */,
 				B6E726801F436DBB0067B6F5 /* Quotewall.xcdatamodeld in Sources */,
 				B6E726B01F43BFE00067B6F5 /* SharedQuotesViewController.swift in Sources */,
 				B6E726921F4371EF0067B6F5 /* CloudKitController.swift in Sources */,
