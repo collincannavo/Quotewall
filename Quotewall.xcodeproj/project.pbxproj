@@ -39,6 +39,7 @@
 		B6E726C41F449EF10067B6F5 /* NetworkQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726C31F449EF10067B6F5 /* NetworkQuotes.swift */; };
 		B6E726C61F44A0590067B6F5 /* NetworkQuotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726C51F44A0590067B6F5 /* NetworkQuotesController.swift */; };
 		B6E726C81F44E0980067B6F5 /* PersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726C71F44E0980067B6F5 /* PersonController.swift */; };
+		B6E726CB1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726CA1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		B6E726C31F449EF10067B6F5 /* NetworkQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkQuotes.swift; sourceTree = "<group>"; };
 		B6E726C51F44A0590067B6F5 /* NetworkQuotesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkQuotesController.swift; sourceTree = "<group>"; };
 		B6E726C71F44E0980067B6F5 /* PersonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonController.swift; sourceTree = "<group>"; };
+		B6E726CA1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkQuotesViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		B6E726761F436DBB0067B6F5 /* Quotewall */ = {
 			isa = PBXGroup;
 			children = (
+				B6E726C91F44F6C00067B6F5 /* View */,
 				B6E7269B1F43A19F0067B6F5 /* Quotewall.entitlements */,
 				B6E726901F4371830067B6F5 /* ViewController */,
 				B6E7268F1F4371790067B6F5 /* ModelController */,
@@ -194,6 +197,14 @@
 				B6E7269D1F43A1A80067B6F5 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6E726C91F44F6C00067B6F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B6E726CA1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +312,7 @@
 				B6E726B01F43BFE00067B6F5 /* SharedQuotesViewController.swift in Sources */,
 				B6E726921F4371EF0067B6F5 /* CloudKitController.swift in Sources */,
 				B6E726961F4374360067B6F5 /* Quote.swift in Sources */,
+				B6E726CB1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift in Sources */,
 				B6E726B21F43C03C0067B6F5 /* QuoteCategoryCollection.swift in Sources */,
 				B6E726781F436DBB0067B6F5 /* AppDelegate.swift in Sources */,
 				B6E726C01F43EFCA0067B6F5 /* Person.swift in Sources */,

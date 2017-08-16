@@ -47,7 +47,13 @@ public class PersonController {
                 removeQuoteReference(ckReference: reference, from: person)
             }
             
-            
+            self.updateQuote(for: person, completion: { (success) in
+                if success {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            })
         }
     }
     

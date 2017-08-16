@@ -14,7 +14,7 @@ class NetworkQuotesController {
     
     static let baseURL = URL(string: "https://andruxnet-random-famous-quotes.p.mashape.com/")
     
-    static func fetchQuote(with text: String, completion: @escaping (Quote?) -> Void) {
+    static func fetchQuote(with text: String, completion: @escaping (NetworkQuotes?) -> Void) {
         guard let url = baseURL else { completion(nil); return }
         
         let searchURL = url.appendingPathComponent(text)
@@ -26,21 +26,26 @@ class NetworkQuotesController {
         request.allHTTPHeaderFields = jsonHeader
         
        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
-       
-        if let response = response {
         
-            print(response)
-            
-            }
         
         if let error = error {
             
             NSLog("There was error: \(error.localizedDescription)")
-        }
-//            completion(data)
+//            completion()
+            return
         }
         
-        dataTask.resume()
+        guard let data = data,
+            let responseDataString = String(data: data, encoding: .utf8) else { return print("No data returned") }
+        
+        guard let jsonDictionary = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? [String: String] else {
+            print("Error decoding json: \(responseDataString)")
+            return
+        }
+        
+//        let networkQuotes = jsonDictionary.map{ NetworkQuotes(dictionary: $0.value: $0.key) }
+        
     }
+        dataTask.resume()
     
 }

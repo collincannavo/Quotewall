@@ -47,23 +47,66 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="onlineQuotesCell" id="XLK-PN-YwW">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="onlineQuotesCell" id="XLK-PN-YwW" customClass="NetworkQuotesViewCell" customModule="Quotewall" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="167"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="175" height="167"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8u1-Vf-4zr">
-                                                    <rect key="frame" x="0.0" y="137" width="175" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Add to Favorites"/>
-                                                    <connections>
-                                                        <segue destination="ZJh-2H-a4a" kind="show" identifier="addToFavorites" id="P1q-OX-bgl"/>
-                                                    </connections>
-                                                </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yy6-wr-zZb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="167"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWf-7s-aqT">
+                                                            <rect key="frame" x="0.0" y="137" width="175" height="30"/>
+                                                            <state key="normal" title="Add To Favorites"/>
+                                                            <connections>
+                                                                <action selector="addToFavoritesButtonTapped:" destination="XLK-PN-YwW" eventType="touchUpInside" id="jXr-Yn-oFJ"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9a-Bd-UjQ">
+                                                            <rect key="frame" x="110" y="97" width="42" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpR-eY-09R">
+                                                            <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SN-Ab-Twp">
+                                                            <rect key="frame" x="110" y="117" width="42" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="SWf-7s-aqT" secondAttribute="trailing" id="6Td-8n-4Of"/>
+                                                        <constraint firstItem="SWf-7s-aqT" firstAttribute="leading" secondItem="Yy6-wr-zZb" secondAttribute="leading" id="AmB-GT-9vs"/>
+                                                        <constraint firstAttribute="bottom" secondItem="SWf-7s-aqT" secondAttribute="bottom" id="BiE-cP-CDV"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="Yy6-wr-zZb" firstAttribute="leading" secondItem="XLK-PN-YwW" secondAttribute="leading" id="WCf-sE-C22"/>
+                                            <constraint firstAttribute="trailing" secondItem="Yy6-wr-zZb" secondAttribute="trailing" id="hwm-h5-4uO"/>
+                                            <constraint firstAttribute="bottom" secondItem="Yy6-wr-zZb" secondAttribute="bottom" id="tln-9D-5ab"/>
+                                            <constraint firstItem="Yy6-wr-zZb" firstAttribute="top" secondItem="XLK-PN-YwW" secondAttribute="top" id="zG4-nc-Dzm"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="w9a-Bd-UjQ" id="J1E-yZ-t5h"/>
+                                            <outlet property="categoryLabel" destination="2SN-Ab-Twp" id="u60-N9-R03"/>
+                                            <outlet property="quoteLabel" destination="JpR-eY-09R" id="pqR-PU-ooH"/>
+                                            <outlet property="quoteView" destination="Yy6-wr-zZb" id="YXQ-u5-fKy"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

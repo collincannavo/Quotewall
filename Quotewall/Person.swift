@@ -28,6 +28,8 @@ public class Person {
         return personalQuotes.sorted(by: {$0.name.lowercased() < $1.name.lowercased() })
     }
     
+    
+    
     public var sortedQuotes: [Quote] {
         return quotes.sorted(by: {$0.name.lowercased() < $1.name.lowercased() })
     }
