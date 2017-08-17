@@ -15,11 +15,11 @@ public class QuoteController {
     
     // MARK: - CRUD Functions
     
-    public func createQuote(with name: String, text: String, image: Data?, vote: Double?, completion: @escaping (Bool) -> Void) {
+    public func createQuote(with name: String, text: String, image: Data?, completion: @escaping (Bool) -> Void) {
         
         guard let quotewall = QuotewallController.shared.currentQuotewall else { completion(false); return }
         
-        let quote = Quote(name: name, vote: vote, text: text, image: image)
+        let quote = Quote(name: name, text: text, image: image)
         
         QuotewallController.shared.addPersonalQuote(quote, to: quotewall)
         

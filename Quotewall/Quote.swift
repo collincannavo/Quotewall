@@ -25,9 +25,8 @@ public class Quote {
     public var text: String
     public var image: Data?
     
-    public init(name: String, vote: Double? = nil, text: String, image: Data? = nil) {
+    public init(name: String, text: String, image: Data? = nil) {
         self.name = name
-        self.vote = vote
         self.text = text
         self.image = image
         
@@ -69,7 +68,6 @@ public class Quote {
             let text = ckRecord[Quote.textKey] as? String
         else { return nil }
         
-        let vote = ckRecord[Quote.voteKey] as? Double
         let parentCKReference = ckRecord[Quote.parentKey] as? CKReference
         let imageData = ckRecord[Quote.imageKey] as? Data
         let imageAsset = ckRecord[Quote.imageKey] as? CKAsset
@@ -78,7 +76,7 @@ public class Quote {
             newImageData = try? Data(contentsOf: imageDataURL, options: .mappedIfSafe)
         }
         
-        self.init(name: name, vote: vote, text: text, image: newImageData)
+        self.init(name: name, text: text, image: newImageData)
         
         if let imageDataUnwrapped = imageData {
             self.quoteData = imageDataUnwrapped
@@ -95,7 +93,6 @@ func ==(lhs: Quote, rhs: Quote) -> Bool {
     if lhs.image != rhs.image { return false }
     if lhs.text != rhs.text { return false }
     if lhs.quoteData != rhs.quoteData { return false }
-    if lhs.vote != rhs.vote { return false }
 
     return true
     

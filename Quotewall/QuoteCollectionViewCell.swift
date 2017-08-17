@@ -21,7 +21,7 @@ class QuoteCollectionViewCell: UICollectionViewCell {
     
     @IBAction func backgroundImageButtonTapped(_ sender: Any) {
         guard let buttonTapped = sender as? UIButton else { return }
-            delegate?.photoSelectCellSelected(backgroundImageButtonTapped: buttonTapped)
+            delegate?.photoSelectCellSelected!(backgroundImageButtonTapped: buttonTapped)
         
     }
     
