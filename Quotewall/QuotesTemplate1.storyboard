@@ -39,6 +39,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="box-Mp-wXq">
+                                <rect key="frame" x="0.0" y="64" width="375" height="334"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q2G-eC-ukr">
                                 <rect key="frame" x="49" y="145" width="282" height="165"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -85,8 +90,11 @@
                     <connections>
                         <outlet property="addBackgroundImage" destination="nWi-8B-g82" id="DBM-HE-aFM"/>
                         <outlet property="backgroundImage" destination="Q2G-eC-ukr" id="BTk-PI-DOc"/>
+                        <outlet property="closeQuotationImage" destination="dmp-jN-H0F" id="3tZ-Gw-KxH"/>
                         <outlet property="imageTransparentView" destination="ZhX-av-1Ib" id="ffV-12-msZ"/>
+                        <outlet property="openQuotationImage" destination="x1N-iT-ib5" id="lhJ-al-k2d"/>
                         <outlet property="personNameTextField" destination="Ea5-RZ-1e7" id="bbx-aG-4GB"/>
+                        <outlet property="quoteCellView" destination="box-Mp-wXq" id="5P1-qJ-ESs"/>
                         <outlet property="quoteTextField" destination="zb3-YK-fY5" id="jkJ-eT-Zfk"/>
                     </connections>
                 </viewController>

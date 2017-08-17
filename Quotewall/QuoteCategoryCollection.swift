@@ -23,7 +23,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
         
-        
+        return UICollectionViewCell()
     }
     
     
