@@ -33,6 +33,17 @@ public class QuotewallController {
         }
     }
     
+    public func createQuotewall(with name: String, category: String, quoteCount: Double? = nil) {
+        
+        guard let userCKReference = PersonController.shared.currentPerson?.ckReference,
+            let quoteCount = quoteCount
+            else { return }
+        
+        let newQuotewall = Quotewall(name: name, userCKReference: userCKReference, category: category, quoteCount: quoteCount)
+        
+        
+        
+    }
     
     
 }

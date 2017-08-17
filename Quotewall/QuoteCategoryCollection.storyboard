@@ -72,6 +72,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="My Quotes" id="aih-nn-7ii"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="quoteCategoryCollection" destination="ifG-7h-5nD" id="NlV-O4-nf6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v42-it-PL6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

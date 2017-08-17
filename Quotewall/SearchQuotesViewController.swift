@@ -11,29 +11,40 @@ import UIKit
 
 class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     var quotes: [NetworkQuotes] = [] {
         didSet {
-        
-            DispatchQueue.main.async {
-               
-            }
+            let quote = quotes
+            print("Received Quotes")
+            
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        collectionView.reloadData()
+    }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
     }
     
+ 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return quotes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cgSize = CGSize(width: 4, height: 4)
+        let collectionViewWidth = collectionView.frame.width
         
-        return cgSize
+        let collectionViewHeight = collectionView.frame.height
+        
+        return CGSize(width: collectionViewWidth, height: collectionViewHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -44,29 +55,27 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
         
         cell.quotes = quote
         
-        return UICollectionViewCell()
+        return cell
         
     }
-    
-    
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+       
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         guard let searchText = searchBar.text else { print("Sorry I couldn't find that result");return }
         
-            
             DispatchQueue.main.async {
 
                 NetworkQuotesController.fetchQuote(with: searchText) { (quote) in
                     guard let quote = quote else { return }
-                    self.quotes = [quote]
+                    self.quotes = quote
                     
-                
             }
         }
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
-    
     
 }

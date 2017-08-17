@@ -115,6 +115,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" id="bFY-KZ-wzK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="wuL-DQ-dtF" id="1eC-Er-Kg1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5I-MC-qOW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,6 +12,9 @@ import UIKit
 class SharedQuotesViewController: UIViewController {
     
     
+    @IBOutlet weak var sharedCollectionView: UICollectionView!
+    
+    
     
     
 }

@@ -9,6 +9,25 @@
 import Foundation
 import UIKit
 
-class QuoteCategoryViewController: UIViewController {
+class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet weak var quoteCategoryCollection: UICollectionView!
+    
+    var quoteWall: [Quotewall] = []
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return quoteWall.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+        
+        
+    }
+    
+    
+    
+    
     
 }

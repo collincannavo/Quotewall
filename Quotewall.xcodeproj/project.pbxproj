@@ -40,6 +40,8 @@
 		B6E726C61F44A0590067B6F5 /* NetworkQuotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726C51F44A0590067B6F5 /* NetworkQuotesController.swift */; };
 		B6E726C81F44E0980067B6F5 /* PersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726C71F44E0980067B6F5 /* PersonController.swift */; };
 		B6E726CB1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726CA1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift */; };
+		B6E726CE1F45DB430067B6F5 /* QuoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726CC1F45DB430067B6F5 /* QuoteCollectionViewCell.swift */; };
+		B6E726CF1F45DB430067B6F5 /* QuoteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6E726CD1F45DB430067B6F5 /* QuoteCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +81,8 @@
 		B6E726C51F44A0590067B6F5 /* NetworkQuotesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkQuotesController.swift; sourceTree = "<group>"; };
 		B6E726C71F44E0980067B6F5 /* PersonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonController.swift; sourceTree = "<group>"; };
 		B6E726CA1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkQuotesViewCell.swift; sourceTree = "<group>"; };
+		B6E726CC1F45DB430067B6F5 /* QuoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteCollectionViewCell.swift; sourceTree = "<group>"; };
+		B6E726CD1F45DB430067B6F5 /* QuoteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuoteCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				B6E726CA1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift */,
+				B6E726CC1F45DB430067B6F5 /* QuoteCollectionViewCell.swift */,
+				B6E726CD1F45DB430067B6F5 /* QuoteCollectionViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -280,6 +286,7 @@
 				B6E726AE1F43B4150067B6F5 /* SearchQuotes.storyboard in Resources */,
 				B6E726AA1F43B2E60067B6F5 /* Favorites.storyboard in Resources */,
 				B6E726A81F43B1E10067B6F5 /* QuoteToShare.storyboard in Resources */,
+				B6E726CF1F45DB430067B6F5 /* QuoteCollectionViewCell.xib in Resources */,
 				B6E726821F436DBB0067B6F5 /* Assets.xcassets in Resources */,
 				B6E726AC1F43B3720067B6F5 /* RemoveQuote.storyboard in Resources */,
 				B6E726A21F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard in Resources */,
@@ -315,6 +322,7 @@
 				B6E726CB1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift in Sources */,
 				B6E726B21F43C03C0067B6F5 /* QuoteCategoryCollection.swift in Sources */,
 				B6E726781F436DBB0067B6F5 /* AppDelegate.swift in Sources */,
+				B6E726CE1F45DB430067B6F5 /* QuoteCollectionViewCell.swift in Sources */,
 				B6E726C01F43EFCA0067B6F5 /* Person.swift in Sources */,
 				B6E726B41F43C07A0067B6F5 /* QuotesTemplateViewController.swift in Sources */,
 			);
