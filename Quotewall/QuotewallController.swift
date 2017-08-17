@@ -27,21 +27,22 @@ public class QuotewallController {
         quotewall.receivedQuotes.append(reference)
     }
     
+    
     public func removePersonalQuoteReference(_ reference: CKReference, from quotewall: Quotewall) {
         if let index = quotewall.receivedQuotes.index(where: { ($0 == reference) }) {
             quotewall.receivedQuotes.remove(at: index)
         }
     }
     
-    public func createQuotewall(with name: String, category: String, quoteCount: Double? = nil) {
+    public func createQuotewall(with quotes: [Quote], category: String) {
         
         guard let userCKReference = PersonController.shared.currentPerson?.ckReference,
-            let quoteCount = quoteCount
+            let person = PersonController.shared.currentPerson
             else { return }
         
-        let newQuotewall = Quotewall(name: name, userCKReference: userCKReference, category: category, quoteCount: quoteCount)
+        let newQuotewall = Quotewall.init(quotes, userCKReference: userCKReference, category: category)
         
-        
+        PersonController.shared.addQuotewall(newQuotewall, to: person)
         
     }
     

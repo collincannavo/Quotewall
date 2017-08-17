@@ -17,6 +17,10 @@ public class PersonController {
     
     public var currentPerson: Person?
     
+    public func addQuotewall(_ quotewall: Quotewall, to person: Person) {
+        person.savedQuotewalls.append(quotewall)
+    }
+    
     public func addPersonalQuote(_ quote: Quote, to person: Person) {
         person.personalQuotes.append(quote)
     }

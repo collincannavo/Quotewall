@@ -11,7 +11,7 @@ import CloudKit
 
 public class Quotewall {
     
-    public static let nameKey = "name"
+    public static let quotesKey = "quotes"
     public static let categoryKey = "category"
     public static let quoteCountKey = "count"
     public static let appleUserReferenceKey = "appleUserReference"
@@ -21,9 +21,7 @@ public class Quotewall {
     
     public var ckRecordID: CKRecordID?
     public var userReference: CKReference?
-    public let name: String
     public let category: String
-    public var quoteCount: Double
     public var receivedQuotes: [CKReference] = []
     public var personalQuotes: [Quote] = []
     public var quotes: [Quote] = []
@@ -55,7 +53,7 @@ public class Quotewall {
         
         let record = CKRecord(recordType: Quotewall.recordTypeKey, recordID: recordID)
         
-        record[Quotewall.nameKey] = name as CKRecordValue?
+        record[Quotewall.quotesKey] = quotes as CKRecordValue?
         record[Quotewall.appleUserReferenceKey] = userReference as CKRecordValue?
         
         
@@ -66,23 +64,19 @@ public class Quotewall {
         return record
     }
     
-    public init(name: String, userCKReference: CKReference, category: String, quoteCount: Double) {
-        self.name = name
+    public init(_ quotes: [Quote] = [], userCKReference: CKReference, category: String) {
+        self.quotes = quotes
         self.userReference = userCKReference
         self.category = category
-        self.quoteCount = quoteCount
-        
     }
     
     public init?(CKRecord: CKRecord) {
-        guard let name = CKRecord[Quotewall.nameKey] as? String,
-            let category = CKRecord[Quotewall.categoryKey] as? String,
-            let quoteCount = CKRecord[Quotewall.quoteCountKey] as? Double
+        guard let quotes = CKRecord[Quotewall.quotesKey] as? [Quote],
+            let category = CKRecord[Quotewall.categoryKey] as? String
         else { return nil }
         
-        self.name = name
+        self.quotes = quotes
         self.category = category
-        self.quoteCount = quoteCount
         self.userReference = CKRecord[Quotewall.appleUserReferenceKey] as? CKReference
         
         let receivedQuotes = CKRecord[Quotewall.receivedQuotesKey] as? [CKReference] ?? []
@@ -92,7 +86,7 @@ public class Quotewall {
     }
     
     public func updateCKRecordLocally(record: inout CKRecord) {
-        record[Quotewall.nameKey] = name as CKRecordValue?
+        record[Quotewall.quotesKey] = quotes as CKRecordValue?
         record[Quotewall.appleUserReferenceKey] = userReference as CKRecordValue?
         
         if receivedQuotes.isEmpty {
@@ -106,6 +100,6 @@ public class Quotewall {
 
 extension Quotewall: Equatable {
     public static func ==(lhs: Quotewall, rhs: Quotewall) -> Bool {
-        return lhs.name == rhs.name && lhs.ckRecordID == rhs.ckRecordID
+        return lhs.category == rhs.category && lhs.ckRecordID == rhs.ckRecordID
     }
 }
