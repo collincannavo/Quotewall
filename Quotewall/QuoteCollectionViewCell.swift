@@ -13,21 +13,38 @@ class QuoteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var quoteTextField: UITextView!
     @IBOutlet weak var closeQuotationImage: UIImageView!
     @IBOutlet weak var openQuotationImage: UIImageView!
-    @IBOutlet weak var authorNameLabel: UILabel!
+    @IBOutlet weak var authorNameLabel: UITextField!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var backgroundImageButton: UIButton!
    
     var quote: Quote?
     
     @IBAction func backgroundImageButtonTapped(_ sender: Any) {
-        
+        guard let buttonTapped = sender as? UIButton else { return }
+            delegate?.photoSelectCellSelected(backgroundImageButtonTapped: buttonTapped)
         
     }
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        updateViews()
+    }
+    
+    public func updateViews() {
+        guard let quote = quote
+            
+        else { return }
+        
+        authorNameLabel.text = quote.name
+        quoteTextField.text = quote.text
+        
+        if let data = quote.image,
+            let newImage = UIImage(data: data) {
+            backgroundImageButton.setTitle("", for: .normal)
+            backgroundImage.image = newImage
+            backgroundImage.contentMode = .scaleAspectFit
+        }
     }
 
 }

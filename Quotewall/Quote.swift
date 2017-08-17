@@ -20,10 +20,10 @@ public class Quote {
     public static let ckRecordIDKey = "ckRecordID"
     public static let parentKey = "parent"
     
-    public let name: String
-    public let vote: Double?
-    public let text: String
-    public let image: Data?
+    public var name: String
+    public var vote: Double?
+    public var text: String
+    public var image: Data?
     
     public init(name: String, vote: Double? = nil, text: String, image: Data? = nil) {
         self.name = name

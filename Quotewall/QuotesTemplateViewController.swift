@@ -20,7 +20,6 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var addBackgroundImage: UIButton!
     @IBOutlet weak var quoteCellView: UIView!
 
-    
     // MARK: - Properties
     
     var quote: Quote?
@@ -61,12 +60,8 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     }
     
     fileprivate func setUpCellDisplay() {
-        if let windowWidth = UIApplication.shared.keyWindow?.frame.size.width {
-            let headerHeight = windowWidth * 175.0 / 300.0
-            quoteCellView.frame = CGRect(x: 0.0, y: 0.0, width: windowWidth, height: headerHeight)
-        }
         
-        if let customView = Bundle.main.loadNibNamed("quoteCollectionCell", owner: self, options: nil)?.first as? QuoteCollectionViewCell {
+        if let customView = Bundle.main.loadNibNamed("QuoteCollectionViewCell", owner: self, options: nil)?.first as? QuoteCollectionViewCell {
             quoteCollectionCell = customView
             quoteCollectionCell.authorNameLabel.text = personNameTextField.text
             quoteCollectionCell.quoteTextField.text = quoteTextField.text
@@ -100,6 +95,20 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         quoteCollectionCell.authorNameLabel.text = author
         quoteCollectionCell.quoteTextField.text = quote
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textFieldReturnResponder(textField)
+        return true
+    }
+    
+    fileprivate func textFieldReturnResponder(_ textField: UITextField){
+        if textField == quoteTextField {
+            quoteTextField.resignFirstResponder()
+            personNameTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
     }
     
     func photoSelectCellSelected(backgroundImageButtonTapped: UIButton) {
