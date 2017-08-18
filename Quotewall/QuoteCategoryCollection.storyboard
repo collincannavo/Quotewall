@@ -28,7 +28,7 @@
                                     <navigationItem title="My Quotes Collection" id="RPl-lB-5Mn">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uxD-nb-i4d">
                                             <connections>
-                                                <segue destination="3sL-UQ-7Iv" kind="presentation" identifier="addQuoteCollection" id="5PX-qY-Oue"/>
+                                                <action selector="addQuotewallButtonTapped:" destination="m1Z-gx-zgS" id="NXE-Wo-ZoS"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -51,15 +51,6 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="153" height="153"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiL-DL-jkF">
-                                                    <rect key="frame" x="0.0" y="66" width="153" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                         </view>
                                         <connections>
                                             <segue destination="3sL-UQ-7Iv" kind="show" identifier="editQuoteCollection" id="pIN-ox-ReS"/>
@@ -89,7 +80,4 @@
             <point key="canvasLocation" x="1742.4000000000001" y="112.44377811094454"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="pIN-ox-ReS"/>
-    </inferredMetricsTieBreakers>
 </document>

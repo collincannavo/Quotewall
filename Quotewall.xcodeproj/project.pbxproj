@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6D368F31F4648DC00F00DE9 /* QuotewallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F11F4648DB00F00DE9 /* QuotewallCollectionViewCell.swift */; };
+		B6D368F41F4648DC00F00DE9 /* QuotewallCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6D368F21F4648DB00F00DE9 /* QuotewallCollectionViewCell.xib */; };
 		B6E726781F436DBB0067B6F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726771F436DBB0067B6F5 /* AppDelegate.swift */; };
 		B6E7267D1F436DBB0067B6F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E7267B1F436DBB0067B6F5 /* Main.storyboard */; };
 		B6E726801F436DBB0067B6F5 /* Quotewall.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6E7267E1F436DBB0067B6F5 /* Quotewall.xcdatamodeld */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B6D368F11F4648DB00F00DE9 /* QuotewallCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotewallCollectionViewCell.swift; sourceTree = "<group>"; };
+		B6D368F21F4648DB00F00DE9 /* QuotewallCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuotewallCollectionViewCell.xib; sourceTree = "<group>"; };
 		B6E726741F436DBB0067B6F5 /* Quotewall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotewall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E726771F436DBB0067B6F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E7267C1F436DBB0067B6F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 				B6E726CA1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift */,
 				B6E726CC1F45DB430067B6F5 /* QuoteCollectionViewCell.swift */,
 				B6E726CD1F45DB430067B6F5 /* QuoteCollectionViewCell.xib */,
+				B6D368F11F4648DB00F00DE9 /* QuotewallCollectionViewCell.swift */,
+				B6D368F21F4648DB00F00DE9 /* QuotewallCollectionViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 				B6E726821F436DBB0067B6F5 /* Assets.xcassets in Resources */,
 				B6E726AC1F43B3720067B6F5 /* RemoveQuote.storyboard in Resources */,
 				B6E726A21F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard in Resources */,
+				B6D368F41F4648DC00F00DE9 /* QuotewallCollectionViewCell.xib in Resources */,
 				B6E726A01F43AC6F0067B6F5 /* SharedQuotes.storyboard in Resources */,
 				B6E7267D1F436DBB0067B6F5 /* Main.storyboard in Resources */,
 				B6E726A41F43ADE70067B6F5 /* QuotesTemplate1.storyboard in Resources */,
@@ -325,6 +332,7 @@
 				B6E726BC1F43C1380067B6F5 /* RemoveQuoteViewController.swift in Sources */,
 				B6E726C81F44E0980067B6F5 /* PersonController.swift in Sources */,
 				B6E726C61F44A0590067B6F5 /* NetworkQuotesController.swift in Sources */,
+				B6D368F31F4648DC00F00DE9 /* QuotewallCollectionViewCell.swift in Sources */,
 				B6E726941F4372BC0067B6F5 /* Quotewall.swift in Sources */,
 				B6E726C41F449EF10067B6F5 /* NetworkQuotes.swift in Sources */,
 				B6E726801F436DBB0067B6F5 /* Quotewall.xcdatamodeld in Sources */,

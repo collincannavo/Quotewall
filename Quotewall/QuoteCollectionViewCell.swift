@@ -22,9 +22,7 @@ class QuoteCollectionViewCell: UICollectionViewCell {
     @IBAction func backgroundImageButtonTapped(_ sender: Any) {
         guard let buttonTapped = sender as? UIButton else { return }
             delegate?.photoSelectCellSelected!(backgroundImageButtonTapped: buttonTapped)
-        
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,7 +44,7 @@ class QuoteCollectionViewCell: UICollectionViewCell {
             backgroundImage.contentMode = .scaleAspectFit
         }
     }
-
+    
 }
 
 // MARK: - Delegate properties

@@ -33,6 +33,7 @@ public class CloudKitController {
     }
     
     public func save(record: CKRecord, witCompletion completion: @escaping (CKRecord?, Error?) -> Void) {
+        print("Going to the cloud")
         container.publicCloudDatabase.save(record) { (record, error) in
             if let error = error {
                 completion(record, error)
@@ -47,7 +48,7 @@ public class CloudKitController {
             }
             
         }
-    public func performQuery(with predicate: NSPredicate, completion: @escaping([CKRecord?], Error?) -> Void) {
+    public func performQuery(with predicate: NSPredicate, completion: @escaping([CKRecord]?, Error?) -> Void) {
             
             let query = CKQuery(recordType: Quote.recordTypeKey, predicate: predicate)
             
@@ -100,7 +101,7 @@ public class CloudKitController {
     public func fetchCurrentUser(completion: @escaping(Bool, Person?) -> Void) {
         container.fetchUserRecordID { (appleUserRecordID, error) in
             if let error = error {
-                NSLog("There was an error fetching the current user")
+                NSLog("There was an error fetching the current user: \(error.localizedDescription)")
                 completion(false, nil)
                 return }
             guard let appleUserRecordID = appleUserRecordID else { completion(false, nil); return }
@@ -124,6 +125,15 @@ public class CloudKitController {
                 
             })
         }
+    }
+    
+    public func fetchAllQuotes(for records: [CKRecordID], with completion: @escaping ([CKRecordID: CKRecord]?, Error?) -> Void) {
+        
+        let fetchOperation = CKFetchRecordsOperation(recordIDs: records)
+        fetchOperation.qualityOfService = .userInitiated
+        fetchOperation.queuePriority = .high
+        fetchOperation.fetchRecordsCompletionBlock = completion
+        container.publicCloudDatabase.add(fetchOperation)
     }
     
    

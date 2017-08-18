@@ -25,6 +25,10 @@ public class Person {
     public var favoriteQuotes: [Quote] = []
     public var savedQuotewalls: [Quotewall] = []
     
+    public var sortedQuotewalls: [Quotewall] {
+        return savedQuotewalls.sorted(by: { $0.category.lowercased() < $1.category.lowercased()})
+    }
+    
     public var sortedPersonalQuotes: [Quote] {
         return personalQuotes.sorted(by: {$0.name.lowercased() < $1.name.lowercased() })
     }

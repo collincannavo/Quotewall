@@ -47,7 +47,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             return
             
         } else {
-            
+            print("this is saving")
             saveQuoteToQuotewall(with: { (success) in
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)

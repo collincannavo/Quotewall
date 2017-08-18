@@ -36,6 +36,63 @@ public class QuoteController {
         }
     }
     
+    public func fetchPersonalQuotes(with completion: @escaping (Bool)-> Void) {
+        guard let currentPersonID = PersonController.shared.currentPerson?.ckRecordID else { completion(false); return }
+        
+        let currentPersonCKReference = CKReference(recordID: currentPersonID, action: .none)
+        
+        let predicate = NSPredicate(format: "\(Quote.parentKey) == %@ ", currentPersonCKReference)
+        
+        CloudKitController.shared.performQuery(with: predicate, completion: { (records, error) in
+            if let error = error {
+                NSLog("There was an error fetching quotes: \(error.localizedDescription)"); completion(false); return }
+            
+            guard let records = records else { NSLog("Returned profile quotes are nil"); completion(false); return }
+            
+            guard let currentPerson = PersonController.shared.currentPerson else { completion(false); return }
+            
+            let quotes = records.flatMap {Quote(ckRecord: $0)}
+            quotes.forEach { PersonController.shared.addQuote($0, to: currentPerson) }
+            completion(true)
+        })
+    }
     
-    
+    public func fetchSharedQuotes(with completion: @escaping (Bool)-> Void){
+        guard let currentPerson = PersonController.shared.currentPerson else { completion(false); return }
+        
+        PersonController.shared.removeAllQuotes(from: currentPerson)
+        
+        let sharedQuotesCKRecordID = currentPerson.receivedQuotes.map {$0.recordID}
+        
+        CloudKitController.shared.fetchAllQuotes(for: sharedQuotesCKRecordID) { (recordsDictionary, error) in
+            
+            defer { completion(true) }
+            
+            if let error = error { NSLog("There was an error fetching all shared quotes: \(error.localizedDescription)"); completion(false); return }
+            
+            guard let cardRecordsDictionary = recordsDictionary else { NSLog("Records returned for shared cards is nil"); completion(false); return }
+            
+            let newQuotes = cardRecordsDictionary.flatMap({Quote(ckRecord: $0.value)})
+            newQuotes.forEach({PersonController.shared.addQuote($0, to: currentPerson)})
+            completion(true)
+            
+        }
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -15,5 +15,6 @@ class QuoteCollectionViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    var quotes: [Quote] = []
     
 }

@@ -21,7 +21,8 @@ public class Quotewall {
     
     public var ckRecordID: CKRecordID?
     public var userReference: CKReference?
-    public let category: String
+    public var category: String
+    public var backgroundImage: Data?
     public var receivedQuotes: [CKReference] = []
     public var personalQuotes: [Quote] = []
     public var quotes: [Quote] = []
@@ -64,10 +65,11 @@ public class Quotewall {
         return record
     }
     
-    public init(_ quotes: [Quote] = [], userCKReference: CKReference, category: String) {
+    public init(_ quotes: [Quote] = [], userCKReference: CKReference, category: String, backgroundImage: Data? = nil) {
         self.quotes = quotes
         self.userReference = userCKReference
         self.category = category
+        self.backgroundImage = backgroundImage
     }
     
     public init?(CKRecord: CKRecord) {
