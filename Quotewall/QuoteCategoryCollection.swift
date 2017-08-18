@@ -9,10 +9,7 @@
 import Foundation
 import UIKit
 
-class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CategoryPhotoSelectorCellDelegate {
-    
-    
-    var quotewallCollectionView: QuotewallCollectionViewCell?
+class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CategoryPhotoSelectorCellDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Outlets
     
@@ -31,11 +28,8 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        quoteCategoryCollection.delegate? = self
-        quoteCategoryCollection.dataSource? = self
-        let bundle = Bundle(identifier: "com.collin-cannavo.Quotewall")
-        let quoteCell = UINib(nibName: "QuotewallCollectionViewCell", bundle: bundle)
-        quoteCategoryCollection.register(quoteCell, forCellWithReuseIdentifier: "quotewallCollectionCell")
+   
+        
         
     }
     
@@ -47,17 +41,19 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let quotewall = PersonController.shared.currentPerson?.savedQuotewalls[indexPath.row]
-        let newQuotewall = quotewall
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quotewallCollectionCell", for: indexPath) as? QuotewallCollectionViewCell else { return QuotewallCollectionViewCell() }
         
-        cell.categoryTitleLabel.text = newQuotewall?.category
+        let newQuotewall = quotewall
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quoteCategoryCollectionCell", for: indexPath) as? CategoryCollectionViewCell else { return CategoryCollectionViewCell() }
+        
+        cell.quotewallTitle.text = newQuotewall?.category
         
         cell.quotewall = quotewall
         
-        if let data = quotewall?.backgroundImage,
-            let image = UIImage(data: data) {
-            cell.categoryBackgroundImage.image = image
-        }
+//        if let data = quotewall?.backgroundImage,
+//            let image = UIImage(data: data) {
+//            cell.categoryBackgroundImage.image = image
+//        }
         
         return cell
     }
@@ -93,8 +89,9 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
             } else {
             
                 QuotewallController.shared.createQuotewall(with: [], category: title)
-                
-                self.quoteCategoryCollection.reloadData()
+                DispatchQueue.main.async {
+                    self.quoteCategoryCollection.reloadData()
+                }
         }
     }
         alertController.addAction(dismissAction)
@@ -108,18 +105,41 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let collectionViewCell = self.quotewallCollectionView else { return }
+//        guard let collectionViewCell = self.quotewallCollectionView else { return }
         
         if segue.identifier == "editQuoteCollection" {
             
-            if let indexPath = self.quoteCategoryCollection.indexPath(for: collectionViewCell) {
+            if let indexPath = self.quoteCategoryCollection.indexPathsForSelectedItems?.first {
                 
                 let detailsVC = segue.destination as? QuoteCollectionViewController
                 
                 guard let quotes = QuotewallController.shared.currentQuotewall?.quotes[indexPath.row] else { return }
+               
                 detailsVC?.quotes = [quotes]
             }
         }
-        
+    }
+    
+    func fetchQuotewalls() {
+        CloudKitController.shared.fetchCurrentUser { (success, person) in
+            if success && (person != nil) {
+                
+                
+                CloudKitController.shared.fetchQuotewalls(completion: { (success) in
+                    if success {
+                        DispatchQueue.main.async {
+                            self.quoteCategoryCollection.reloadData()
+                        }
+                    }
+                 CloudKitController.shared.fetchPersonalQuotes(completion: { (success) in
+                    if success {
+                        DispatchQueue.main.async {
+                            self.quoteCategoryCollection.reloadData()
+                        }
+                    }
+                 })
+                })
+            }
+        }
     }
 }

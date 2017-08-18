@@ -45,18 +45,44 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="quoteCategoryCollectionCell" id="8lu-kt-4Ug">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="quoteCategoryCollectionCell" id="8lu-kt-4Ug" customClass="CategoryCollectionViewCell" customModule="Quotewall" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="153" height="153"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="153" height="153"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0b-DI-Om0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="153" height="153"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-hn-SGz">
+                                                            <rect key="frame" x="55" y="66" width="42" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="y0b-DI-Om0" firstAttribute="leading" secondItem="8lu-kt-4Ug" secondAttribute="leading" id="88K-em-66e"/>
+                                            <constraint firstAttribute="trailing" secondItem="y0b-DI-Om0" secondAttribute="trailing" id="Shy-U2-mNn"/>
+                                            <constraint firstItem="y0b-DI-Om0" firstAttribute="top" secondItem="8lu-kt-4Ug" secondAttribute="top" id="YRg-IO-QMn"/>
+                                            <constraint firstAttribute="bottom" secondItem="y0b-DI-Om0" secondAttribute="bottom" id="lEa-Mc-lon"/>
+                                        </constraints>
                                         <connections>
+                                            <outlet property="quotewallTitle" destination="FfM-hn-SGz" id="GKk-FF-uQm"/>
                                             <segue destination="3sL-UQ-7Iv" kind="show" identifier="editQuoteCollection" id="pIN-ox-ReS"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="m1Z-gx-zgS" id="ghv-b3-EvN"/>
+                                    <outlet property="delegate" destination="m1Z-gx-zgS" id="Ouv-ny-Azq"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,7 +90,7 @@
                     <tabBarItem key="tabBarItem" title="My Quotes" id="aih-nn-7ii"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="quoteCategoryCollection" destination="ifG-7h-5nD" id="NlV-O4-nf6"/>
+                        <outlet property="quoteCategoryCollection" destination="ifG-7h-5nD" id="j16-it-97K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v42-it-PL6" userLabel="First Responder" sceneMemberID="firstResponder"/>

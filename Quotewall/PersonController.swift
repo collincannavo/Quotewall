@@ -19,6 +19,14 @@ public class PersonController {
     
     public func addQuotewall(_ quotewall: Quotewall, to person: Person) {
         person.savedQuotewalls.append(quotewall)
+        
+        let record = quotewall.CKrecord
+        
+        CloudKitController.shared.save(record: record) { (record, error) in
+            if let error = error {
+                NSLog("There was an error saving quotewall: \(error.localizedDescription)")
+            }
+        }
     }
     
     public func addPersonalQuote(_ quote: Quote, to person: Person) {
@@ -37,6 +45,10 @@ public class PersonController {
         if let index = person.receivedQuotes.index(where: {$0 == ckReference}) {
             person.receivedQuotes.remove(at: index)
         }
+    }
+    
+    public func removeAllQuotewalls(from person: Person) {
+        person.savedQuotewalls.removeAll()
     }
     
     public func removeFavoriteQuote(from person: Person, at indexPath: IndexPath) {

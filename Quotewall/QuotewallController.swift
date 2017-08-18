@@ -37,14 +37,13 @@ public class QuotewallController {
     public func createQuotewall(with quotes: [Quote] = [], category: String) {
         
         guard let userCKReference = PersonController.shared.currentPerson?.ckReference,
-            let person = PersonController.shared.currentPerson
+            let person = PersonController.shared.currentPerson,
+            let ckRecordID = PersonController.shared.currentPerson?.ckRecordID
             else { return }
         
-        let newQuotewall = Quotewall.init(quotes, userCKReference: userCKReference, category: category)
+        let newQuotewall = Quotewall.init(userCKReference: userCKReference, category: category, ckRecordID: ckRecordID)
         
         PersonController.shared.addQuotewall(newQuotewall, to: person)
         
     }
-
-    
 }

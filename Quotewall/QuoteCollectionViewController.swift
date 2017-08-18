@@ -17,4 +17,7 @@ class QuoteCollectionViewController: UIViewController {
     
     var quotes: [Quote] = []
     
+    override func viewDidLoad() {
+        
+    }
 }

@@ -18,8 +18,6 @@ class NetworkQuotesController {
     
     static func fetchQuote(with text: String, completion: @escaping ([NetworkQuotes]?) -> Void) {
         guard let url = baseURL else { completion(nil); return }
-    
-        
         
         let urlParameters = ["cat": text, "count": "10"]
        

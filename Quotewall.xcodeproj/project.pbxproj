@@ -12,6 +12,7 @@
 		B6D368F61F47437B00F00DE9 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */; };
 		B6D368F81F47483000F00DE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F71F47483000F00DE9 /* Constants.swift */; };
 		B6D368FA1F474B7C00F00DE9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */; };
+		B6D368FC1F478EDF00F00DE9 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368FB1F478EDF00F00DE9 /* CategoryCollectionViewCell.swift */; };
 		B6E726781F436DBB0067B6F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726771F436DBB0067B6F5 /* AppDelegate.swift */; };
 		B6E7267D1F436DBB0067B6F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E7267B1F436DBB0067B6F5 /* Main.storyboard */; };
 		B6E726801F436DBB0067B6F5 /* Quotewall.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6E7267E1F436DBB0067B6F5 /* Quotewall.xcdatamodeld */; };
@@ -56,6 +57,7 @@
 		B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		B6D368F71F47483000F00DE9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		B6D368FB1F478EDF00F00DE9 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6E726741F436DBB0067B6F5 /* Quotewall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotewall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E726771F436DBB0067B6F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E7267C1F436DBB0067B6F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				B6E726CD1F45DB430067B6F5 /* QuoteCollectionViewCell.xib */,
 				B6D368F11F4648DB00F00DE9 /* QuotewallCollectionViewCell.swift */,
 				B6D368F21F4648DB00F00DE9 /* QuotewallCollectionViewCell.xib */,
+				B6D368FB1F478EDF00F00DE9 /* CategoryCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				B6E726B81F43C0E80067B6F5 /* QuoteToShareViewController.swift in Sources */,
 				B6E726D21F46026B0067B6F5 /* UIImageExtension.swift in Sources */,
 				B6E726B61F43C0B60067B6F5 /* QuoteCollectionViewController.swift in Sources */,
+				B6D368FC1F478EDF00F00DE9 /* CategoryCollectionViewCell.swift in Sources */,
 				B6E726C21F449E5C0067B6F5 /* NetworkController.swift in Sources */,
 				B6E7269A1F4396990067B6F5 /* QuoteController.swift in Sources */,
 				B6E726BE1F43C1760067B6F5 /* SearchQuotesViewController.swift in Sources */,

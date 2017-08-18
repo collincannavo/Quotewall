@@ -19,7 +19,7 @@ public class Quotewall {
     public static let recordTypeKey = "Quotewall"
     public static let parentKey = "parent"
     
-    public var ckRecordID: CKRecordID?
+    public var ckRecordID: CKRecordID
     public var userReference: CKReference?
     public var category: String
     public var backgroundImage: Data?
@@ -45,12 +45,12 @@ public class Quotewall {
     }
     
     public var ckReference: CKReference? {
-        guard let ckRecordID = ckRecordID else { return nil }
+        let ckRecordID = self.ckRecordID
         return CKReference(recordID: ckRecordID, action: .none)
     }
     
     public var CKrecord: CKRecord {
-     let recordID = self.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
+        let recordID = self.ckRecordID 
         
         let record = CKRecord(recordType: Quotewall.recordTypeKey, recordID: recordID)
         
@@ -65,11 +65,12 @@ public class Quotewall {
         return record
     }
     
-    public init(_ quotes: [Quote] = [], userCKReference: CKReference, category: String, backgroundImage: Data? = nil) {
+    public init(_ quotes: [Quote] = [], userCKReference: CKReference, category: String, backgroundImage: Data? = nil, ckRecordID: CKRecordID) {
         self.quotes = quotes
         self.userReference = userCKReference
         self.category = category
         self.backgroundImage = backgroundImage
+        self.ckRecordID = ckRecordID
     }
     
     public init?(CKRecord: CKRecord) {

@@ -39,15 +39,14 @@ public class CloudKitController {
                 completion(record, error)
             }
         }
-        
     }
     
     public func fetchRecord(with recordID: CKRecordID, completion: @escaping(CKRecord?, Error?)-> Void) {
             container.publicCloudDatabase.fetch(withRecordID: recordID) { (record, error) in
                 completion(record, error)
             }
-            
         }
+    
     public func performQuery(with predicate: NSPredicate, completion: @escaping([CKRecord]?, Error?) -> Void) {
             
             let query = CKQuery(recordType: Quote.recordTypeKey, predicate: predicate)
@@ -127,7 +126,7 @@ public class CloudKitController {
         }
     }
     
-    public func fetchAllQuotes(for records: [CKRecordID], with completion: @escaping ([CKRecordID: CKRecord]?, Error?) -> Void) {
+    public func fetchAllRecords(for records: [CKRecordID], with completion: @escaping ([CKRecordID: CKRecord]?, Error?) -> Void) {
         
         let fetchOperation = CKFetchRecordsOperation(recordIDs: records)
         fetchOperation.qualityOfService = .userInitiated
@@ -136,24 +135,54 @@ public class CloudKitController {
         container.publicCloudDatabase.add(fetchOperation)
     }
     
-    public func fetchPersonalQuotes(for person: Person, records: [CKRecordID], completion: @escaping ([CKRecordID: CKRecord]?, Error?)-> Void) {
+    public func fetchPersonalQuotes(completion: @escaping (Bool)-> Void) {
         
+        guard let ckRecordID = PersonController.shared.currentPerson?.ckRecordID else { return }
         
-    }
+        let currentPersonCKReference = CKReference(recordID: ckRecordID, action: .none)
+        
+        let predicate = NSPredicate(format: "\(Quote.parentKey)", currentPersonCKReference)
+        
+        CloudKitController.shared.performQuery(with: predicate) { (records, error) in
+            if let error = error {
+                NSLog("There was an error fetching person quotes: \(error.localizedDescription)"); completion(false); return }
+            
+        guard let records = records else { NSLog("There was an error. Personal quotes came back nil"); completion(false); return }
+        
+            guard let currentPerson = PersonController.shared.currentPerson else { completion(false); return }
+            
+            let quotes = records.flatMap( {Quote(ckRecord: $0)} )
+            
+            quotes.forEach { PersonController.shared.addQuote($0, to: currentPerson) }
+            
+            completion(true)
+            
+            }
+        }
     
-   
-
+    public func fetchQuotewalls(completion: @escaping (Bool)-> Void) {
+        
+        guard let currentPerson = PersonController.shared.currentPerson else { completion(false); return }
+        
+        PersonController.shared.removeAllQuotewalls(from: currentPerson)
+        
+        let receivedQuotewallsRecord = currentPerson.savedQuotewalls.map {$0.ckRecordID}
+        
+        CloudKitController.shared.fetchAllRecords(for: receivedQuotewallsRecord) { (recordsDictionary, error) in
+            
+            var success = false
+            
+            defer { completion(success) }
+            if let error = error {
+                NSLog("There was an error fetching all the quotewalls: \(error.localizedDescription)")
+                
+                guard let quotewallRecordsDictionary = recordsDictionary else { NSLog("There was an error, quotes fetched are nil"); return }
+                
+                let newQuotewalls = quotewallRecordsDictionary.flatMap( {Quotewall(CKRecord: $0.value)} )
+                newQuotewalls.forEach({ PersonController.shared.addQuotewall($0, to: currentPerson)})
+                
+                success = true
+            }
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

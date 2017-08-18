@@ -64,35 +64,20 @@ public class QuoteController {
         
         let sharedQuotesCKRecordID = currentPerson.receivedQuotes.map {$0.recordID}
         
-        CloudKitController.shared.fetchAllQuotes(for: sharedQuotesCKRecordID) { (recordsDictionary, error) in
-            
-            defer { completion(true) }
-            
-            if let error = error { NSLog("There was an error fetching all shared quotes: \(error.localizedDescription)"); completion(false); return }
-            
-            guard let cardRecordsDictionary = recordsDictionary else { NSLog("Records returned for shared cards is nil"); completion(false); return }
-            
-            let newQuotes = cardRecordsDictionary.flatMap({Quote(ckRecord: $0.value)})
-            newQuotes.forEach({PersonController.shared.addQuote($0, to: currentPerson)})
-            completion(true)
-            
-        }
+//        CloudKitController.shared.fetchAllQuotes(for: sharedQuotesCKRecordID) { (recordsDictionary, error) in
+//            
+//            defer { completion(true) }
+//            
+//            if let error = error { NSLog("There was an error fetching all shared quotes: \(error.localizedDescription)"); completion(false); return }
+//            
+//            guard let cardRecordsDictionary = recordsDictionary else { NSLog("Records returned for shared cards is nil"); completion(false); return }
+//            
+//            let newQuotes = cardRecordsDictionary.flatMap({Quote(ckRecord: $0.value)})
+//            newQuotes.forEach({PersonController.shared.addQuote($0, to: currentPerson)})
+//            completion(true)
+//            
+//        }
     }
 
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

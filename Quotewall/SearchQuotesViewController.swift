@@ -15,9 +15,9 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
     
     var quotes: [NetworkQuotes] = [] {
         didSet {
-            let quote = quotes
-            print("Received Quotes")
-            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -74,7 +74,7 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
                     
             }
         }
-        
+        searchBar.text = "" 
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     

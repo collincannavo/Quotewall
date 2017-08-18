@@ -46,6 +46,9 @@
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="Izg-oK-G3u" id="Jui-3g-epc"/>
+                                </connections>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="X07-RJ-Vln">
                                 <rect key="frame" x="0.0" y="72" width="375" height="595"/>
