@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B6D368F31F4648DC00F00DE9 /* QuotewallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F11F4648DB00F00DE9 /* QuotewallCollectionViewCell.swift */; };
 		B6D368F41F4648DC00F00DE9 /* QuotewallCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6D368F21F4648DB00F00DE9 /* QuotewallCollectionViewCell.xib */; };
+		B6D368F61F47437B00F00DE9 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */; };
+		B6D368F81F47483000F00DE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F71F47483000F00DE9 /* Constants.swift */; };
+		B6D368FA1F474B7C00F00DE9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */; };
 		B6E726781F436DBB0067B6F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726771F436DBB0067B6F5 /* AppDelegate.swift */; };
 		B6E7267D1F436DBB0067B6F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E7267B1F436DBB0067B6F5 /* Main.storyboard */; };
 		B6E726801F436DBB0067B6F5 /* Quotewall.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6E7267E1F436DBB0067B6F5 /* Quotewall.xcdatamodeld */; };
@@ -50,6 +53,9 @@
 /* Begin PBXFileReference section */
 		B6D368F11F4648DB00F00DE9 /* QuotewallCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotewallCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6D368F21F4648DB00F00DE9 /* QuotewallCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuotewallCollectionViewCell.xib; sourceTree = "<group>"; };
+		B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		B6D368F71F47483000F00DE9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		B6E726741F436DBB0067B6F5 /* Quotewall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotewall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E726771F436DBB0067B6F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E7267C1F436DBB0067B6F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 				B6E726C11F449E5C0067B6F5 /* NetworkController.swift */,
 				B6E7267B1F436DBB0067B6F5 /* Main.storyboard */,
 				B6E726831F436DBB0067B6F5 /* LaunchScreen.storyboard */,
+				B6D368F71F47483000F00DE9 /* Constants.swift */,
 				B6E726771F436DBB0067B6F5 /* AppDelegate.swift */,
 				B6E726811F436DBB0067B6F5 /* Assets.xcassets */,
 				B6E726861F436DBB0067B6F5 /* Info.plist */,
@@ -160,6 +167,7 @@
 				B6E726A91F43B2E60067B6F5 /* Favorites.storyboard */,
 				B6E726AB1F43B3720067B6F5 /* RemoveQuote.storyboard */,
 				B6E726AD1F43B4150067B6F5 /* SearchQuotes.storyboard */,
+				B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 				B6E726B91F43C1140067B6F5 /* FavoritesViewController.swift */,
 				B6E726BB1F43C1380067B6F5 /* RemoveQuoteViewController.swift */,
 				B6E726BD1F43C1760067B6F5 /* SearchQuotesViewController.swift */,
+				B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -309,6 +318,7 @@
 				B6E726A21F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard in Resources */,
 				B6D368F41F4648DC00F00DE9 /* QuotewallCollectionViewCell.xib in Resources */,
 				B6E726A01F43AC6F0067B6F5 /* SharedQuotes.storyboard in Resources */,
+				B6D368FA1F474B7C00F00DE9 /* Onboarding.storyboard in Resources */,
 				B6E7267D1F436DBB0067B6F5 /* Main.storyboard in Resources */,
 				B6E726A41F43ADE70067B6F5 /* QuotesTemplate1.storyboard in Resources */,
 			);
@@ -328,6 +338,7 @@
 				B6E726C21F449E5C0067B6F5 /* NetworkController.swift in Sources */,
 				B6E7269A1F4396990067B6F5 /* QuoteController.swift in Sources */,
 				B6E726BE1F43C1760067B6F5 /* SearchQuotesViewController.swift in Sources */,
+				B6D368F81F47483000F00DE9 /* Constants.swift in Sources */,
 				B6E726981F43966D0067B6F5 /* QuotewallController.swift in Sources */,
 				B6E726BC1F43C1380067B6F5 /* RemoveQuoteViewController.swift in Sources */,
 				B6E726C81F44E0980067B6F5 /* PersonController.swift in Sources */,
@@ -339,6 +350,7 @@
 				B6E726B01F43BFE00067B6F5 /* SharedQuotesViewController.swift in Sources */,
 				B6E726921F4371EF0067B6F5 /* CloudKitController.swift in Sources */,
 				B6E726961F4374360067B6F5 /* Quote.swift in Sources */,
+				B6D368F61F47437B00F00DE9 /* LaunchScreenViewController.swift in Sources */,
 				B6E726CB1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift in Sources */,
 				B6E726B21F43C03C0067B6F5 /* QuoteCategoryCollection.swift in Sources */,
 				B6E726781F436DBB0067B6F5 /* AppDelegate.swift in Sources */,

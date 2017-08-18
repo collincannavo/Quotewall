@@ -13,7 +13,7 @@ public class CloudKitController {
     
     public static let shared = CloudKitController()
     
-    private let container = CKContainer(identifier: "iCloud.com.collin-cannavo.Quotewall")
+    private let container = CKContainer(identifier: "iCloud.com.collincannavo.Quotewall")
     
     public func verifyCloudKitLogin(with completion: @escaping (Bool) -> Void) {
         container.status(forApplicationPermission: .userDiscoverability) { (permissionStatus, error) in
@@ -33,7 +33,7 @@ public class CloudKitController {
     }
     
     public func save(record: CKRecord, witCompletion completion: @escaping (CKRecord?, Error?) -> Void) {
-        print("Going to the cloud")
+        
         container.publicCloudDatabase.save(record) { (record, error) in
             if let error = error {
                 completion(record, error)
@@ -134,6 +134,11 @@ public class CloudKitController {
         fetchOperation.queuePriority = .high
         fetchOperation.fetchRecordsCompletionBlock = completion
         container.publicCloudDatabase.add(fetchOperation)
+    }
+    
+    public func fetchPersonalQuotes(for person: Person, records: [CKRecordID], completion: @escaping ([CKRecordID: CKRecord]?, Error?)-> Void) {
+        
+        
     }
     
    

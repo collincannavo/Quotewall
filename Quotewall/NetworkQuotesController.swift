@@ -18,14 +18,20 @@ class NetworkQuotesController {
     
     static func fetchQuote(with text: String, completion: @escaping ([NetworkQuotes]?) -> Void) {
         guard let url = baseURL else { completion(nil); return }
+    
         
-        let searchURL = url.appendingPathComponent(text)
         
+        let urlParameters = ["cat": text, "count": "10"]
        
         let jsonHeader: [String: String] = ["X-Mashape-Key": "KWMaTjg8tXmshPlW12ZdsFf9jvOqp19FWGsjsnKHVoG3ZcqO6H", "application": "json"]
         
-        var request = URLRequest(url: searchURL)
+        var request = URLRequest(url: url)
         
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        components?.queryItems = urlParameters.flatMap { URLQueryItem(name: $0.0, value: $0.1) }
+        guard let searchURL = components?.url else { fatalError("URL is nil") }
+
+        request.url = searchURL
         request.allHTTPHeaderFields = jsonHeader
         request.httpMethod = "GET"
         

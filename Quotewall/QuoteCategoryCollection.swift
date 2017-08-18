@@ -18,18 +18,30 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     
     @IBOutlet weak var quoteCategoryCollection: UICollectionView!
     
+    
     // MARK: - Actions
     
     @IBAction func addQuotewallButtonTapped(_ sender: Any) {
         createQuotewallTitle()
     }
-    var quoteWall: [Quotewall] = []
+    var quoteWallCollection: [Quotewall] = []
+    var quotewall: Quotewall?
     
     // MARK: - CollectionView Lifecycle Functions
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        quoteCategoryCollection.delegate? = self
+        quoteCategoryCollection.dataSource? = self
+        let bundle = Bundle(identifier: "com.collin-cannavo.Quotewall")
+        let quoteCell = UINib(nibName: "QuotewallCollectionViewCell", bundle: bundle)
+        quoteCategoryCollection.register(quoteCell, forCellWithReuseIdentifier: "quotewallCollectionCell")
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return quoteWall.count
+        return PersonController.shared.currentPerson?.savedQuotewalls.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,6 +73,8 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         alertController.addTextField { (textField) in
             quotewallTitle = textField
             quotewallTitle?.placeholder = "Title of Quotewall"
+            guard let title = quotewallTitle?.text else { return }
+            self.quotewall?.category = title
             
         }
         
@@ -69,7 +83,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
             guard let title = quotewallTitle?.text else { return }
             
             if title.isEmpty {
-                let alert = UIAlertController(title: "Please Add a title", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Sorry, I couldn't save it. Please add a title", message: nil, preferredStyle: .alert)
                 let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 
                 alert.addAction(okButton)
@@ -93,15 +107,19 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     // MARK: - Background Image picker Functions
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let collectionViewCell = self.quotewallCollectionView else { return }
+        
         if segue.identifier == "editQuoteCollection" {
-            if let indexPath = self.quoteCategoryCollection.indexPathsForSelectedItems {
-                let destinationVC = segue.destination as? QuoteCollectionViewController
+            
+            if let indexPath = self.quoteCategoryCollection.indexPath(for: collectionViewCell) {
                 
-                guard let quotes = QuotewallController.shared.currentQuotewall?.quotes else { return }
-                destinationVC?.quotes = quotes
+                let detailsVC = segue.destination as? QuoteCollectionViewController
+                
+                guard let quotes = QuotewallController.shared.currentQuotewall?.quotes[indexPath.row] else { return }
+                detailsVC?.quotes = [quotes]
             }
         }
+        
     }
-    
 }
-
