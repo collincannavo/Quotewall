@@ -54,6 +54,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
                 }
             })
             
+ 
         }
     }
     
@@ -164,6 +165,13 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     func photoSelectCellSelected(backgroundImageButtonTapped: UIButton) {
         selectPhotoTapped(sender: backgroundImageButtonTapped)
+    }
+    
+    func savedSuccessfully() {
+        let alert = UIAlertController(title: "Success!", message: "Your new quote was saved successfully", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
     }
     
 }

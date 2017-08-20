@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CategoryPhotoSelectorCellDelegate, UICollectionViewDelegateFlowLayout {
+class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Outlets
     
@@ -29,8 +29,6 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
    
-        
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -112,10 +110,12 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
             if let indexPath = self.quoteCategoryCollection.indexPathsForSelectedItems?.first {
                 
                 let detailsVC = segue.destination as? QuoteCollectionViewController
+                let quotewall = QuotewallController.shared.currentQuotewall
                 
                 guard let quotes = QuotewallController.shared.currentQuotewall?.quotes[indexPath.row] else { return }
                
                 detailsVC?.quotes = [quotes]
+                detailsVC?.quotewall = quotewall
             }
         }
     }

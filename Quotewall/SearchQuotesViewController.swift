@@ -6,6 +6,12 @@
 //  Copyright © 2017 Collin Cannavo. All rights reserved.
 //
 
+/*https://market.mashape.com/andruxnet/random-famous-quotes#get-endpoint
+ 
+ */
+
+
+
 import Foundation
 import UIKit
 

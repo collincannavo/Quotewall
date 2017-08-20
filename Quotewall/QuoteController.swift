@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import CloudKit
 
 public class QuoteController {
