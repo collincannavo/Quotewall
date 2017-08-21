@@ -21,12 +21,13 @@ public class Quote {
     public static let ckRecordIDKey = "ckRecordID"
     public static let parentKey = "parent"
     
+    
     public var name: String
     public var vote: Double?
     public var text: String
     public var image: Data?
     
-    public init(name: String, text: String, image: Data? = nil) {
+    public init(name: String, text: String, image: Data? = nil, userCKReference: CKReference) {
         self.name = name
         self.text = text
         self.image = image
@@ -51,7 +52,8 @@ public class Quote {
     public var quoteData: Data?
     
     public var ckRecord: CKRecord {
-        let record = CKRecord(recordType: Quote.recordTypeKey)
+        let recordID = self.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
+        let record = CKRecord(recordType: Quote.recordTypeKey, recordID: recordID)
         record.setValue(name, forKey: Quote.nameKey)
         record.setValue(vote, forKey: Quote.voteKey)
         record.setValue(text, forKey: Quote.textKey)
@@ -66,10 +68,10 @@ public class Quote {
     public convenience init?(ckRecord: CKRecord) {
         
         guard let name = ckRecord[Quote.nameKey] as? String,
-            let text = ckRecord[Quote.textKey] as? String
+            let text = ckRecord[Quote.textKey] as? String,
+            let parentCKReference = ckRecord[Quote.parentKey] as? CKReference
         else { return nil }
         
-        let parentCKReference = ckRecord[Quote.parentKey] as? CKReference
         let imageData = ckRecord[Quote.imageKey] as? Data
         let imageAsset = ckRecord[Quote.imageKey] as? CKAsset
         var newImageData: Data?
@@ -77,7 +79,8 @@ public class Quote {
             newImageData = try? Data(contentsOf: imageDataURL, options: .mappedIfSafe)
         }
         
-        self.init(name: name, text: text, image: newImageData)
+        self.init(name: name, text: text, image: imageData, userCKReference: parentCKReference)
+        
         
         if let imageDataUnwrapped = imageData {
             self.quoteData = imageDataUnwrapped

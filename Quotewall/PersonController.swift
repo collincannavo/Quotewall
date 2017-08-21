@@ -18,6 +18,7 @@ public class PersonController {
     public var currentPerson: Person?
     
     public func addQuotewall(_ quotewall: Quotewall, to person: Person) {
+        
         person.savedQuotewalls.append(quotewall)
         
         let record = quotewall.CKrecord
@@ -25,6 +26,7 @@ public class PersonController {
         CloudKitController.shared.save(record: record) { (record, error) in
             if let error = error {
                 NSLog("There was an error saving quotewall: \(error.localizedDescription)")
+                return
             }
         }
     }

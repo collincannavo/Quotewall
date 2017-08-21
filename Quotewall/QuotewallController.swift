@@ -34,16 +34,43 @@ public class QuotewallController {
         }
     }
     
-    public func createQuotewall(with quotes: [Quote] = [], category: String) {
+    public func createQuotewall(with quotes: [Quote], category: String) {
         
         guard let userCKReference = PersonController.shared.currentPerson?.ckReference,
-            let person = PersonController.shared.currentPerson,
-            let ckRecordID = PersonController.shared.currentPerson?.ckRecordID
+            let person = PersonController.shared.currentPerson
             else { return }
         
-        let newQuotewall = Quotewall.init(userCKReference: userCKReference, category: category, ckRecordID: ckRecordID)
+        let newQuotewall = Quotewall.init(userCKReference: userCKReference, category: category)
+        
+        newQuotewall.parentCKReference = PersonController.shared.currentPerson?.ckReference
         
         PersonController.shared.addQuotewall(newQuotewall, to: person)
         
     }
+    
+    public func createCKAsset(for data: Data?) -> CKAsset? {
+        guard let data = data,
+            let directory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
+        
+        let directoryAsNSString = directory as NSString
+        let path = directoryAsNSString.appendingPathComponent("asset.txt")
+        
+        FileManager.default.createFile(atPath: path, contents: data, attributes: nil)
+        let fileURL = URL(fileURLWithPath: path)
+        
+        return CKAsset(fileURL: fileURL)
+    }
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+

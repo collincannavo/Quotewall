@@ -107,7 +107,7 @@ public class CloudKitController {
             
             let appleUserReference = CKReference(recordID: appleUserRecordID, action: .none)
             
-            let predicate = NSPredicate(format: "\(Person.appleUserReferenceKey) == &@", appleUserReference)
+            let predicate = NSPredicate(format: "\(Person.appleUserReferenceKey) == %@", appleUserReference)
             
             let query = CKQuery(recordType: Person.recordTypeKey, predicate: predicate)
             
@@ -121,6 +121,34 @@ public class CloudKitController {
                 PersonController.shared.currentPerson = currentPerson
                 
                 completion(true, currentPerson)
+                
+            })
+        }
+    }
+    
+    public func fetchCurrentQuotewall(completion: @escaping(Bool, Quotewall?) -> Void) {
+        container.fetchUserRecordID { (appleUserRecordID, error) in
+            if let error = error {
+                NSLog("There was an error fetching the current quotewall: \(error.localizedDescription)")
+                completion(false, nil)
+                return }
+            
+            guard let appleUserRecordID = appleUserRecordID else { completion(false, nil); return }
+            
+            let predicate = NSPredicate(format: "\(Quotewall.appleUserReferenceKey) == &@", appleUserRecordID)
+            
+            let query = CKQuery(recordType: Quotewall.recordTypeKey, predicate: predicate)
+            
+            self.container.publicCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
+                if let error = error { print(error.localizedDescription); completion(false, nil); return }
+                
+                guard let currentQuotewall = records?.first else { completion(false, nil); return }
+                
+                let newCurrentQuotewall = Quotewall(CKRecord: currentQuotewall)
+                
+                QuotewallController.shared.currentQuotewall = newCurrentQuotewall
+                
+                completion(true, newCurrentQuotewall)
                 
             })
         }
@@ -168,7 +196,9 @@ public class CloudKitController {
         
         let receivedQuotewallsRecord = currentPerson.savedQuotewalls.map {$0.ckRecordID}
         
-        CloudKitController.shared.fetchAllRecords(for: receivedQuotewallsRecord) { (recordsDictionary, error) in
+        guard let ckRecords = receivedQuotewallsRecord as? [CKRecordID] else { completion(false); return }
+        
+        CloudKitController.shared.fetchAllRecords(for: ckRecords) { (recordsDictionary, error) in
             
             var success = false
             
@@ -185,4 +215,6 @@ public class CloudKitController {
             }
         }
     }
+    
+    
 }

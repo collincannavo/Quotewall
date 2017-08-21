@@ -116,6 +116,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
                
                 detailsVC?.quotes = [quotes]
                 detailsVC?.quotewall = quotewall
+                
             }
         }
     }

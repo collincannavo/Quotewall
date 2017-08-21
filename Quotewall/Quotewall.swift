@@ -18,8 +18,9 @@ public class Quotewall {
     public static let receivedQuotesKey = "receivedQuotes"
     public static let recordTypeKey = "Quotewall"
     public static let parentKey = "parent"
+    public static let backgroundImage = "backgroundImage"
     
-    public var ckRecordID: CKRecordID
+    public var ckRecordID: CKRecordID?
     public var userReference: CKReference?
     public var category: String
     public var backgroundImage: Data?
@@ -45,35 +46,35 @@ public class Quotewall {
     }
     
     public var ckReference: CKReference? {
-        let ckRecordID = self.ckRecordID
+        guard let ckRecordID = self.ckRecordID else { return nil }
         return CKReference(recordID: ckRecordID, action: .none)
     }
     
     public var CKrecord: CKRecord {
-        let recordID = self.ckRecordID 
-        
+        let recordID = self.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
         let record = CKRecord(recordType: Quotewall.recordTypeKey, recordID: recordID)
         
-        record[Quotewall.quotesKey] = quotes as CKRecordValue?
         record[Quotewall.appleUserReferenceKey] = userReference as CKRecordValue?
+        record[Quotewall.categoryKey] = category as CKRecordValue?
         
+        let backgroundImageAsset = QuotewallController.shared.createCKAsset(for: self.backgroundImage)
         
-        if !receivedQuotes.isEmpty {
-            record[Quotewall.receivedQuotesKey] = receivedQuotes as CKRecordValue?
-        }
+        record[Quotewall.backgroundImage] = backgroundImageAsset as CKAsset?
+
         self.ckRecordID = recordID
         return record
     }
     
-    public init(_ quotes: [Quote] = [], userCKReference: CKReference, category: String, backgroundImage: Data? = nil, ckRecordID: CKRecordID) {
+    public init(_ quotes: [Quote] = [], userCKReference: CKReference, category: String, backgroundImage: Data? = nil) {
         self.quotes = quotes
         self.userReference = userCKReference
         self.category = category
         self.backgroundImage = backgroundImage
-        self.ckRecordID = ckRecordID
     }
     
     public init?(CKRecord: CKRecord) {
+        
+        
         guard let quotes = CKRecord[Quotewall.quotesKey] as? [Quote],
             let category = CKRecord[Quotewall.categoryKey] as? String
         else { return nil }

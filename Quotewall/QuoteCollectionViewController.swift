@@ -21,6 +21,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     override func viewDidLoad() {
         self.navigationItem.title = quotewall?.category
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

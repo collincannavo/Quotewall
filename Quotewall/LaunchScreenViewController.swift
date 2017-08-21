@@ -37,19 +37,30 @@ class LaunchScreenViewController: UIViewController {
     func fetchData() {
         CloudKitController.shared.fetchCurrentUser { (success, person) in
             if success {
-                if person != nil {
+                if person != nil {                  
+                    CloudKitController.shared.fetchQuotewalls(completion: { (success) in
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: Constants.currentUserQuotewallsNotification, object: self)
+                        }
+                    })
+                    
+                    
                     QuoteController.shared.fetchPersonalQuotes(with: { (success) in
                         DispatchQueue.main.async {
                             NotificationCenter.default.post(name: Constants.personalQuotesFetchedNotification, object: self)
                         }
                     })
-                    QuoteController.shared.fetchSharedQuotes(with: { (success) in
-                        DispatchQueue.main.async {
-                            NotificationCenter.default.post(name: Constants.sharedQuotesFetchedNotification, object: self)
-                        }
-                    })
+//                    QuoteController.shared.fetchSharedQuotes(with: { (success) in
+//                        DispatchQueue.main.async {
+//                            NotificationCenter.default.post(name: Constants.sharedQuotesFetchedNotification, object: self)
+//                        }
+//                    })
+                
                     
-                    self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
+                    
+//                    self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
+                
+                
                 }
             } else {
                 CloudKitController.shared.createUser(with: "DefaultName", completion: { (_) in

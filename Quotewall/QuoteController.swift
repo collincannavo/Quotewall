@@ -17,10 +17,21 @@ public class QuoteController {
     // MARK: - CRUD Functions
     
     public func createQuote(with name: String, text: String, image: Data?, completion: @escaping (Bool) -> Void) {
+//   
+//        CloudKitController.shared.fetchCurrentQuotewall { (success, quotewall) in
+//            if success {
+//                completion(true)
+//                return
+//            } else {
+//                NSLog("There was an error fetching the current quotewall")
+//            }
+//        }
         
-        guard let quotewall = QuotewallController.shared.currentQuotewall else { completion(false); return }
+        guard let quotewall = QuotewallController.shared.currentQuotewall,
+            let userCKReference = QuotewallController.shared.currentQuotewall?.ckReference
+        else { completion(false); return }
         
-        let quote = Quote(name: name, text: text, image: image)
+        let quote = Quote(name: name, text: text, image: image, userCKReference: userCKReference)
         
         QuotewallController.shared.addPersonalQuote(quote, to: quotewall)
         
@@ -58,13 +69,13 @@ public class QuoteController {
         })
     }
     
-    public func fetchSharedQuotes(with completion: @escaping (Bool)-> Void){
-        guard let currentPerson = PersonController.shared.currentPerson else { completion(false); return }
-        
-        PersonController.shared.removeAllQuotes(from: currentPerson)
-        
-        let sharedQuotesCKRecordID = currentPerson.receivedQuotes.map {$0.recordID}
-        
+//    public func fetchSharedQuotes(with completion: @escaping (Bool)-> Void){
+//        guard let currentPerson = PersonController.shared.currentPerson else { completion(false); return }
+//        
+//        PersonController.shared.removeAllQuotes(from: currentPerson)
+//        
+//        let sharedQuotesCKRecordID = currentPerson.receivedQuotes.map {$0.recordID}
+//        
 //        CloudKitController.shared.fetchAllQuotes(for: sharedQuotesCKRecordID) { (recordsDictionary, error) in
 //            
 //            defer { completion(true) }
@@ -78,7 +89,7 @@ public class QuoteController {
 //            completion(true)
 //            
 //        }
-    }
+//    }
 
 
 }
