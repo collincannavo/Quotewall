@@ -127,15 +127,10 @@ public class CloudKitController {
     }
     
     public func fetchCurrentQuotewall(completion: @escaping(Bool, Quotewall?) -> Void) {
-        container.fetchUserRecordID { (appleUserRecordID, error) in
-            if let error = error {
-                NSLog("There was an error fetching the current quotewall: \(error.localizedDescription)")
-                completion(false, nil)
-                return }
             
-            guard let appleUserRecordID = appleUserRecordID else { completion(false, nil); return }
+            guard let currentUserRecordID = PersonController.shared.currentPerson?.ckRecordID else { completion(false, nil); return }
             
-            let predicate = NSPredicate(format: "\(Quotewall.appleUserReferenceKey) == &@", appleUserRecordID)
+            let predicate = NSPredicate(format: "quotewallReference == %@", currentUserRecordID)
             
             let query = CKQuery(recordType: Quotewall.recordTypeKey, predicate: predicate)
             
@@ -151,7 +146,7 @@ public class CloudKitController {
                 completion(true, newCurrentQuotewall)
                 
             })
-        }
+        
     }
     
     public func fetchAllRecords(for records: [CKRecordID], with completion: @escaping ([CKRecordID: CKRecord]?, Error?) -> Void) {
@@ -169,7 +164,7 @@ public class CloudKitController {
         
         let currentPersonCKReference = CKReference(recordID: ckRecordID, action: .none)
         
-        let predicate = NSPredicate(format: "\(Quote.parentKey)", currentPersonCKReference)
+        let predicate = NSPredicate(format: "\(Quote.quoteReferenceKey) == %@", currentPersonCKReference)
         
         CloudKitController.shared.performQuery(with: predicate) { (records, error) in
             if let error = error {

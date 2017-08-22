@@ -10,22 +10,27 @@ import Foundation
 import UIKit
 import CloudKit
 
+let quotesWereSetNotification = Notification.Name(rawValue: "quotesWereSet")
+
 public class QuoteController {
     
     public static let shared = QuoteController()
     
+    // MARK: - Properties
+    
+    private(set) var quotes = [Quote]() {
+        didSet {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: quotesWereSetNotification, object: self)
+                
+            }
+        }
+    }
+
+    
     // MARK: - CRUD Functions
     
     public func createQuote(with name: String, text: String, image: Data?, completion: @escaping (Bool) -> Void) {
-//   
-//        CloudKitController.shared.fetchCurrentQuotewall { (success, quotewall) in
-//            if success {
-//                completion(true)
-//                return
-//            } else {
-//                NSLog("There was an error fetching the current quotewall")
-//            }
-//        }
         
         guard let quotewall = QuotewallController.shared.currentQuotewall,
             let userCKReference = QuotewallController.shared.currentQuotewall?.ckReference

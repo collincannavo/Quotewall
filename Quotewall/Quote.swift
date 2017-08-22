@@ -20,12 +20,15 @@ public class Quote {
     public static let imageKey = "image"
     public static let ckRecordIDKey = "ckRecordID"
     public static let parentKey = "parent"
+    public static let quoteReferenceKey = "quoteReference"
     
     
     public var name: String
     public var vote: Double?
     public var text: String
     public var image: Data?
+    public var userReference: CKReference?
+    public var ckRecordID: CKRecordID?
     
     public init(name: String, text: String, image: Data? = nil, userCKReference: CKReference) {
         self.name = name
@@ -35,8 +38,6 @@ public class Quote {
     }
     
     // MARK: - CloudKit Syncable
-    
-    public var ckRecordID: CKRecordID?
     
     public var ckReference: CKReference? {
         guard let ckRecordID = ckRecordID else { return nil }
@@ -59,6 +60,7 @@ public class Quote {
         record.setValue(text, forKey: Quote.textKey)
         record.setValue(image, forKey: Quote.imageKey)
         record.setValue(parentCKReference, forKey: Quote.parentKey)
+        record[Quote.quoteReferenceKey] = userReference as CKRecordValue?
         
         self.ckRecordID = record.recordID
         
@@ -69,7 +71,7 @@ public class Quote {
         
         guard let name = ckRecord[Quote.nameKey] as? String,
             let text = ckRecord[Quote.textKey] as? String,
-            let parentCKReference = ckRecord[Quote.parentKey] as? CKReference
+            let userCKReference = ckRecord[Quote.quoteReferenceKey] as? CKReference
         else { return nil }
         
         let imageData = ckRecord[Quote.imageKey] as? Data
@@ -79,7 +81,7 @@ public class Quote {
             newImageData = try? Data(contentsOf: imageDataURL, options: .mappedIfSafe)
         }
         
-        self.init(name: name, text: text, image: imageData, userCKReference: parentCKReference)
+        self.init(name: name, text: text, image: imageData, userCKReference: userCKReference)
         
         
         if let imageDataUnwrapped = imageData {
@@ -87,7 +89,7 @@ public class Quote {
         }
         
         self.ckRecordID = ckRecord.recordID
-        self.parentCKReference = parentCKReference
+        
     }
 
 }

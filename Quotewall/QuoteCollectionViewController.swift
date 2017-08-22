@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+
 class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -21,12 +23,21 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     override func viewDidLoad() {
         self.navigationItem.title = quotewall?.category
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: Constants.currentUserQuotewallsNotification, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        collectionView.reloadData()
+    }
+    
+    func refresh(){
+        self.collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-         let quotes = QuotewallController.shared.currentQuotewall?.quotes[indexPath.row]
+         let quotes = QuotewallController.shared.currentQuotewall?.personalQuotes[indexPath.row]
         
         let newquotes = quotes
         
@@ -46,7 +57,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return QuotewallController.shared.currentQuotewall?.quotes.count ?? 0
+        return QuotewallController.shared.currentQuotewall?.personalQuotes.count ?? 0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,7 +67,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
             
             let destinationVC = segue.destination as? QuotesTemplateViewController
             
-            let selectedQuote = QuotewallController.shared.currentQuotewall?.quotes[indexPath.row]
+            let selectedQuote = QuotewallController.shared.currentQuotewall?.personalQuotes[indexPath.row]
             
                 destinationVC?.quote = selectedQuote
                 

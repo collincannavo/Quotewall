@@ -11,10 +11,10 @@ import CloudKit
 
 public class Quotewall {
     
-    public static let quotesKey = "quotes"
+    
     public static let categoryKey = "category"
     public static let quoteCountKey = "count"
-    public static let appleUserReferenceKey = "appleUserReference"
+    public static let quotewallReferenceKey = "quotewallReference"
     public static let receivedQuotesKey = "receivedQuotes"
     public static let recordTypeKey = "Quotewall"
     public static let parentKey = "parent"
@@ -54,7 +54,7 @@ public class Quotewall {
         let recordID = self.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
         let record = CKRecord(recordType: Quotewall.recordTypeKey, recordID: recordID)
         
-        record[Quotewall.appleUserReferenceKey] = userReference as CKRecordValue?
+        record[Quotewall.quotewallReferenceKey] = userReference as CKRecordValue?
         record[Quotewall.categoryKey] = category as CKRecordValue?
         
         let backgroundImageAsset = QuotewallController.shared.createCKAsset(for: self.backgroundImage)
@@ -74,24 +74,19 @@ public class Quotewall {
     
     public init?(CKRecord: CKRecord) {
         
-        
-        guard let quotes = CKRecord[Quotewall.quotesKey] as? [Quote],
-            let category = CKRecord[Quotewall.categoryKey] as? String
+        guard let category = CKRecord[Quotewall.categoryKey] as? String,
+            let userReference = CKRecord[Quotewall.quotewallReferenceKey] as? CKReference
         else { return nil }
         
-        self.quotes = quotes
         self.category = category
-        self.userReference = CKRecord[Quotewall.appleUserReferenceKey] as? CKReference
-        
-        let receivedQuotes = CKRecord[Quotewall.receivedQuotesKey] as? [CKReference] ?? []
-        self.receivedQuotes = receivedQuotes
+        self.userReference = userReference
         
         self.ckRecordID = CKRecord.recordID
     }
     
     public func updateCKRecordLocally(record: inout CKRecord) {
-        record[Quotewall.quotesKey] = quotes as CKRecordValue?
-        record[Quotewall.appleUserReferenceKey] = userReference as CKRecordValue?
+        
+        record[Quotewall.quotewallReferenceKey] = userReference as CKRecordValue?
         
         if receivedQuotes.isEmpty {
             record[Quotewall.receivedQuotesKey] = nil

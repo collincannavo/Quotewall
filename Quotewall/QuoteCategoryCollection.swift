@@ -28,8 +28,14 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        fetchQuotewalls()
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: quotewallsWereSetNotification, object: nil)
     }
+    
+    func refresh() {
+        self.quoteCategoryCollection.reloadData()
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -86,7 +92,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
                 
             } else {
             
-                QuotewallController.shared.createQuotewall(with: [], category: title)
+                QuotewallController.shared.createQuotewall(with: title)
                 DispatchQueue.main.async {
                     self.quoteCategoryCollection.reloadData()
                 }
@@ -103,18 +109,16 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-//        guard let collectionViewCell = self.quotewallCollectionView else { return }
-        
         if segue.identifier == "editQuoteCollection" {
             
             if let indexPath = self.quoteCategoryCollection.indexPathsForSelectedItems?.first {
-                
+            
                 let detailsVC = segue.destination as? QuoteCollectionViewController
                 let quotewall = QuotewallController.shared.currentQuotewall
                 
-                guard let quotes = QuotewallController.shared.currentQuotewall?.quotes[indexPath.row] else { return }
+                guard let quotes = QuotewallController.shared.currentQuotewall?.personalQuotes else { return }
                
-                detailsVC?.quotes = [quotes]
+                detailsVC?.quotes = quotes
                 detailsVC?.quotewall = quotewall
                 
             }

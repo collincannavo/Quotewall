@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate, PhotoSelectorCellDelegate {
+class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var closeQuotationImage: UIImageView!
     @IBOutlet weak var openQuotationImage: UIImageView!
@@ -23,7 +23,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     // MARK: - Properties
     
     var quote: Quote?
-    var quoteCollectionCell = QuoteCollectionViewCell()
+    var quoteCollectionCell = QuotesCollectionViewCell()
     weak var delegate: PhotoSelectViewControllerDelegate?
     
     
@@ -51,6 +51,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             saveQuoteToQuotewall(with: { (success) in
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
+                    
                 }
             })
             
@@ -103,12 +104,11 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     fileprivate func setUpCellDisplay() {
         
-        if let customView = Bundle.main.loadNibNamed("QuoteCollectionViewCell", owner: self, options: nil)?.first as? QuoteCollectionViewCell {
+        if let customView = Bundle.main.loadNibNamed("QuoteCollectionViewCell", owner: self, options: nil)?.first as? QuotesCollectionViewCell {
+            
+            
             quoteCollectionCell = customView
             quoteCollectionCell.authorNameLabel.text = personNameTextField.text
-            quoteCollectionCell.quoteTextField.text = quoteTextField.text
-            quoteCollectionCell.openQuotationImage = openQuotationImage
-            quoteCollectionCell.closeQuotationImage = closeQuotationImage
             quoteCollectionCell.quote = quote
             quoteCollectionCell.bounds = quoteCellView.bounds
         }
@@ -123,7 +123,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             delegate?.photoSelectViewControllerSelected(image)
             quoteCollectionCell.backgroundImage.image = image.fixOrientation()
             quoteCollectionCell.backgroundImage.contentMode = .scaleAspectFit
-            quoteCollectionCell.backgroundImageButton.setTitle("", for: .normal)
+//            quoteCollectionCell.backgroundImageButton.setTitle("", for: .normal)
         }
     }
     
@@ -135,7 +135,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             else { return }
         
         quoteCollectionCell.authorNameLabel.text = author
-        quoteCollectionCell.quoteTextField.text = quote
+        quoteCollectionCell.quoteTextLabel.text = quote
         
     }
     

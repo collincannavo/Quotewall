@@ -9,12 +9,29 @@
 import Foundation
 import UIKit
 
-class SharedQuotesViewController: UIViewController {
+class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
     @IBOutlet weak var sharedCollectionView: UICollectionView!
     
     
+    var quotes: [Quote]?
+    
+    
+    override func viewDidLoad() {
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        return UICollectionViewCell()
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 1
+    }
     
     
 }

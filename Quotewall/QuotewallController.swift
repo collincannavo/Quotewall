@@ -9,15 +9,37 @@
 import Foundation
 import CloudKit
 
+let quotewallsWereSetNotification = Notification.Name(rawValue: "quotewallsWereSet")
+
 public class QuotewallController {
     
     public static let shared = QuotewallController()
     
-    public var currentQuotewall: Quotewall?
-    public var quotewalls: [Quotewall] = []
+    public var currentQuotewall: Quotewall? {
+        didSet {
+            print("Current quotewall was set \(currentQuotewall?.category)")
+        }
+    }
+    
+    public var quotewalls: [Quotewall] = [] {
+        didSet{
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: quotewallsWereSetNotification, object: self)
+            }
+        }
+    }
     
     public func addPersonalQuote(_ quote: Quote, to quotewall: Quotewall) {
         quotewall.personalQuotes.append(quote)
+        
+        let record = quote.ckRecord
+        
+        CloudKitController.shared.save(record: record) { (record, error) in
+            if let error = error {
+                NSLog("There was an error saving the quote: \(error.localizedDescription)")
+                return
+            }
+        }
     }
     
     public func addQuote(_ quote: Quote, to quotewall: Quotewall) {
@@ -34,7 +56,7 @@ public class QuotewallController {
         }
     }
     
-    public func createQuotewall(with quotes: [Quote], category: String) {
+    public func createQuotewall(with category: String) {
         
         guard let userCKReference = PersonController.shared.currentPerson?.ckReference,
             let person = PersonController.shared.currentPerson

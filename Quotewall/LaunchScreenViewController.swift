@@ -38,27 +38,27 @@ class LaunchScreenViewController: UIViewController {
         CloudKitController.shared.fetchCurrentUser { (success, person) in
             if success {
                 if person != nil {                  
-                    CloudKitController.shared.fetchQuotewalls(completion: { (success) in
+                    CloudKitController.shared.fetchCurrentQuotewall(completion: { (success) in
                         DispatchQueue.main.async {
                             NotificationCenter.default.post(name: Constants.currentUserQuotewallsNotification, object: self)
                         }
                     })
                     
                     
-                    QuoteController.shared.fetchPersonalQuotes(with: { (success) in
-                        DispatchQueue.main.async {
-                            NotificationCenter.default.post(name: Constants.personalQuotesFetchedNotification, object: self)
-                        }
-                    })
+//                    QuoteController.shared.fetchPersonalQuotes(with: { (success) in
+//                        DispatchQueue.main.async {
+//                            NotificationCenter.default.post(name: Constants.personalQuotesFetchedNotification, object: self)
+//                        }
+//                    })
 //                    QuoteController.shared.fetchSharedQuotes(with: { (success) in
 //                        DispatchQueue.main.async {
 //                            NotificationCenter.default.post(name: Constants.sharedQuotesFetchedNotification, object: self)
 //                        }
 //                    })
-                
+//                
+//                    
                     
-                    
-//                    self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
+                    self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
                 
                 
                 }
