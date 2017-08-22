@@ -29,6 +29,7 @@ public class Quote {
     public var image: Data?
     public var userReference: CKReference?
     public var ckRecordID: CKRecordID?
+    public var quotes: [Quote] = []
     
     public init(name: String, text: String, image: Data? = nil, userCKReference: CKReference) {
         self.name = name
@@ -42,6 +43,9 @@ public class Quote {
     public var ckReference: CKReference? {
         guard let ckRecordID = ckRecordID else { return nil }
         return CKReference(recordID: ckRecordID, action: .none)
+    }
+    public var sortedPersonalQuote: [Quote] {
+        return quotes.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
     }
     
     public var parentCKRecordID: CKRecordID? {

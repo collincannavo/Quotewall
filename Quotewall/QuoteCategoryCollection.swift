@@ -116,7 +116,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
                 let detailsVC = segue.destination as? QuoteCollectionViewController
                 let quotewall = QuotewallController.shared.currentQuotewall
                 
-                guard let quotes = QuotewallController.shared.currentQuotewall?.personalQuotes else { return }
+                guard let quotes = QuotewallController.shared.currentQuotewall?.quotes else { return }
                
                 detailsVC?.quotes = quotes
                 detailsVC?.quotewall = quotewall

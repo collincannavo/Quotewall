@@ -10,18 +10,24 @@ import UIKit
 
 class QuotesCollectionViewCell: UICollectionViewCell {
     
-    var quote: Quote?
+    var quote: Quote? {
+        didSet {
+            updateViews()
+        }
+    }
     
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var quoteTextLabel: UILabel!
-   
-    @IBAction func entireCellButton(_ sender: Any) {
-    
+
+    func updateViews() {
+        
+//        backgroundImage.image = quote?.image
+        authorNameLabel.text = quote?.name
+        quoteTextLabel.text = quote?.text
     }
     
     
-
 
 
 

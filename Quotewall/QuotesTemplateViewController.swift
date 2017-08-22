@@ -84,9 +84,9 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             else { return }
         
         var backgroundImageData:  Data? = nil
-        if let imageData = quoteCollectionCell.backgroundImage.image {
-            backgroundImageData = UIImagePNGRepresentation(imageData)
-        }
+//        if let imageData = quoteCollectionCell.backgroundImage.image {
+//            backgroundImageData = UIImagePNGRepresentation(imageData)
+//        }
         
         QuoteController.shared.createQuote(with: name, text: text, image: backgroundImageData) { (success) in
             
@@ -100,59 +100,11 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         }
     }
     
-
-    
     fileprivate func setUpCellDisplay() {
         
-        if let customView = Bundle.main.loadNibNamed("QuoteCollectionViewCell", owner: self, options: nil)?.first as? QuotesCollectionViewCell {
             
-            
-            quoteCollectionCell = customView
-            quoteCollectionCell.authorNameLabel.text = personNameTextField.text
-            quoteCollectionCell.quote = quote
-            quoteCollectionCell.bounds = quoteCellView.bounds
         }
-    }
-    
-    // MARK: - UIImagePickerControllerDelegate function
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        picker.dismiss(animated: true, completion: nil)
-        
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            delegate?.photoSelectViewControllerSelected(image)
-            quoteCollectionCell.backgroundImage.image = image.fixOrientation()
-            quoteCollectionCell.backgroundImage.contentMode = .scaleAspectFit
-//            quoteCollectionCell.backgroundImageButton.setTitle("", for: .normal)
-        }
-    }
-    
-    // MARK: - TextField Delegate Functions
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let author = personNameTextField.text,
-            let quote = quoteTextField.text
-            else { return }
-        
-        quoteCollectionCell.authorNameLabel.text = author
-        quoteCollectionCell.quoteTextLabel.text = quote
-        
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textFieldReturnResponder(textField)
-        return true
-    }
-    
-    fileprivate func textFieldReturnResponder(_ textField: UITextField){
-        if textField == quoteTextField {
-            quoteTextField.resignFirstResponder()
-            personNameTextField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
-        }
-    }
-    
+
     // MARK: - Alert controllers
     
     fileprivate func unableToSaveAlert() {

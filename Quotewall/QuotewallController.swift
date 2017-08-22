@@ -30,7 +30,7 @@ public class QuotewallController {
     }
     
     public func addPersonalQuote(_ quote: Quote, to quotewall: Quotewall) {
-        quotewall.personalQuotes.append(quote)
+        quotewall.quotes.append(quote)
         
         let record = quote.ckRecord
         

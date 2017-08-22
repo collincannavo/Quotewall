@@ -18,6 +18,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         self.dismiss(animated: true, completion: nil)
     }
     
+    
     var quotes: [Quote] = []
     var quotewall: Quotewall?
     
@@ -37,7 +38,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-         let quotes = QuotewallController.shared.currentQuotewall?.personalQuotes[indexPath.row]
+         let quotes = QuotewallController.shared.currentQuotewall?.quotes[indexPath.row]
         
         let newquotes = quotes
         
@@ -57,7 +58,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return QuotewallController.shared.currentQuotewall?.personalQuotes.count ?? 0
+        return QuotewallController.shared.currentQuotewall?.quotes.count ?? 0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,7 +68,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
             
             let destinationVC = segue.destination as? QuotesTemplateViewController
             
-            let selectedQuote = QuotewallController.shared.currentQuotewall?.personalQuotes[indexPath.row]
+            let selectedQuote = QuotewallController.shared.currentQuotewall?.quotes[indexPath.row]
             
                 destinationVC?.quote = selectedQuote
                 

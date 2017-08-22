@@ -44,7 +44,7 @@ public class QuoteController {
         
         CloudKitController.shared.save(record: quote.ckRecord) { (record, error) in
             if let error = error {
-                NSLog("Error encountered whiel saving personal quotes to CK: \(error.localizedDescription)")
+                NSLog("Error encountered while saving personal quotes to CK: \(error.localizedDescription)")
                 completion(false)
                 return
             }

@@ -95,22 +95,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2R-gt-LXd">
-                                                            <rect key="frame" x="0.0" y="0.0" width="154" height="143"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <connections>
-                                                                <action selector="entireCellButton:" destination="EQa-AL-kL3" eventType="touchUpInside" id="mkl-Cc-wZu"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstItem="n2R-gt-LXd" firstAttribute="top" secondItem="Irt-Jz-LV3" secondAttribute="top" id="100-7Z-FCf"/>
-                                                        <constraint firstAttribute="trailing" secondItem="n2R-gt-LXd" secondAttribute="trailing" id="7Jy-iM-plk"/>
-                                                        <constraint firstItem="n2R-gt-LXd" firstAttribute="leading" secondItem="Irt-Jz-LV3" secondAttribute="leading" id="AU5-5W-yzh"/>
-                                                        <constraint firstAttribute="bottom" secondItem="n2R-gt-LXd" secondAttribute="bottom" id="rRC-ba-c5w"/>
-                                                    </constraints>
                                                 </view>
                                             </subviews>
                                         </view>

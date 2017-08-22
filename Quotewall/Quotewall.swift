@@ -25,7 +25,7 @@ public class Quotewall {
     public var category: String
     public var backgroundImage: Data?
     public var receivedQuotes: [CKReference] = []
-    public var personalQuotes: [Quote] = []
+ 
     public var quotes: [Quote] = []
     
     public let initialQuotesFetchComplete = false
@@ -37,9 +37,7 @@ public class Quotewall {
         return parentCKReference?.recordID
     }
     
-    public var sortedPersonalQuote: [Quote] {
-        return personalQuotes.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
-    }
+
     
     public var sortedQuotes: [Quote] {
         return quotes.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
