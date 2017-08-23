@@ -21,7 +21,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     @IBAction func addQuotewallButtonTapped(_ sender: Any) {
         createQuotewallTitle()
     }
-    var quoteWallCollection: [Quotewall] = []
+    
     var quotewall: Quotewall?
     
     // MARK: - CollectionView Lifecycle Functions
@@ -39,18 +39,18 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return PersonController.shared.currentPerson?.savedQuotewalls.count ?? 0
+        return QuotewallController.shared.quotewalls.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let quotewall = PersonController.shared.currentPerson?.savedQuotewalls[indexPath.row]
+        let quotewall = QuotewallController.shared.quotewalls[indexPath.row]
         
         let newQuotewall = quotewall
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quoteCategoryCollectionCell", for: indexPath) as? CategoryCollectionViewCell else { return CategoryCollectionViewCell() }
         
-        cell.quotewallTitle.text = newQuotewall?.category
+        cell.quotewallTitle.text = newQuotewall.category
         
         cell.quotewall = quotewall
         
@@ -114,12 +114,10 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
             if let indexPath = self.quoteCategoryCollection.indexPathsForSelectedItems?.first {
             
                 let detailsVC = segue.destination as? QuoteCollectionViewController
-                let quotewall = QuotewallController.shared.currentQuotewall
+
+                let quotes = QuoteController.shared.quotes[indexPath.row]
                 
-                guard let quotes = QuotewallController.shared.currentQuotewall?.quotes else { return }
-               
-                detailsVC?.quotes = quotes
-                detailsVC?.quotewall = quotewall
+                detailsVC?.quoteCollection = [quotes]
                 
             }
         }
@@ -129,14 +127,13 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         CloudKitController.shared.fetchCurrentUser { (success, person) in
             if success && (person != nil) {
                 
-                
-                CloudKitController.shared.fetchQuotewalls(completion: { (success) in
+                CloudKitController.shared.fetchCurrentPersonQuotewalls(completion: { (success) in
                     if success {
                         DispatchQueue.main.async {
                             self.quoteCategoryCollection.reloadData()
                         }
                     }
-                 CloudKitController.shared.fetchPersonalQuotes(completion: { (success) in
+                 CloudKitController.shared.fetchPersonalQuotes(completion: { (success, quotes) in
                     if success {
                         DispatchQueue.main.async {
                             self.quoteCategoryCollection.reloadData()

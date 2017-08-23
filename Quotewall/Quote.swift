@@ -19,22 +19,23 @@ public class Quote {
     public static let textKey = "text"
     public static let imageKey = "image"
     public static let ckRecordIDKey = "ckRecordID"
-    public static let parentKey = "parent"
-    public static let quoteReferenceKey = "quoteReference"
+    public static let quotewallReferenceKey = "quotewallReference"
+    
     
     
     public var name: String
     public var vote: Double?
     public var text: String
     public var image: Data?
-    public var userReference: CKReference?
     public var ckRecordID: CKRecordID?
+    public var quotewallReference: CKReference?
     public var quotes: [Quote] = []
     
-    public init(name: String, text: String, image: Data? = nil, userCKReference: CKReference) {
+    public init(name: String, text: String, image: Data? = nil, quotewallReference: CKReference?) {
         self.name = name
         self.text = text
         self.image = image
+        self.quotewallReference = quotewallReference
         
     }
     
@@ -60,11 +61,8 @@ public class Quote {
         let recordID = self.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
         let record = CKRecord(recordType: Quote.recordTypeKey, recordID: recordID)
         record.setValue(name, forKey: Quote.nameKey)
-        record.setValue(vote, forKey: Quote.voteKey)
         record.setValue(text, forKey: Quote.textKey)
-        record.setValue(image, forKey: Quote.imageKey)
-        record.setValue(parentCKReference, forKey: Quote.parentKey)
-        record[Quote.quoteReferenceKey] = userReference as CKRecordValue?
+        record[Quotewall.quotewallReferenceKey] = quotewallReference as CKRecordValue?
         
         self.ckRecordID = record.recordID
         
@@ -75,7 +73,7 @@ public class Quote {
         
         guard let name = ckRecord[Quote.nameKey] as? String,
             let text = ckRecord[Quote.textKey] as? String,
-            let userCKReference = ckRecord[Quote.quoteReferenceKey] as? CKReference
+            let userCKReference = ckRecord[Quotewall.quotewallReferenceKey] as? CKReference
         else { return nil }
         
         let imageData = ckRecord[Quote.imageKey] as? Data
@@ -85,7 +83,7 @@ public class Quote {
             newImageData = try? Data(contentsOf: imageDataURL, options: .mappedIfSafe)
         }
         
-        self.init(name: name, text: text, image: imageData, userCKReference: userCKReference)
+        self.init(name: name, text: text, image: imageData, quotewallReference: userCKReference)
         
         
         if let imageDataUnwrapped = imageData {

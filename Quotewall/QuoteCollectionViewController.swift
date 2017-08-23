@@ -18,13 +18,16 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    var quotes: [Quote] = []
-    var quotewall: Quotewall?
+    var quoteCollection: [Quote] = []
     
     override func viewDidLoad() {
-        self.navigationItem.title = quotewall?.category
+        
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: Constants.currentUserQuotewallsNotification, object: nil)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        cloudKitFetchQuotes()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,16 +41,16 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-         let quotes = QuotewallController.shared.currentQuotewall?.quotes[indexPath.row]
+        let quotes = quoteCollection[indexPath.row]
         
         let newquotes = quotes
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quoteCollectionCell", for: indexPath) as? QuotesCollectionViewCell else { return QuotesCollectionViewCell() }
         
-        cell.authorNameLabel?.text = newquotes?.name
-        cell.quoteTextLabel?.text = newquotes?.text
+        cell.authorNameLabel?.text = newquotes.name
+        cell.quoteTextLabel?.text = newquotes.text
         
-        if let data = newquotes?.image,
+        if let data = newquotes.image,
             let image = UIImage(data: data) {
             cell.backgroundImage?.image = image
         }
@@ -58,7 +61,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return QuotewallController.shared.currentQuotewall?.quotes.count ?? 0
+        return quoteCollection.count 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,5 +77,15 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
                 
             }
         }
+    
+    func cloudKitFetchQuotes() {
+        
+        CloudKitController.shared.fetchPersonalQuotes(completion: { (success, quotes) in
+            if success {
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        })
     }
-
+}

@@ -22,5 +22,6 @@ public struct Constants {
     public static let currentUserFetchedSuccessfulNotification: Notification.Name = Notification.Name(rawValue: "currentUserFetched")
     
     public static let currentUserQuotewallsNotification: Notification.Name = Notification.Name(rawValue: "currentUserQuotewalls")
-    
+ 
+    public static let currentQuotewallFetchedNotification: Notification.Name = Notification.Name(rawValue: "currentQuotewallFetched")
 }

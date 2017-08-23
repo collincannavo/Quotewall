@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,7 +38,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ifG-7h-5nD">
                                 <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xFo-B1-Imt">
                                     <size key="itemSize" width="153" height="153"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -55,23 +56,28 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0b-DI-Om0">
                                                     <rect key="frame" x="0.0" y="0.0" width="153" height="153"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-hn-SGz">
-                                                            <rect key="frame" x="55" y="66" width="42" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-hn-SGz">
+                                                            <rect key="frame" x="8" y="66" width="137" height="21"/>
+                                                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="1" green="0.071882738579999994" blue="0.013991694650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="FfM-hn-SGz" firstAttribute="trailing" secondItem="y0b-DI-Om0" secondAttribute="trailingMargin" id="Qyf-4f-q5N"/>
+                                                        <constraint firstItem="FfM-hn-SGz" firstAttribute="leading" secondItem="y0b-DI-Om0" secondAttribute="leadingMargin" id="XgC-Y1-OMU"/>
+                                                        <constraint firstItem="FfM-hn-SGz" firstAttribute="centerY" secondItem="y0b-DI-Om0" secondAttribute="centerY" id="gIj-bq-mco"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="y0b-DI-Om0" firstAttribute="leading" secondItem="8lu-kt-4Ug" secondAttribute="leading" id="88K-em-66e"/>
-                                            <constraint firstAttribute="trailing" secondItem="y0b-DI-Om0" secondAttribute="trailing" id="Shy-U2-mNn"/>
-                                            <constraint firstItem="y0b-DI-Om0" firstAttribute="top" secondItem="8lu-kt-4Ug" secondAttribute="top" id="YRg-IO-QMn"/>
-                                            <constraint firstAttribute="bottom" secondItem="y0b-DI-Om0" secondAttribute="bottom" id="lEa-Mc-lon"/>
+                                            <constraint firstAttribute="trailing" secondItem="y0b-DI-Om0" secondAttribute="trailing" id="1qM-D2-6sy"/>
+                                            <constraint firstAttribute="bottom" secondItem="y0b-DI-Om0" secondAttribute="bottom" id="auv-mI-03b"/>
+                                            <constraint firstItem="y0b-DI-Om0" firstAttribute="top" secondItem="8lu-kt-4Ug" secondAttribute="top" id="gFQ-BL-8Ay"/>
+                                            <constraint firstItem="y0b-DI-Om0" firstAttribute="leading" secondItem="8lu-kt-4Ug" secondAttribute="leading" id="tVz-lC-EVL"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="quotewallTitle" destination="FfM-hn-SGz" id="GKk-FF-uQm"/>

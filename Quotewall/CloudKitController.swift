@@ -1,4 +1,4 @@
-//
+    //
 //  CloudKitController.swift
 //  Quotewall
 //
@@ -130,7 +130,7 @@ public class CloudKitController {
             
             guard let currentUserRecordID = PersonController.shared.currentPerson?.ckRecordID else { completion(false, nil); return }
             
-            let predicate = NSPredicate(format: "quotewallReference == %@", currentUserRecordID)
+            let predicate = NSPredicate(format: "parentReference == %@", currentUserRecordID)
             
             let query = CKQuery(recordType: Quotewall.recordTypeKey, predicate: predicate)
             
@@ -158,56 +158,139 @@ public class CloudKitController {
         container.publicCloudDatabase.add(fetchOperation)
     }
     
-    public func fetchPersonalQuotes(completion: @escaping (Bool)-> Void) {
+    public func fetchPersonalQuotes(completion: @escaping (Bool, [Quote])-> Void) {
         
-        guard let ckRecordID = PersonController.shared.currentPerson?.ckRecordID else { return }
+        guard let ckRecordID = QuotewallController.shared.currentQuotewall?.ckRecordID else { return }
         
         let currentPersonCKReference = CKReference(recordID: ckRecordID, action: .none)
         
-        let predicate = NSPredicate(format: "\(Quote.quoteReferenceKey) == %@", currentPersonCKReference)
+        let predicate = NSPredicate(format: "quotewallReference == %@", currentPersonCKReference)
         
-        CloudKitController.shared.performQuery(with: predicate) { (records, error) in
+        let query = CKQuery(recordType: Quote.recordTypeKey, predicate: predicate)
+        
+        container.publicCloudDatabase.perform(query, inZoneWith: nil) { (records, error) in
             if let error = error {
-                NSLog("There was an error fetching person quotes: \(error.localizedDescription)"); completion(false); return }
+                NSLog("There was an error fetching personal quotes: \(error.localizedDescription)")
+                completion(false, [])
+                return
+            }
             
-        guard let records = records else { NSLog("There was an error. Personal quotes came back nil"); completion(false); return }
+            guard let records = records else { completion(false, []); return }
+            
+            let quotes = records.flatMap({Quote(ckRecord: $0)})
+            
+            QuoteController.shared.quotes = quotes
+            
+            completion(true, quotes)
+        }
+    
+    }
+    
+    
+    
+    public func fetchCurrentPersonQuotewalls(completion: @escaping (Bool)-> Void) {
+       
+        guard let currentPersonID = PersonController.shared.currentPerson?.ckRecordID else { completion(false); return }
         
-            guard let currentPerson = PersonController.shared.currentPerson else { completion(false); return }
+        let currentPersonCKReference = CKReference(recordID: currentPersonID, action: .none)
+        
+        let predicate = NSPredicate(format: "parentReference == %@", currentPersonCKReference)
+        
+        let query = CKQuery(recordType: Quotewall.recordTypeKey, predicate: predicate)
+        
+        container.publicCloudDatabase.perform(query, inZoneWith: nil) { (ckRecords, error) in
+            if let error = error {
+                NSLog("There was an error fetching current quotewalls: \(error.localizedDescription)")
+                completion(false)
+                return
+            }
             
-            let quotes = records.flatMap( {Quote(ckRecord: $0)} )
+            guard let currentQuotewall = QuotewallController.shared.currentQuotewall,
+                let ckRecords = ckRecords
+            else { completion(false); return }
             
-            quotes.forEach { PersonController.shared.addQuote($0, to: currentPerson) }
+            let currentQuotewalls = ckRecords.flatMap({Quotewall(CKRecord: $0) })
+            
+            currentQuotewall.savedQuotewalls = currentQuotewalls
             
             completion(true)
             
-            }
         }
+        
+    }
+    public func fetchCurrentQuotewallQuotes(completion: @escaping(Bool)-> Void) {
+        
+        guard let currentQuotewallID = QuotewallController.shared.currentQuotewall?.ckRecordID else { completion(false); return }
+        
+        let currentQuotewallCKReference = CKReference(recordID: currentQuotewallID, action: .none)
+        
+        let predicate = NSPredicate(format: "quotewallReference == %@", currentQuotewallCKReference)
+        
+        let query = CKQuery(recordType: Quote.recordTypeKey, predicate: predicate)
+        
+        container.publicCloudDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                NSLog("There was an error fetching the current Quotewall's quotes: \(error.localizedDescription)")
+            }
+            
+            guard let records = records,
+                let currentQuotewall = QuotewallController.shared.currentQuotewall
+            else { completion(false); return}
+            
+            let quotes = records.flatMap({Quote(ckRecord: $0)})
+            
+            currentQuotewall.quotes = quotes
+            
+        }
+        
+    }
+    
+    public func fetchQuotesForQuotewall(_ quotewall: Quotewall, completion: @escaping (Bool)-> Void) {
+        
+        guard let currentQuoteID = quotewall.ckReference else { completion(false); return }
+        
+        let predicate = NSPredicate(format: "quotewallReference == %@", currentQuoteID)
+        
+        let query = CKQuery(recordType: Quote.recordTypeKey, predicate: predicate)
+        
+        container.publicCloudDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                NSLog("There was an error fetching quotes for the quotewall: \(error.localizedDescription)")
+            }
+            guard let records = records else { completion(false); return }
+            
+            let quotes = records.flatMap({Quote(ckRecord: $0)} )
+            
+            quotewall.quotes = quotes
+        }
+ 
+    }
+    
     
     public func fetchQuotewalls(completion: @escaping (Bool)-> Void) {
+
+        guard let currentUsersID = PersonController.shared.currentPerson?.ckRecordID else { return }
         
-        guard let currentPerson = PersonController.shared.currentPerson else { completion(false); return }
+        let reference = CKReference(recordID: currentUsersID, action: .none)
         
-        PersonController.shared.removeAllQuotewalls(from: currentPerson)
+        let predicate = NSPredicate(format: "parentReference == %@", reference)
         
-        let receivedQuotewallsRecord = currentPerson.savedQuotewalls.map {$0.ckRecordID}
+        let query = CKQuery(recordType: Quotewall.recordTypeKey, predicate: predicate)
         
-        guard let ckRecords = receivedQuotewallsRecord as? [CKRecordID] else { completion(false); return }
-        
-        CloudKitController.shared.fetchAllRecords(for: ckRecords) { (recordsDictionary, error) in
-            
-            var success = false
-            
-            defer { completion(success) }
+        container.publicCloudDatabase.perform(query, inZoneWith: nil) { (records, error) in
             if let error = error {
-                NSLog("There was an error fetching all the quotewalls: \(error.localizedDescription)")
-                
-                guard let quotewallRecordsDictionary = recordsDictionary else { NSLog("There was an error, quotes fetched are nil"); return }
-                
-                let newQuotewalls = quotewallRecordsDictionary.flatMap( {Quotewall(CKRecord: $0.value)} )
-                newQuotewalls.forEach({ PersonController.shared.addQuotewall($0, to: currentPerson)})
-                
-                success = true
+                NSLog("There was an error fetching quotewalls: \(error.localizedDescription)")
+                completion(false)
+                return
             }
+            
+            guard let records = records else { completion(false); return }
+            
+            let quotewalls = records.flatMap({Quotewall(CKRecord: $0)})
+            
+            QuotewallController.shared.quotewalls = quotewalls
+            
+            
         }
     }
     

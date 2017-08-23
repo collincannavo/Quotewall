@@ -47,7 +47,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             return
             
         } else {
-            print("this is saving")
+           
             saveQuoteToQuotewall(with: { (success) in
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
@@ -61,9 +61,6 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     // MARK: - Functions
     
-    override func viewDidLoad() {
-        setUpCellDisplay()
-    }
     
     fileprivate func selectPhotoTapped(sender: UIButton) {
         let imagePicker = UIImagePickerController()
@@ -100,10 +97,6 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         }
     }
     
-    fileprivate func setUpCellDisplay() {
-        
-            
-        }
 
     // MARK: - Alert controllers
     

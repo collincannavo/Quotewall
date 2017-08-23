@@ -15,16 +15,26 @@ public class QuotewallController {
     
     public static let shared = QuotewallController()
     
-    public var currentQuotewall: Quotewall? {
-        didSet {
-            print("Current quotewall was set \(currentQuotewall?.category)")
-        }
-    }
+    public var currentQuotewall: Quotewall?
     
     public var quotewalls: [Quotewall] = [] {
         didSet{
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: quotewallsWereSetNotification, object: self)
+            }
+        }
+    }
+    
+    public func addQuotewall(_ quotewall: Quotewall) {
+        
+        quotewall.savedQuotewalls.append(quotewall)
+        
+        let record = quotewall.CKrecord
+        
+        CloudKitController.shared.save(record: record) { (record, error) in
+            if let error = error {
+                NSLog("There was an error saving quotewall: \(error.localizedDescription)")
+                return
             }
         }
     }
@@ -42,17 +52,33 @@ public class QuotewallController {
         }
     }
     
+    public func addSavedQuotewall(to quotewall: Quotewall) {
+        quotewall.savedQuotewalls.append(quotewall)
+        
+        let record = quotewall.CKrecord
+        
+        CloudKitController.shared.save(record: record) { (record, error) in
+            if let error = error {
+                NSLog("There was an error saving the quotewall: \(error.localizedDescription)")
+                return
+            }
+        }
+    }
+    
     public func addQuote(_ quote: Quote, to quotewall: Quotewall) {
         quotewall.quotes.append(quote)
     }
-    
-    public func addQuoteReference(_ reference: CKReference, to quotewall: Quotewall) {
-        quotewall.receivedQuotes.append(reference)
-    }
-    
-    public func removePersonalQuoteReference(_ reference: CKReference, from quotewall: Quotewall) {
-        if let index = quotewall.receivedQuotes.index(where: { ($0 == reference) }) {
-            quotewall.receivedQuotes.remove(at: index)
+
+    public func addQuotewall(to quotewall: Quotewall, to person: Person) {
+        quotewall.savedQuotewalls.append(quotewall)
+        
+        let record = quotewall.CKrecord
+        
+        CloudKitController.shared.save(record: record) { (record, error) in
+            if let error = error {
+                NSLog("There was an error saving the quotewall: \(error.localizedDescription)")
+                return
+            }
         }
     }
     
@@ -62,11 +88,11 @@ public class QuotewallController {
             let person = PersonController.shared.currentPerson
             else { return }
         
-        let newQuotewall = Quotewall.init(userCKReference: userCKReference, category: category)
+        let newQuotewall = Quotewall(userCKReference: userCKReference, category: category)
         
-        newQuotewall.parentCKReference = PersonController.shared.currentPerson?.ckReference
+        newQuotewall.userReference = PersonController.shared.currentPerson?.ckReference
         
-        PersonController.shared.addQuotewall(newQuotewall, to: person)
+        QuotewallController.shared.addQuotewall(to: newQuotewall, to: person)
         
     }
     
@@ -82,6 +108,7 @@ public class QuotewallController {
         
         return CKAsset(fileURL: fileURL)
     }
+    
     
     
 }

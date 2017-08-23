@@ -77,7 +77,7 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
                 NetworkQuotesController.fetchQuote(with: searchText) { (quote) in
                     guard let quote = quote else { return }
                     self.quotes = quote
-                    
+                    self.collectionView.reloadData()
             }
         }
         searchBar.text = "" 

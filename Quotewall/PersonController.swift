@@ -17,19 +17,7 @@ public class PersonController {
     
     public var currentPerson: Person?
     
-    public func addQuotewall(_ quotewall: Quotewall, to person: Person) {
-        
-        person.savedQuotewalls.append(quotewall)
-        
-        let record = quotewall.CKrecord
-        
-        CloudKitController.shared.save(record: record) { (record, error) in
-            if let error = error {
-                NSLog("There was an error saving quotewall: \(error.localizedDescription)")
-                return
-            }
-        }
-    }
+    
     
     public func addPersonalQuote(_ quote: Quote, to person: Person) {
         person.personalQuotes.append(quote)
@@ -43,15 +31,7 @@ public class PersonController {
         person.favoriteQuotes.append(quote)
     }
     
-    public func removeQuoteReference(ckReference: CKReference, from person: Person) {
-        if let index = person.receivedQuotes.index(where: {$0 == ckReference}) {
-            person.receivedQuotes.remove(at: index)
-        }
-    }
-    
-    public func removeAllQuotewalls(from person: Person) {
-        person.savedQuotewalls.removeAll()
-    }
+   
     
     public func removeFavoriteQuote(from person: Person, at indexPath: IndexPath) {
         person.favoriteQuotes.remove(at: indexPath.row)
@@ -60,10 +40,6 @@ public class PersonController {
     public func deleteQuote(_ quote: Quote, from person: Person, with completion: @escaping (Bool) -> Void) {
         if let index = person.quotes.index(where: {$0 == quote}) {
             person.quotes.remove(at: index)
-            
-            if let reference = quote.ckReference {
-                removeQuoteReference(ckReference: reference, from: person)
-            }
             
             self.updateQuote(for: person, completion: { (success) in
                 if success {

@@ -18,7 +18,7 @@ public class QuoteController {
     
     // MARK: - Properties
     
-    private(set) var quotes = [Quote]() {
+    var quotes = [Quote]() {
         didSet {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: quotesWereSetNotification, object: self)
@@ -32,47 +32,26 @@ public class QuoteController {
     
     public func createQuote(with name: String, text: String, image: Data?, completion: @escaping (Bool) -> Void) {
         
-        guard let quotewall = QuotewallController.shared.currentQuotewall,
-            let userCKReference = QuotewallController.shared.currentQuotewall?.ckReference
-        else { completion(false); return }
+        guard let quotewall = QuotewallController.shared.currentQuotewall
+            else { completion(false); return }
         
-        let quote = Quote(name: name, text: text, image: image, userCKReference: userCKReference)
+        let quote = Quote(name: name, text: text, image: image, quotewallReference: quotewall.ckReference)
         
         QuotewallController.shared.addPersonalQuote(quote, to: quotewall)
         
         quote.parentCKReference = QuotewallController.shared.currentQuotewall?.ckReference
-        
-        CloudKitController.shared.save(record: quote.ckRecord) { (record, error) in
-            if let error = error {
-                NSLog("Error encountered while saving personal quotes to CK: \(error.localizedDescription)")
-                completion(false)
-                return
-            }
-            
-            completion(true)
-        }
     }
     
-    public func fetchPersonalQuotes(with completion: @escaping (Bool)-> Void) {
-        guard let currentPersonID = PersonController.shared.currentPerson?.ckRecordID else { completion(false); return }
-        
-        let currentPersonCKReference = CKReference(recordID: currentPersonID, action: .none)
-        
-        let predicate = NSPredicate(format: "\(Quote.parentKey) == %@ ", currentPersonCKReference)
-        
-        CloudKitController.shared.performQuery(with: predicate, completion: { (records, error) in
-            if let error = error {
-                NSLog("There was an error fetching quotes: \(error.localizedDescription)"); completion(false); return }
-            
-            guard let records = records else { NSLog("Returned profile quotes are nil"); completion(false); return }
-            
-            guard let currentPerson = PersonController.shared.currentPerson else { completion(false); return }
-            
-            let quotes = records.flatMap {Quote(ckRecord: $0)}
-            quotes.forEach { PersonController.shared.addQuote($0, to: currentPerson) }
-            completion(true)
-        })
-    }
+//        CloudKitController.shared.save(record: quote.ckRecord) { (record, error) in
+//            if let error = error {
+//                NSLog("Error encountered while saving personal quotes to CK: \(error.localizedDescription)")
+//                completion(false)
+//                return
+//            }      
+//            
+//            completion(true)
+//        }
+
     
 //    public func fetchSharedQuotes(with completion: @escaping (Bool)-> Void){
 //        guard let currentPerson = PersonController.shared.currentPerson else { completion(false); return }
