@@ -114,7 +114,8 @@ public class CloudKitController {
             self.container.publicCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
                 if let error = error { print(error.localizedDescription); completion(false, nil); return }
                 
-                guard let currentUserRecord = records?.first else { completion(false, nil); return }
+                guard let currentUserRecord = records?.first else {
+                    completion(true, nil) ; return }
                 
                 let currentPerson = Person(CKRecord: currentUserRecord)
                 
@@ -241,6 +242,7 @@ public class CloudKitController {
             
             currentQuotewall.quotes = quotes
             
+            completion(true)
         }
         
     }
@@ -262,6 +264,8 @@ public class CloudKitController {
             let quotes = records.flatMap({Quote(ckRecord: $0)} )
             
             quotewall.quotes = quotes
+            
+            completion(true)
         }
  
     }
@@ -290,7 +294,7 @@ public class CloudKitController {
             
             QuotewallController.shared.quotewalls = quotewalls
             
-            
+            completion(true)
         }
     }
     

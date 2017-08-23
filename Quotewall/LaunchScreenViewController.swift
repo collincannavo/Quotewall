@@ -30,10 +30,6 @@ class LaunchScreenViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
     func fetchData() {
         CloudKitController.shared.fetchCurrentUser { (success, person) in
             if success {
@@ -62,10 +58,11 @@ class LaunchScreenViewController: UIViewController {
                 CloudKitController.shared.createUser(with: "DefaultName", completion: { (_) in
                     DispatchQueue.main.async {
                         NotificationCenter.default.post(name: Constants.sharedQuotesFetchedNotification, object: self)
+                        
+                        self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
                     }
                     
                 })
-                self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
             }
         }
         
