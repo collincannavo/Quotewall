@@ -46,16 +46,7 @@ public class CloudKitController {
                 completion(record, error)
             }
         }
-    
-    public func performQuery(with predicate: NSPredicate, completion: @escaping([CKRecord]?, Error?) -> Void) {
-            
-            let query = CKQuery(recordType: Quote.recordTypeKey, predicate: predicate)
-            
-            container.publicCloudDatabase.perform(query, inZoneWith: nil) { (records, error) in
-                guard let record = records else { return }
-                completion(record,error)
-            }
-        }
+
     public func updateRecord(_ record: CKRecord, with completion: @escaping([CKRecord]?, [CKRecordID]?, Error?)-> Void) {
         
         let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)

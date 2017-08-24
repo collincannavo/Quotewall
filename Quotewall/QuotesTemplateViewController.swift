@@ -64,13 +64,14 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             
  
         }
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateViews()
         imagePicker.delegate = self
     }
     
@@ -78,6 +79,8 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             backgroundImage.contentMode = .scaleAspectFit
             backgroundImage.image = pickedImage
+            addBackgroundImage.setTitle("", for: .normal)
+            dismiss(animated: true, completion: nil)
         }
     }
     
@@ -104,10 +107,10 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             else { return }
         
         var backgroundImageData:  Data? = nil
-//        if let imageData = quoteCollectionCell.backgroundImage.image {
-//            backgroundImageData = UIImagePNGRepresentation(imageData)
-//        }
-        
+        if let imageData = backgroundImage?.image {
+            backgroundImageData = UIImagePNGRepresentation(imageData)
+        }
+    
         QuoteController.shared.createQuote(with: name, text: text, image: backgroundImageData) { (success) in
             
             DispatchQueue.main.async {
@@ -142,6 +145,18 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         present(alert, animated: true, completion: nil)
     }
     
+    func updateViews() {
+        guard let quote = quote else { return }
+        
+        personNameTextField.text = quote.name
+        quoteTextField.text = quote.text
+        
+        if let data = quote.image,
+            let image = UIImage(data: data) {
+            backgroundImage.image = image
+            backgroundImage.contentMode = .scaleAspectFit
+        }
+    }
     
     
 }

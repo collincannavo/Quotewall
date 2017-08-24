@@ -79,7 +79,8 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         
         if let data = newquotes.image,
             let image = UIImage(data: data) {
-            cell.backgroundImage?.image = image
+            cell.backgroundImage.image = image
+            cell.backgroundImage.contentMode = .scaleAspectFit
         }
         
         return cell
