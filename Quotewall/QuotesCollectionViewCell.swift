@@ -27,8 +27,6 @@ class QuotesCollectionViewCell: UICollectionViewCell {
         quoteTextLabel.text = quote?.text
     }
     
-    
-
-
-
 }
+
+

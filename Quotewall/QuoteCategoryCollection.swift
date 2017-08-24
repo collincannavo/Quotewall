@@ -115,9 +115,9 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
             
                 let detailsVC = segue.destination as? QuoteCollectionViewController
 
-                let quotes = QuoteController.shared.quotes[indexPath.row]
+                let quotes = QuoteController.shared.quotes
                 
-                detailsVC?.quoteCollection = [quotes]
+                detailsVC?.quoteCollection = quotes
                 
             }
         }

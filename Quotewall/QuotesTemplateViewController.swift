@@ -11,8 +11,6 @@ import UIKit
 
 class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var closeQuotationImage: UIImageView!
-    @IBOutlet weak var openQuotationImage: UIImageView!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var imageTransparentView: UIView!
     @IBOutlet weak var quoteTextField: UITextView!
@@ -24,11 +22,17 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     var quote: Quote?
     var quoteCollectionCell = QuotesCollectionViewCell()
-    weak var delegate: PhotoSelectViewControllerDelegate?
-    
+    let imagePicker = UIImagePickerController()
     
     // MARK: - Actions
     
+    @IBAction func uploadImageButtonTapped(_ sender: Any) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         
@@ -64,6 +68,22 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     // MARK: - Functions
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        imagePicker.delegate = self
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            backgroundImage.contentMode = .scaleAspectFit
+            backgroundImage.image = pickedImage
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
     
     fileprivate func selectPhotoTapped(sender: UIButton) {
         let imagePicker = UIImagePickerController()
@@ -122,8 +142,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         present(alert, animated: true, completion: nil)
     }
     
+    
+    
 }
 
-protocol PhotoSelectViewControllerDelegate: class {
-    func photoSelectViewControllerSelected(_ image: UIImage)
-}
