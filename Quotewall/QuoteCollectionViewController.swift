@@ -11,7 +11,7 @@ import UIKit
 
 
 
-class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -19,6 +19,31 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     var quoteCollection: [Quote] = []
+    
+    var selectedQuote = UITapGestureRecognizer(target: self, action: #selector(quoteActions))
+    
+    func quoteActions() {
+        let alert = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
+        
+        let deleteButton = UIAlertAction(title: "Delete Quote", style: .default) { (delete) in
+            
+            guard let recordID = QuoteController.shared.quotes.first?.ckRecordID else { return }
+            
+            CloudKitController.shared.deleteRecord(recordID, with: { 
+                self.deleteSuccessful()
+            })
+        }
+        
+        let addImageButton = UIAlertAction(title: "Add Background Image", style: .default) { (image) in
+            
+        }
+        
+        alert.addAction(deleteButton)
+        alert.addAction(addImageButton)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
     
     override func viewDidLoad() {
         
@@ -38,6 +63,8 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     func refresh(){
         self.collectionView.reloadData()
     }
+    
+    // MARK: - CollectionView Lifecycle Functions
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -61,8 +88,10 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return quoteCollection.count 
+        return quoteCollection.count
     }
+
+    // MARK: - Prepare for Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
   
@@ -87,5 +116,12 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
                 }
             }
         })
+    }
+    
+    func deleteSuccessful() {
+        let alert = UIAlertController(title: "Successfully Deleted", message: "", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
     }
 }

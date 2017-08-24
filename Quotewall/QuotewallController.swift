@@ -71,7 +71,7 @@ public class QuotewallController {
     }
 
     public func addQuotewall(to quotewall: Quotewall, to person: Person) {
-        quotewall.savedQuotewalls.append(quotewall)
+        QuotewallController.shared.quotewalls.append(quotewall)
         
         let record = quotewall.CKrecord
         

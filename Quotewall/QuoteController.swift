@@ -18,7 +18,7 @@ public class QuoteController {
     
     // MARK: - Properties
     
-    var quotes = [Quote]() {
+    var quotes: [Quote] = [] {
         didSet {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: quotesWereSetNotification, object: self)

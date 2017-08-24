@@ -19,13 +19,7 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var quotes: [NetworkQuotes] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
+    var quotes: [NetworkQuotes] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

@@ -17,7 +17,7 @@ class NetworkQuotesController {
     var quotes: [NetworkQuotes] = []
     
     static func fetchQuote(with text: String, completion: @escaping ([NetworkQuotes]?) -> Void) {
-        guard let url = baseURL else { completion(nil); return }
+    guard let url = baseURL else { completion(nil); return }
         
         let urlParameters = ["cat": text, "count": "10"]
        
@@ -39,7 +39,6 @@ class NetworkQuotesController {
             if let error = error {
                 
                 NSLog("There was error: \(error.localizedDescription)")
-                //            completion([])
                 return
             }
             

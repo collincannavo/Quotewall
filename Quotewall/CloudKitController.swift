@@ -187,7 +187,9 @@ public class CloudKitController {
     
     }
     
-    
+    public func fetchQuotewallQuotes() {
+        
+    }
     
     public func fetchCurrentPersonQuotewalls(completion: @escaping (Bool)-> Void) {
        

@@ -95,6 +95,7 @@
                                                 </view>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" red="0.20983249909999999" green="0.99311870339999997" blue="0.2173003691" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="Yy6-wr-zZb" firstAttribute="leading" secondItem="XLK-PN-YwW" secondAttribute="leading" id="WCf-sE-C22"/>
                                             <constraint firstAttribute="trailing" secondItem="Yy6-wr-zZb" secondAttribute="trailing" id="hwm-h5-4uO"/>

@@ -33,7 +33,7 @@ class LaunchScreenViewController: UIViewController {
     func fetchData() {
         CloudKitController.shared.fetchCurrentUser { (success, person) in
             if success {
-                if person != nil {                  
+                if person != nil {
                     CloudKitController.shared.fetchQuotewalls(completion: { (success) in
                         if success {
                             DispatchQueue.main.async {
@@ -45,27 +45,34 @@ class LaunchScreenViewController: UIViewController {
                     CloudKitController.shared.fetchCurrentQuotewall(completion: { (success, quotewall) in
                         if success {
                             DispatchQueue.main.async {
-                           
+                                
                             }
-                    }
-
+                        }
                     
-                    self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
-                
-                
-                })
-            } else {
-                CloudKitController.shared.createUser(with: "DefaultName", completion: { (_) in
-                    DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: Constants.sharedQuotesFetchedNotification, object: self)
+                    CloudKitController.shared.fetchCurrentQuotewallQuotes(completion: { (success) in
+                        if success {
+                            DispatchQueue.main.async {
+                                
+                            }
+                        }
+                    })
                         
                         self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
-                    }
-                    
-                })
+                        
+                        
+                    })
+                } else {
+                    CloudKitController.shared.createUser(with: "DefaultName", completion: { (_) in
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: Constants.sharedQuotesFetchedNotification, object: self)
+                            
+                            self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
+                        }
+                        
+                    })
+                }
             }
+            
         }
-        
     }
-}
 }

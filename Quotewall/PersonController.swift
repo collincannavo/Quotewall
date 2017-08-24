@@ -31,8 +31,6 @@ public class PersonController {
         person.favoriteQuotes.append(quote)
     }
     
-   
-    
     public func removeFavoriteQuote(from person: Person, at indexPath: IndexPath) {
         person.favoriteQuotes.remove(at: indexPath.row)
     }
