@@ -68,11 +68,16 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
         
         guard let searchText = searchBar.text else { print("Sorry I couldn't find that result");return }
         
-            DispatchQueue.main.async {
 
                 NetworkQuotesController.fetchQuote(with: searchText) { (quote) in
-                    guard let quote = quote else { return }
-                    self.quotes = quote
+                    
+                    
+                    DispatchQueue.main.async {
+                        
+                        guard let quote = quote else { return }
+                        self.quotes = quote
+                        self.collectionView.reloadData()
+                    
                     
             }
         }

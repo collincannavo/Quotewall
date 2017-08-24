@@ -22,13 +22,14 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         createQuotewallTitle()
     }
     
-    var quotewall: Quotewall?
-    
     // MARK: - CollectionView Lifecycle Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchQuotewalls()
+        fetchQuotewalls { (_) in
+        self.quoteCategoryCollection.reloadData()
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: quotewallsWereSetNotification, object: nil)
     }
     
@@ -69,7 +70,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
             quotewallTitle = textField
             quotewallTitle?.placeholder = "Title of Quotewall"
             guard let title = quotewallTitle?.text else { return }
-            self.quotewall?.category = title
+//            self.quotewall?.category = title
             
         }
         
@@ -106,41 +107,52 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         
         if segue.identifier == "editQuoteCollection" {
             
-            if let indexPath = self.quoteCategoryCollection.indexPathsForSelectedItems?.first {
+            if let indexPath = self.quoteCategoryCollection.indexPathsForSelectedItems?.first,
+                let detailsVC = segue.destination as? QuoteCollectionViewController {
                 
-                let detailsVC = segue.destination as? QuoteCollectionViewController
-                        
-                        let quotes = QuoteController.shared.quotes[indexPath.row]
-                        
-                        detailsVC?.quoteCollection = [quotes]
-//                        detailsVC?.navigationBar.title = "hello?"
-            
-            
-//                detailsVC?.title = quotewall?.category
+                let quotewall = QuotewallController.shared.quotewalls[indexPath.row]
                 
-                
+                        detailsVC.quotewall = quotewall
             }
         }
     }
     
-    func fetchQuotewalls() {
+    func fetchQuotewalls(completion: @escaping(Bool) -> Void) {
+        
+        
         CloudKitController.shared.fetchCurrentUser { (success, person) in
             if success && (person != nil) {
                 
-                CloudKitController.shared.fetchCurrentPersonQuotewalls(completion: { (success) in
+                //  All quotewalls
+                
+                CloudKitController.shared.fetchCurrentPersonQuotewalls(completion: { (success, quotewalls) in
+                   
                     if success {
-                        DispatchQueue.main.async {
-                            self.quoteCategoryCollection.reloadData()
+                        
+                        let dispatchGroup = DispatchGroup()
+                        
+                        for quotewall in QuotewallController.shared.quotewalls {
+                            dispatchGroup.enter()
+                            
+                            CloudKitController.shared.fetchQuotesForQuotewall(quotewall, completion: { (success, quotes) in
+                                print(quotes.count)
+                                quotewall.quotes = quotes
+                                dispatchGroup.leave()
+                            })
                         }
+                        
+                        dispatchGroup.notify(queue: DispatchQueue.main, execute: { 
+                            completion(true)
+                        })
+                        
                     }
-                 CloudKitController.shared.fetchPersonalQuotes(completion: { (success, quotes) in
-                    if success {
-                        DispatchQueue.main.async {
-                            self.quoteCategoryCollection.reloadData()
-                        }
-                    }
-                 })
+                    
+                    // Use dispatch group to loop through and get all the quotes for the quotewall
+                    
+                    //  All quotes for all
+                    
                 })
+                
             }
         }
     }

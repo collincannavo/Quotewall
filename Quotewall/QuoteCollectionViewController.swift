@@ -20,7 +20,6 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         self.dismiss(animated: true, completion: nil)
     }
     
-    var quoteCollection: [Quote] = []
     var quotewall: Quotewall?
     
     var selectedQuote = UITapGestureRecognizer(target: self, action: #selector(quoteActions))
@@ -54,7 +53,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         collectionView.delegate = self
         collectionView.dataSource = self
         cloudKitFetchQuotes()
-        updateViews()
+//        updateViews()
         
     }
     
@@ -71,7 +70,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let quotes = quoteCollection[indexPath.row]
+        guard let quotes = quotewall?.quotes[indexPath.row] else { return UICollectionViewCell() }
         
         let newquotes = quotes
         
@@ -92,7 +91,9 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return quoteCollection.count
+        guard let quotewall = quotewall else { return 0 }
+        
+        return quotewall.quotes.count
     }
 
     // MARK: - Prepare for Segue
@@ -129,8 +130,8 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         present(alert, animated: true, completion: nil)
     }
     
-    func updateViews(){
-        quotewall?.category = navigationItem.title!
-    }
+//    func updateViews(){
+//        quotewall?.category = navigationItem.title!
+//    }
     
 }

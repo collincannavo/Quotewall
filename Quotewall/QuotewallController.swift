@@ -53,19 +53,6 @@ public class QuotewallController {
         }
     }
     
-    public func addSavedQuotewall(to quotewall: Quotewall) {
-        quotewall.savedQuotewalls.append(quotewall)
-        
-        let record = quotewall.CKrecord
-        
-        CloudKitController.shared.save(record: record) { (record, error) in
-            if let error = error {
-                NSLog("There was an error saving the quotewall: \(error.localizedDescription)")
-                return
-            }
-        }
-    }
-    
     public func addQuote(_ quote: Quote, to quotewall: Quotewall) {
         quotewall.quotes.append(quote)
     }
