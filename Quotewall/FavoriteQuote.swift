@@ -41,6 +41,7 @@ public class FavoriteQuote {
         record.setValue(quote, forKey: FavoriteQuote.quoteKey)
         
         let backgroundImageAsset = QuotewallController.shared.createCKAsset(for: backgroundImage)
+        
         record.setValue(backgroundImageAsset, forKey: FavoriteQuote.backgroundImageDataKey)
         record.setValue(ckReference, forKey: FavoriteQuote.referenceKey)
         self.ckRecordID = record.recordID

@@ -25,9 +25,10 @@ class FavoriteQuoteController {
         
         let quote = FavoriteQuote(name: name, quote: quote, backgroundImage: image)
         
-        PersonController.shared.addFavoriteQuotes(quote, to: person)
-            
         quote.reference = PersonController.shared.currentPerson?.ckReference
+        
+        PersonController.shared.addFavoriteQuotes(quote, to: person)
+        
         
         }
         

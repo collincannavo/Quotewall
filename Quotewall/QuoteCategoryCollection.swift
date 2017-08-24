@@ -135,7 +135,6 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
                             dispatchGroup.enter()
                             
                             CloudKitController.shared.fetchQuotesForQuotewall(quotewall, completion: { (success, quotes) in
-                                print(quotes.count)
                                 quotewall.quotes = quotes
                                 dispatchGroup.leave()
                             })

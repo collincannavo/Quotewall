@@ -33,9 +33,6 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
         
     }
     
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return quotes.count
     }
@@ -84,6 +81,14 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
         
         searchBar.text = ""
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "editCell" {
+            
+//            if let destinationVC = segue.destination as? QuotesTemplateViewController
+        }
     }
     
 }

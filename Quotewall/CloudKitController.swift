@@ -289,5 +289,31 @@ public class CloudKitController {
         }
     }
     
+    public func fetchFavoriteQuotes(for person: Person, completion: @escaping(Bool) -> Void) {
+        
+        guard let currentPersonID = PersonController.shared.currentPerson?.ckRecordID else { completion(false); return }
+        
+        let reference = CKReference(recordID: currentPersonID, action: .none)
+        
+        let predicate = NSPredicate(format: "reference == %@", reference)
+        
+        let query = CKQuery(recordType: FavoriteQuote.recordTypeKey, predicate: predicate)
+        
+        container.publicCloudDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                NSLog("There was an error when fetching favorite quotes: \(error.localizedDescription)")
+                completion(false)
+                return
+            }
+        
+            guard let records = records else { completion(false); return }
+            
+            let favoriteQuotes = records.flatMap({FavoriteQuote(ckRecord: $0)})
+            
+            person.favoriteQuotes = favoriteQuotes
+        }
+        
+    }
+    
     
 }

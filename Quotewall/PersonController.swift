@@ -31,7 +31,9 @@ public class PersonController {
         person.favoriteQuotes.append(quote)
         
         CloudKitController.shared.save(record: quote.ckRecord) { (ckRecord, error) in
-            
+            if let error = error {
+                NSLog("There was an error saving a favorite quote: \(error.localizedDescription)")
+            }
         }
     }
     

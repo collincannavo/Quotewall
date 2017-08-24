@@ -14,6 +14,7 @@
 		B6D368FE1F48F79200F00DE9 /* QuotesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368FD1F48F79200F00DE9 /* QuotesCollectionViewCell.swift */; };
 		B6D369021F4F4D1E00F00DE9 /* FavoriteQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D369011F4F4D1E00F00DE9 /* FavoriteQuote.swift */; };
 		B6D369041F4F611E00F00DE9 /* FavoriteQuoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D369031F4F611E00F00DE9 /* FavoriteQuoteController.swift */; };
+		B6D369061F4F688200F00DE9 /* FavoriteQuoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D369051F4F688200F00DE9 /* FavoriteQuoteCollectionViewCell.swift */; };
 		B6E726781F436DBB0067B6F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726771F436DBB0067B6F5 /* AppDelegate.swift */; };
 		B6E7267D1F436DBB0067B6F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E7267B1F436DBB0067B6F5 /* Main.storyboard */; };
 		B6E726801F436DBB0067B6F5 /* Quotewall.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6E7267E1F436DBB0067B6F5 /* Quotewall.xcdatamodeld */; };
@@ -32,7 +33,7 @@
 		B6E726A81F43B1E10067B6F5 /* QuoteToShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726A71F43B1E10067B6F5 /* QuoteToShare.storyboard */; };
 		B6E726AA1F43B2E60067B6F5 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726A91F43B2E60067B6F5 /* Favorites.storyboard */; };
 		B6E726AC1F43B3720067B6F5 /* RemoveQuote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726AB1F43B3720067B6F5 /* RemoveQuote.storyboard */; };
-		B6E726AE1F43B4150067B6F5 /* NetworkQuotes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726AD1F43B4150067B6F5 /* NetworkQuotes.storyboard */; };
+		B6E726AE1F43B4150067B6F5 /* SearchQuotes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726AD1F43B4150067B6F5 /* SearchQuotes.storyboard */; };
 		B6E726B01F43BFE00067B6F5 /* SharedQuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726AF1F43BFE00067B6F5 /* SharedQuotesViewController.swift */; };
 		B6E726B21F43C03C0067B6F5 /* QuoteCategoryCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726B11F43C03C0067B6F5 /* QuoteCategoryCollection.swift */; };
 		B6E726B41F43C07A0067B6F5 /* QuotesTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726B31F43C07A0067B6F5 /* QuotesTemplateViewController.swift */; };
@@ -58,6 +59,7 @@
 		B6D368FD1F48F79200F00DE9 /* QuotesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotesCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6D369011F4F4D1E00F00DE9 /* FavoriteQuote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteQuote.swift; sourceTree = "<group>"; };
 		B6D369031F4F611E00F00DE9 /* FavoriteQuoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteQuoteController.swift; sourceTree = "<group>"; };
+		B6D369051F4F688200F00DE9 /* FavoriteQuoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteQuoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6E726741F436DBB0067B6F5 /* Quotewall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotewall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E726771F436DBB0067B6F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E7267C1F436DBB0067B6F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,7 +81,7 @@
 		B6E726A71F43B1E10067B6F5 /* QuoteToShare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuoteToShare.storyboard; sourceTree = "<group>"; };
 		B6E726A91F43B2E60067B6F5 /* Favorites.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
 		B6E726AB1F43B3720067B6F5 /* RemoveQuote.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RemoveQuote.storyboard; sourceTree = "<group>"; };
-		B6E726AD1F43B4150067B6F5 /* NetworkQuotes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NetworkQuotes.storyboard; sourceTree = "<group>"; };
+		B6E726AD1F43B4150067B6F5 /* SearchQuotes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchQuotes.storyboard; sourceTree = "<group>"; };
 		B6E726AF1F43BFE00067B6F5 /* SharedQuotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedQuotesViewController.swift; sourceTree = "<group>"; };
 		B6E726B11F43C03C0067B6F5 /* QuoteCategoryCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteCategoryCollection.swift; sourceTree = "<group>"; };
 		B6E726B31F43C07A0067B6F5 /* QuotesTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotesTemplateViewController.swift; sourceTree = "<group>"; };
@@ -166,7 +168,7 @@
 				B6E726A71F43B1E10067B6F5 /* QuoteToShare.storyboard */,
 				B6E726A91F43B2E60067B6F5 /* Favorites.storyboard */,
 				B6E726AB1F43B3720067B6F5 /* RemoveQuote.storyboard */,
-				B6E726AD1F43B4150067B6F5 /* NetworkQuotes.storyboard */,
+				B6E726AD1F43B4150067B6F5 /* SearchQuotes.storyboard */,
 				B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */,
 			);
 			name = Storyboards;
@@ -227,6 +229,7 @@
 				B6E726CA1F44F6DA0067B6F5 /* NetworkQuotesViewCell.swift */,
 				B6D368FB1F478EDF00F00DE9 /* CategoryCollectionViewCell.swift */,
 				B6D368FD1F48F79200F00DE9 /* QuotesCollectionViewCell.swift */,
+				B6D369051F4F688200F00DE9 /* FavoriteQuoteCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -309,7 +312,7 @@
 			files = (
 				B6E726851F436DBB0067B6F5 /* LaunchScreen.storyboard in Resources */,
 				B6E726A61F43AE3B0067B6F5 /* QuoteCollection.storyboard in Resources */,
-				B6E726AE1F43B4150067B6F5 /* NetworkQuotes.storyboard in Resources */,
+				B6E726AE1F43B4150067B6F5 /* SearchQuotes.storyboard in Resources */,
 				B6E726AA1F43B2E60067B6F5 /* Favorites.storyboard in Resources */,
 				B6E726A81F43B1E10067B6F5 /* QuoteToShare.storyboard in Resources */,
 				B6E726821F436DBB0067B6F5 /* Assets.xcassets in Resources */,
@@ -347,6 +350,7 @@
 				B6E726941F4372BC0067B6F5 /* Quotewall.swift in Sources */,
 				B6E726C41F449EF10067B6F5 /* NetworkQuotes.swift in Sources */,
 				B6E726801F436DBB0067B6F5 /* Quotewall.xcdatamodeld in Sources */,
+				B6D369061F4F688200F00DE9 /* FavoriteQuoteCollectionViewCell.swift in Sources */,
 				B6E726B01F43BFE00067B6F5 /* SharedQuotesViewController.swift in Sources */,
 				B6E726921F4371EF0067B6F5 /* CloudKitController.swift in Sources */,
 				B6E726961F4374360067B6F5 /* Quote.swift in Sources */,
