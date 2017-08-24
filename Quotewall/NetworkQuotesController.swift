@@ -14,8 +14,6 @@ class NetworkQuotesController {
     
     static let baseURL = URL(string: "https://andruxnet-random-famous-quotes.p.mashape.com/")
     
-    var quotes: [NetworkQuotes] = []
-    
     static func fetchQuote(with text: String, completion: @escaping ([NetworkQuotes]?) -> Void) {
     guard let url = baseURL else { completion(nil); return }
         

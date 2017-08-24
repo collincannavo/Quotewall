@@ -54,10 +54,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="332" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yy6-wr-zZb">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yy6-wr-zZb">
                                                     <rect key="frame" x="0.0" y="0.0" width="312" height="138"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWf-7s-aqT">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWf-7s-aqT">
                                                             <rect key="frame" x="0.0" y="137" width="332" height="30"/>
                                                             <state key="normal" title="Add To Favorites"/>
                                                             <connections>
@@ -82,9 +82,9 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="SWf-7s-aqT" secondAttribute="trailing" id="6Td-8n-4Of"/>
+                                                        <constraint firstAttribute="trailing" secondItem="SWf-7s-aqT" secondAttribute="trailing" constant="-20" id="6Td-8n-4Of"/>
                                                         <constraint firstItem="SWf-7s-aqT" firstAttribute="leading" secondItem="Yy6-wr-zZb" secondAttribute="leading" id="AmB-GT-9vs"/>
-                                                        <constraint firstAttribute="bottom" secondItem="SWf-7s-aqT" secondAttribute="bottom" id="BiE-cP-CDV"/>
+                                                        <constraint firstAttribute="bottom" secondItem="SWf-7s-aqT" secondAttribute="bottom" constant="-29" id="BiE-cP-CDV"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -92,8 +92,8 @@
                                         <color key="backgroundColor" red="0.20983249909999999" green="0.99311870339999997" blue="0.2173003691" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="Yy6-wr-zZb" firstAttribute="leading" secondItem="XLK-PN-YwW" secondAttribute="leading" id="WCf-sE-C22"/>
-                                            <constraint firstAttribute="trailing" secondItem="Yy6-wr-zZb" secondAttribute="trailing" id="hwm-h5-4uO"/>
-                                            <constraint firstAttribute="bottom" secondItem="Yy6-wr-zZb" secondAttribute="bottom" id="tln-9D-5ab"/>
+                                            <constraint firstAttribute="trailing" secondItem="Yy6-wr-zZb" secondAttribute="trailing" constant="20" id="hwm-h5-4uO"/>
+                                            <constraint firstAttribute="bottom" secondItem="Yy6-wr-zZb" secondAttribute="bottom" constant="32" id="tln-9D-5ab"/>
                                             <constraint firstItem="Yy6-wr-zZb" firstAttribute="top" secondItem="XLK-PN-YwW" secondAttribute="top" id="zG4-nc-Dzm"/>
                                         </constraints>
                                         <connections>

@@ -22,7 +22,7 @@ public class Person {
     public let name: String
     public var personalQuotes: [Quote] = []
     public var quotes: [Quote] = []
-    public var favoriteQuotes: [Quote] = []
+    public var favoriteQuotes: [FavoriteQuote] = []
     
     
     public var sortedPersonalQuotes: [Quote] {

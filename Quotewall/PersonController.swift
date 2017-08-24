@@ -27,8 +27,12 @@ public class PersonController {
         person.quotes.append(quote)
     }
     
-    public func addFavoriteQuotes(_ quote: Quote, to person: Person) {
+    public func addFavoriteQuotes(_ quote: FavoriteQuote, to person: Person) {
         person.favoriteQuotes.append(quote)
+        
+        CloudKitController.shared.save(record: quote.ckRecord) { (ckRecord, error) in
+            
+        }
     }
     
     public func removeFavoriteQuote(from person: Person, at indexPath: IndexPath) {

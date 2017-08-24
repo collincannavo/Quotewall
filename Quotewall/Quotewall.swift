@@ -51,10 +51,6 @@ public class Quotewall {
         record[Quotewall.categoryKey] = category as CKRecordValue?
         
         record[Quotewall.parentUserReferenceKey] = userReference as CKRecordValue?
-        
-//        let backgroundImageAsset = QuotewallController.shared.createCKAsset(for: self.backgroundImage)
-//        
-//        record[Quotewall.backgroundImage] = backgroundImageAsset as CKAsset?
 
         self.ckRecordID = recordID
         return record

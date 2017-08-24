@@ -149,7 +149,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
                     
                     // Use dispatch group to loop through and get all the quotes for the quotewall
                     
-                    //  All quotes for all
+                    //  All quotes for all quotewalls
                     
                 })
                 
