@@ -13,12 +13,15 @@ import UIKit
 
 class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    
+    @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBAction func backButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     var quoteCollection: [Quote] = []
+    var quotewall: Quotewall?
     
     var selectedQuote = UITapGestureRecognizer(target: self, action: #selector(quoteActions))
     
@@ -51,7 +54,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         collectionView.delegate = self
         collectionView.dataSource = self
         cloudKitFetchQuotes()
-        
+        updateViews()
         
     }
     
@@ -125,4 +128,9 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         alert.addAction(okButton)
         present(alert, animated: true, completion: nil)
     }
+    
+    func updateViews(){
+        quotewall?.category = navigationItem.title!
+    }
+    
 }

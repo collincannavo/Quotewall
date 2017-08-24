@@ -45,15 +45,21 @@ class NetworkQuotesController {
             guard let data = data,
                 let responseDataString = String(data: data, encoding: .utf8) else { return print("No data returned") }
             
-            guard let jsonDictionary = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? [String : String] else {
+            guard let jsonArray = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? [[String : String]] else {
                 print("Error decoding json: \(responseDataString)")
                 return
                 
             }
+            var arrayOfQuotes: [NetworkQuotes] = []
             
-            guard let networkQuotes = NetworkQuotes(dictionary: jsonDictionary) else { return }
+            for dictionary in jsonArray {
+                
+                guard let networkQuotes = NetworkQuotes(dictionary: dictionary) else { return }
+                
+                arrayOfQuotes.append(networkQuotes)
+            }
             
-            completion([networkQuotes])
+            completion(arrayOfQuotes)
             
         }
         dataTask.resume()

@@ -14,7 +14,9 @@ class NetworkQuotesViewCell: UICollectionViewCell {
     @IBOutlet weak var quoteView: UIView!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var categoryLabel: UILabel!
+    
+    
+    
     
     var quotes: NetworkQuotes? {
         didSet {
@@ -37,7 +39,7 @@ class NetworkQuotesViewCell: UICollectionViewCell {
         
         self.quoteLabel.text = quote.quote
         self.authorLabel.text = quote.author
-        self.categoryLabel.text = quote.category
+        
     }
     
     

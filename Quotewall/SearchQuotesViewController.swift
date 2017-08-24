@@ -33,16 +33,18 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
         
     }
     
- 
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return quotes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let collectionViewWidth = collectionView.frame.width
+        let collectionViewWidth = collectionView.frame.width - 20
         
-        let collectionViewHeight = collectionView.frame.height
+        let collectionViewHeight = collectionView.frame.height / 3
         
         return CGSize(width: collectionViewWidth, height: collectionViewHeight)
     }
@@ -71,10 +73,11 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
                 NetworkQuotesController.fetchQuote(with: searchText) { (quote) in
                     guard let quote = quote else { return }
                     self.quotes = quote
-                    self.collectionView.reloadData()
+                    
             }
         }
-        searchBar.text = "" 
+        
+        searchBar.text = ""
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
