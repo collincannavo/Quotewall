@@ -36,15 +36,19 @@ public class FavoriteQuote {
     public var reference: CKReference?
     
     public var ckRecord: CKRecord {
-        let record = CKRecord(recordType: FavoriteQuote.recordTypeKey)
-        record.setValue(name, forKey: FavoriteQuote.nameKey)
-        record.setValue(quote, forKey: FavoriteQuote.quoteKey)
+        let recordID = self.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
+        
+        let record = CKRecord(recordType: FavoriteQuote.recordTypeKey, recordID: recordID)
+        
+        record[FavoriteQuote.nameKey] = name as CKRecordValue?
+        record[FavoriteQuote.referenceKey] = reference as CKRecordValue?
+        record[FavoriteQuote.quoteKey] = quote as CKRecordValue?
         
         let backgroundImageAsset = QuotewallController.shared.createCKAsset(for: backgroundImage)
         
         record.setValue(backgroundImageAsset, forKey: FavoriteQuote.backgroundImageDataKey)
-        record.setValue(ckReference, forKey: FavoriteQuote.referenceKey)
-        self.ckRecordID = record.recordID
+        
+        self.ckRecordID = recordID
         
         return record
     }
@@ -56,10 +60,12 @@ public class FavoriteQuote {
     }
     
     public convenience init?(ckRecord: CKRecord) {
+       
         guard let name = ckRecord[FavoriteQuote.nameKey] as? String,
-            let quote = ckRecord[FavoriteQuote.quoteKey] as? String
+            let quote = ckRecord[FavoriteQuote.quoteKey] as? String,
+            let ckReference = ckRecord[FavoriteQuote.referenceKey] as? CKReference
         else { return nil }
-        let ckReference = ckRecord[FavoriteQuote.referenceKey] as? CKReference
+        
         let backgroundImageAsset = ckRecord[FavoriteQuote.backgroundImageDataKey] as? CKAsset
         var backgroundImageData: Data?
         if let backgroundDataURL = backgroundImageAsset?.fileURL {

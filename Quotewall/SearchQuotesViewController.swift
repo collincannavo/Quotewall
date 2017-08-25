@@ -53,6 +53,7 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
         let quote = quotes[indexPath.row]
         
         cell.quotes = quote
+        cellShadowing(cell)
         
         return cell
         
@@ -89,6 +90,15 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
             
 //            if let destinationVC = segue.destination as? QuotesTemplateViewController
         }
+    }
+    
+    // MARK: - Cell Setup
+    
+    fileprivate func cellShadowing(_ cell: NetworkQuotesViewCell) {
+        cell.layer.shadowOpacity = 1.0
+        cell.layer.shadowRadius = 4
+        cell.layer.shadowOffset = CGSize(width: 0, height: 4)
+        cell.layer.shadowColor = UIColor.black.cgColor
     }
     
 }

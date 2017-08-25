@@ -16,7 +16,11 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
     var person: Person?
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
         updateView()
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -30,7 +34,9 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return person?.favoriteQuotes.count ?? 0
+        guard let person = person else { return 0 }
+        
+        return person.favoriteQuotes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -42,6 +48,8 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
         cell.authorLabel.text = favoriteQuote?.name
         cell.quoteLabel.text = favoriteQuote?.quote
         
+        cellShadowing(cell)
+        
         return cell
         
     }
@@ -49,20 +57,36 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
     func updateView() {
         
         CloudKitController.shared.fetchCurrentUser { (success, person) in
-            if success && person != nil {
+            if success && (person != nil) {
                 
-                guard let currentPerson = person else { return }
+                guard let user = PersonController.shared.currentPerson
+                    else { return }
                 
-                CloudKitController.shared.fetchFavoriteQuotes(for: currentPerson, completion: { (_) in
+                CloudKitController.shared.fetchFavoriteQuotes(for: user, completion: { (success, favoriteQuotes) in
+            
                     if success {
                         DispatchQueue.main.async {
+                            self.person?.favoriteQuotes = favoriteQuotes
+                            print("the number of favorite quotes after success is ", self.person?.favoriteQuotes.count)
                             self.collectionView.reloadData()
                         }
+                        
                     }
                 })
             }
+            
+            
         }
         
+    }
+    
+    // MARK: - Cell Setup
+    
+    fileprivate func cellShadowing(_ cell: FavoriteQuoteCollectionViewCell) {
+        cell.layer.shadowOpacity = 1.0
+        cell.layer.shadowRadius = 4
+        cell.layer.shadowOffset = CGSize(width: 0, height: 4)
+        cell.layer.shadowColor = UIColor.black.cgColor
     }
     
 }

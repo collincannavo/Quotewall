@@ -85,6 +85,8 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
             cell.backgroundImage.contentMode = .scaleAspectFit
         }
         
+        cellShadowing(cell)
+        
         return cell
         
     }
@@ -128,6 +130,15 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okButton)
         present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Cell Setup
+    
+    fileprivate func cellShadowing(_ cell: QuotesCollectionViewCell) {
+        cell.layer.shadowOpacity = 1.0
+        cell.layer.shadowRadius = 4
+        cell.layer.shadowOffset = CGSize(width: 0, height: 4)
+        cell.layer.shadowColor = UIColor.black.cgColor
     }
     
 //    func updateViews(){

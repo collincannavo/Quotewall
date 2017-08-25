@@ -16,6 +16,8 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     @IBOutlet weak var quoteCategoryCollection: UICollectionView!
     
     
+    
+    
     // MARK: - Actions
     
     @IBAction func addQuotewallButtonTapped(_ sender: Any) {
@@ -52,6 +54,8 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quoteCategoryCollectionCell", for: indexPath) as? CategoryCollectionViewCell else { return CategoryCollectionViewCell() }
         
         cell.quotewallTitle.text = newQuotewall.category
+        
+        cellShadowing(cell)
         
         cell.quotewall = quotewall
         
@@ -117,6 +121,17 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         }
     }
     
+    // MARK: - Cell Setup
+    
+    fileprivate func cellShadowing(_ cell: CategoryCollectionViewCell) {
+        cell.layer.shadowOpacity = 1.0
+        cell.layer.shadowRadius = 4
+        cell.layer.shadowOffset = CGSize(width: 0, height: 4)
+        cell.layer.shadowColor = UIColor.black.cgColor
+    }
+    
+    
+    // MARK: - Fetch quotewalls function
     func fetchQuotewalls(completion: @escaping(Bool) -> Void) {
         
         
