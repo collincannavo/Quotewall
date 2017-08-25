@@ -104,6 +104,15 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
   
+        if segue.identifier == "addQuote" {
+            
+            let destinationVC = segue.destination as? QuotesTemplateViewController
+            
+            destinationVC?.senderIsMainCollection = false
+            
+        }
+        
+        
         if segue.identifier == "editQuote",
             let indexPath = self.collectionView.indexPathsForSelectedItems?.first {
             
@@ -111,10 +120,11 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
             
             let selectedQuote = QuotewallController.shared.currentQuotewall?.quotes[indexPath.row]
             
-                destinationVC?.quote = selectedQuote
-                
-            }
+            destinationVC?.quote = selectedQuote
+            destinationVC?.senderIsMainCollection = true
+            
         }
+    }
     
     func cloudKitFetchQuotes() {
         
