@@ -79,12 +79,17 @@ public class FavoriteQuote {
         
     }
     
-    
-    
-    
-    
-    
 }
+
+ func ==(lhs: FavoriteQuote, rhs: FavoriteQuote) -> Bool {
+        if lhs.name != rhs.name  { return false }
+        if lhs.quote != rhs.quote  { return false }
+        if lhs.backgroundImage != rhs.backgroundImage  { return false }
+        
+        return true
+    }
+    
+
 
 
 

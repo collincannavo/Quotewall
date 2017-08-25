@@ -55,6 +55,20 @@ public class PersonController {
         }
     }
     
+//    public func removeFavoriteQuote(_ favoriteQuote: FavoriteQuote, from person: Person, with completion: @escaping (Bool) -> Void) {
+//        
+//        if let index = person.favoriteQuotes.index(where: {$0 == favoriteQuote}) {
+//            person.favoriteQuotes.remove(at: index)
+//        }
+//        
+//        guard var record = record else { NSLog("Record returned for update operation is nil"); completion(false); return }
+//        
+//        person.updateCKRecordLocally(record: &record)
+//        
+//        CloudKitController.shared.updateRecord(record, with: <#T##([CKRecord]?, [CKRecordID]?, Error?) -> Void#>)
+//        
+//    }
+    
     public func removeAllQuotes(from person: Person) {
         person.quotes.removeAll()
     }

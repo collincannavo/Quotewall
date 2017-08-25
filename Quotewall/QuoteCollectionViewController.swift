@@ -55,6 +55,8 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         cloudKitFetchQuotes()
 //        updateViews()
         
+        navigationBar.title = quotewall?.category
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,7 +84,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         if let data = newquotes.image,
             let image = UIImage(data: data) {
             cell.backgroundImage.image = image
-            cell.backgroundImage.contentMode = .scaleAspectFit
+            cell.backgroundImage.contentMode = .scaleToFill
         }
         
         cellShadowing(cell)

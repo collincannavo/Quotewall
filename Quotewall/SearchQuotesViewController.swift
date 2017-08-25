@@ -37,14 +37,6 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
         return quotes.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let collectionViewWidth = collectionView.frame.width - 20
-        
-        let collectionViewHeight = collectionView.frame.height / 3
-        
-        return CGSize(width: collectionViewWidth, height: collectionViewHeight)
-    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -82,14 +74,6 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
         
         searchBar.text = ""
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "editCell" {
-            
-//            if let destinationVC = segue.destination as? QuotesTemplateViewController
-        }
     }
     
     // MARK: - Cell Setup

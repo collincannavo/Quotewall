@@ -313,7 +313,6 @@ public class CloudKitController {
             let favoriteQuotes = records.flatMap({FavoriteQuote(ckRecord: $0)})
             
             person.favoriteQuotes = favoriteQuotes
-            print("The favorite quotes number after fetch is: ", person.favoriteQuotes.count)
             completion(true, favoriteQuotes)
         }
         

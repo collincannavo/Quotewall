@@ -128,6 +128,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         cell.layer.shadowRadius = 4
         cell.layer.shadowOffset = CGSize(width: 0, height: 4)
         cell.layer.shadowColor = UIColor.black.cgColor
+        
     }
     
     

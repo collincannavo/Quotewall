@@ -17,6 +17,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var personNameTextField: UITextField!
     @IBOutlet weak var addBackgroundImage: UIButton!
     @IBOutlet weak var quoteCellView: UIView!
+    @IBOutlet weak var addToFavoriteButton: UIButton!
 
     // MARK: - Properties
     
@@ -67,6 +68,21 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func addToFavoriteButtonTapped(_ sender: Any) {
+        
+        print("Favorite button tapped")
+        guard let quote = quoteTextField.text,
+            let author = personNameTextField.text
+            else { return }
+        
+        FavoriteQuoteController.shared.createFavoriteQuote(with: author, quote: quote, image: nil) { (success) in
+            if !success {
+                NSLog("There was an error creating a favorite quote")
+            }
+        }
+        
+
+    }
     // MARK: - Functions
     
     override func viewDidLoad() {
@@ -154,7 +170,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         if let data = quote.image,
             let image = UIImage(data: data) {
             backgroundImage.image = image
-            backgroundImage.contentMode = .scaleAspectFit
+            backgroundImage.contentMode = .scaleToFill
         }
     }
     

@@ -62,6 +62,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="59" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbW-L8-T7P">
+                                        <rect key="frame" x="8" y="252" width="154" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.076538914959999996" blue="0.99311870339999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Add To Favorites">
+                                            <color key="titleColor" red="0.37906745629999999" green="0.72344610080000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addToFavoriteButtonTapped:" destination="0YT-5A-j32" eventType="touchUpInside" id="3Z6-r4-Qrj"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -95,6 +106,7 @@
                     </view>
                     <connections>
                         <outlet property="addBackgroundImage" destination="ndx-WV-8Gs" id="PeC-7p-Pi8"/>
+                        <outlet property="addToFavoriteButton" destination="SbW-L8-T7P" id="ifx-uu-sCG"/>
                         <outlet property="backgroundImage" destination="Q2G-eC-ukr" id="BTk-PI-DOc"/>
                         <outlet property="imageTransparentView" destination="ZhX-av-1Ib" id="ffV-12-msZ"/>
                         <outlet property="personNameTextField" destination="Ea5-RZ-1e7" id="bbx-aG-4GB"/>
