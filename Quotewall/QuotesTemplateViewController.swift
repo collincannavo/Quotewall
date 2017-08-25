@@ -21,6 +21,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
 
     // MARK: - Properties
     
+    var quotewall: Quotewall?
     var senderIsMainCollection: Bool = false
     var quote: Quote?
     var quoteCollectionCell = QuotesCollectionViewCell()
@@ -98,9 +99,8 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            backgroundImage.contentMode = .scaleAspectFit
+            backgroundImage.contentMode = .scaleToFill
             backgroundImage.image = pickedImage
-            addBackgroundImage.setTitle("", for: .normal)
             dismiss(animated: true, completion: nil)
         }
     }
@@ -124,7 +124,8 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     func saveQuoteToQuotewall(with completion: @escaping (Bool)-> Void) {
         
         guard let name = personNameTextField.text,
-            let text = quoteTextField.text
+            let text = quoteTextField.text,
+            let quotewall = quotewall
             else { return }
         
         var backgroundImageData:  Data? = nil
@@ -132,7 +133,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             backgroundImageData = UIImagePNGRepresentation(imageData)
         }
     
-        QuoteController.shared.createQuote(with: name, text: text, image: backgroundImageData) { (success) in
+        QuoteController.shared.createQuote(with: name, text: text, image: backgroundImageData, quotewall: quotewall) { (success) in
             
             DispatchQueue.main.async {
                 if success {

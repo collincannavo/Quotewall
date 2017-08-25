@@ -13,7 +13,6 @@ import UIKit
 
 class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -53,7 +52,6 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         collectionView.delegate = self
         collectionView.dataSource = self
         cloudKitFetchQuotes()
-//        updateViews()
         
         navigationBar.title = quotewall?.category
         
@@ -109,9 +107,9 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
             let destinationVC = segue.destination as? QuotesTemplateViewController
             
             destinationVC?.senderIsMainCollection = false
+            destinationVC?.quotewall = quotewall
             
         }
-        
         
         if segue.identifier == "editQuote",
             let indexPath = self.collectionView.indexPathsForSelectedItems?.first {
@@ -152,9 +150,6 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         cell.layer.shadowOffset = CGSize(width: 0, height: 4)
         cell.layer.shadowColor = UIColor.black.cgColor
     }
-    
-//    func updateViews(){
-//        quotewall?.category = navigationItem.title!
-//    }
+
     
 }

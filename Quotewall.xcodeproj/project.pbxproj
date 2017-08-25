@@ -30,17 +30,13 @@
 		B6E726A21F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726A11F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard */; };
 		B6E726A41F43ADE70067B6F5 /* QuotesTemplate1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726A31F43ADE70067B6F5 /* QuotesTemplate1.storyboard */; };
 		B6E726A61F43AE3B0067B6F5 /* QuoteCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726A51F43AE3B0067B6F5 /* QuoteCollection.storyboard */; };
-		B6E726A81F43B1E10067B6F5 /* QuoteToShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726A71F43B1E10067B6F5 /* QuoteToShare.storyboard */; };
 		B6E726AA1F43B2E60067B6F5 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726A91F43B2E60067B6F5 /* Favorites.storyboard */; };
-		B6E726AC1F43B3720067B6F5 /* RemoveQuote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726AB1F43B3720067B6F5 /* RemoveQuote.storyboard */; };
 		B6E726AE1F43B4150067B6F5 /* SearchQuotes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E726AD1F43B4150067B6F5 /* SearchQuotes.storyboard */; };
 		B6E726B01F43BFE00067B6F5 /* SharedQuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726AF1F43BFE00067B6F5 /* SharedQuotesViewController.swift */; };
 		B6E726B21F43C03C0067B6F5 /* QuoteCategoryCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726B11F43C03C0067B6F5 /* QuoteCategoryCollection.swift */; };
 		B6E726B41F43C07A0067B6F5 /* QuotesTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726B31F43C07A0067B6F5 /* QuotesTemplateViewController.swift */; };
 		B6E726B61F43C0B60067B6F5 /* QuoteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726B51F43C0B60067B6F5 /* QuoteCollectionViewController.swift */; };
-		B6E726B81F43C0E80067B6F5 /* QuoteToShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726B71F43C0E80067B6F5 /* QuoteToShareViewController.swift */; };
 		B6E726BA1F43C1140067B6F5 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726B91F43C1140067B6F5 /* FavoritesViewController.swift */; };
-		B6E726BC1F43C1380067B6F5 /* RemoveQuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726BB1F43C1380067B6F5 /* RemoveQuoteViewController.swift */; };
 		B6E726BE1F43C1760067B6F5 /* SearchQuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726BD1F43C1760067B6F5 /* SearchQuotesViewController.swift */; };
 		B6E726C01F43EFCA0067B6F5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726BF1F43EFCA0067B6F5 /* Person.swift */; };
 		B6E726C21F449E5C0067B6F5 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726C11F449E5C0067B6F5 /* NetworkController.swift */; };
@@ -78,17 +74,13 @@
 		B6E726A11F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuoteCategoryCollection.storyboard; sourceTree = "<group>"; };
 		B6E726A31F43ADE70067B6F5 /* QuotesTemplate1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuotesTemplate1.storyboard; sourceTree = "<group>"; };
 		B6E726A51F43AE3B0067B6F5 /* QuoteCollection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuoteCollection.storyboard; sourceTree = "<group>"; };
-		B6E726A71F43B1E10067B6F5 /* QuoteToShare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QuoteToShare.storyboard; sourceTree = "<group>"; };
 		B6E726A91F43B2E60067B6F5 /* Favorites.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
-		B6E726AB1F43B3720067B6F5 /* RemoveQuote.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RemoveQuote.storyboard; sourceTree = "<group>"; };
 		B6E726AD1F43B4150067B6F5 /* SearchQuotes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchQuotes.storyboard; sourceTree = "<group>"; };
 		B6E726AF1F43BFE00067B6F5 /* SharedQuotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedQuotesViewController.swift; sourceTree = "<group>"; };
 		B6E726B11F43C03C0067B6F5 /* QuoteCategoryCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteCategoryCollection.swift; sourceTree = "<group>"; };
 		B6E726B31F43C07A0067B6F5 /* QuotesTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotesTemplateViewController.swift; sourceTree = "<group>"; };
 		B6E726B51F43C0B60067B6F5 /* QuoteCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteCollectionViewController.swift; sourceTree = "<group>"; };
-		B6E726B71F43C0E80067B6F5 /* QuoteToShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteToShareViewController.swift; sourceTree = "<group>"; };
 		B6E726B91F43C1140067B6F5 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		B6E726BB1F43C1380067B6F5 /* RemoveQuoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveQuoteViewController.swift; sourceTree = "<group>"; };
 		B6E726BD1F43C1760067B6F5 /* SearchQuotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchQuotesViewController.swift; sourceTree = "<group>"; };
 		B6E726BF1F43EFCA0067B6F5 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		B6E726C11F449E5C0067B6F5 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
@@ -165,9 +157,7 @@
 				B6E726A11F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard */,
 				B6E726A31F43ADE70067B6F5 /* QuotesTemplate1.storyboard */,
 				B6E726A51F43AE3B0067B6F5 /* QuoteCollection.storyboard */,
-				B6E726A71F43B1E10067B6F5 /* QuoteToShare.storyboard */,
 				B6E726A91F43B2E60067B6F5 /* Favorites.storyboard */,
-				B6E726AB1F43B3720067B6F5 /* RemoveQuote.storyboard */,
 				B6E726AD1F43B4150067B6F5 /* SearchQuotes.storyboard */,
 				B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */,
 			);
@@ -206,9 +196,7 @@
 				B6E726B11F43C03C0067B6F5 /* QuoteCategoryCollection.swift */,
 				B6E726B51F43C0B60067B6F5 /* QuoteCollectionViewController.swift */,
 				B6E726B31F43C07A0067B6F5 /* QuotesTemplateViewController.swift */,
-				B6E726B71F43C0E80067B6F5 /* QuoteToShareViewController.swift */,
 				B6E726B91F43C1140067B6F5 /* FavoritesViewController.swift */,
-				B6E726BB1F43C1380067B6F5 /* RemoveQuoteViewController.swift */,
 				B6E726BD1F43C1760067B6F5 /* SearchQuotesViewController.swift */,
 				B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */,
 			);
@@ -314,9 +302,7 @@
 				B6E726A61F43AE3B0067B6F5 /* QuoteCollection.storyboard in Resources */,
 				B6E726AE1F43B4150067B6F5 /* SearchQuotes.storyboard in Resources */,
 				B6E726AA1F43B2E60067B6F5 /* Favorites.storyboard in Resources */,
-				B6E726A81F43B1E10067B6F5 /* QuoteToShare.storyboard in Resources */,
 				B6E726821F436DBB0067B6F5 /* Assets.xcassets in Resources */,
-				B6E726AC1F43B3720067B6F5 /* RemoveQuote.storyboard in Resources */,
 				B6E726A21F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard in Resources */,
 				B6E726A01F43AC6F0067B6F5 /* SharedQuotes.storyboard in Resources */,
 				B6D368FA1F474B7C00F00DE9 /* Onboarding.storyboard in Resources */,
@@ -333,7 +319,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6E726BA1F43C1140067B6F5 /* FavoritesViewController.swift in Sources */,
-				B6E726B81F43C0E80067B6F5 /* QuoteToShareViewController.swift in Sources */,
 				B6E726D21F46026B0067B6F5 /* UIImageExtension.swift in Sources */,
 				B6D369021F4F4D1E00F00DE9 /* FavoriteQuote.swift in Sources */,
 				B6E726B61F43C0B60067B6F5 /* QuoteCollectionViewController.swift in Sources */,
@@ -344,7 +329,6 @@
 				B6E726BE1F43C1760067B6F5 /* SearchQuotesViewController.swift in Sources */,
 				B6D368F81F47483000F00DE9 /* Constants.swift in Sources */,
 				B6E726981F43966D0067B6F5 /* QuotewallController.swift in Sources */,
-				B6E726BC1F43C1380067B6F5 /* RemoveQuoteViewController.swift in Sources */,
 				B6E726C81F44E0980067B6F5 /* PersonController.swift in Sources */,
 				B6E726C61F44A0590067B6F5 /* NetworkQuotesController.swift in Sources */,
 				B6E726941F4372BC0067B6F5 /* Quotewall.swift in Sources */,

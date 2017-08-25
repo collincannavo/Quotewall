@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="m1Z-gx-zgS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Uv-dk-qsP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -53,7 +53,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="165" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y0b-DI-Om0">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0b-DI-Om0">
                                                     <rect key="frame" x="0.0" y="0.0" width="165" height="143"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xm4-Mz-vXL">
@@ -61,8 +61,9 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" red="0.0" green="0.0050816729400000003" blue="0.52639197339999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-hn-SGz">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-hn-SGz">
                                                             <rect key="frame" x="8" y="53" width="149" height="24"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -70,19 +71,14 @@
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstItem="FfM-hn-SGz" firstAttribute="trailing" secondItem="y0b-DI-Om0" secondAttribute="trailingMargin" id="Qyf-4f-q5N"/>
-                                                        <constraint firstItem="FfM-hn-SGz" firstAttribute="leading" secondItem="y0b-DI-Om0" secondAttribute="leadingMargin" id="XgC-Y1-OMU"/>
-                                                        <constraint firstItem="FfM-hn-SGz" firstAttribute="centerY" secondItem="y0b-DI-Om0" secondAttribute="centerY" id="gIj-bq-mco"/>
-                                                    </constraints>
                                                 </view>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="y0b-DI-Om0" secondAttribute="trailing" id="1qM-D2-6sy"/>
-                                            <constraint firstAttribute="bottom" secondItem="y0b-DI-Om0" secondAttribute="bottom" id="auv-mI-03b"/>
-                                            <constraint firstItem="y0b-DI-Om0" firstAttribute="top" secondItem="8lu-kt-4Ug" secondAttribute="top" id="gFQ-BL-8Ay"/>
-                                            <constraint firstItem="y0b-DI-Om0" firstAttribute="leading" secondItem="8lu-kt-4Ug" secondAttribute="leading" id="tVz-lC-EVL"/>
+                                            <constraint firstAttribute="trailing" secondItem="y0b-DI-Om0" secondAttribute="trailing" id="2eZ-sQ-zol"/>
+                                            <constraint firstItem="y0b-DI-Om0" firstAttribute="top" secondItem="8lu-kt-4Ug" secondAttribute="top" id="G26-aR-v3k"/>
+                                            <constraint firstItem="y0b-DI-Om0" firstAttribute="leading" secondItem="8lu-kt-4Ug" secondAttribute="leading" id="Saq-Pz-HeV"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="y0b-DI-Om0" secondAttribute="bottom" constant="-21" id="qK4-22-tYT"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="quotewallTitle" destination="FfM-hn-SGz" id="GKk-FF-uQm"/>
@@ -106,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v42-it-PL6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1096.8" y="123.68815592203899"/>
+            <point key="canvasLocation" x="2036" y="123.68815592203899"/>
         </scene>
         <!--QuoteCollection-->
         <scene sceneID="TwN-hp-WjO">
@@ -114,7 +110,46 @@
                 <viewControllerPlaceholder storyboardName="QuoteCollection" id="3sL-UQ-7Iv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5nD-FW-ljd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1742.4000000000001" y="112.44377811094454"/>
+            <point key="canvasLocation" x="2681.5999999999999" y="112.44377811094454"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="yqj-y6-R0H">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Favorites" id="IyG-Uz-uYH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="0cp-1N-mxK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9NB-eq-iWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="771" y="569"/>
+        </scene>
+        <!--SearchQuotes-->
+        <scene sceneID="M7d-de-8oW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SearchQuotes" id="mSx-uz-7iw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="O3Q-UP-lDe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lSu-AD-q1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1348" y="569"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="kum-bg-bzr">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3Uv-dk-qsP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="EcC-vg-x4p">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="m1Z-gx-zgS" kind="relationship" relationship="viewControllers" id="POO-Xi-GJC"/>
+                        <segue destination="IyG-Uz-uYH" kind="relationship" relationship="viewControllers" id="e5a-HM-51c"/>
+                        <segue destination="mSx-uz-7iw" kind="relationship" relationship="viewControllers" id="P71-cC-QXZ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQP-NY-tKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1096.8" y="123.68815592203899"/>
         </scene>
     </scenes>
 </document>
