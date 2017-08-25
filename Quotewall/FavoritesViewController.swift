@@ -20,6 +20,12 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
         updateView()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateView()
+        
+    }
     @IBAction func removeButtonTapped(_ sender: Any) {
         
         

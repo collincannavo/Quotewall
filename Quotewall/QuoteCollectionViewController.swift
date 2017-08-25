@@ -60,6 +60,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         collectionView.reloadData()
+        cloudKitFetchQuotes()
     }
     
     func refresh(){
