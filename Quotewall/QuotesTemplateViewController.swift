@@ -21,6 +21,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
 
     // MARK: - Properties
     
+    var senderIsMainCollection: Bool = false
     var quote: Quote?
     var quoteCollectionCell = QuotesCollectionViewCell()
     let imagePicker = UIImagePickerController()
@@ -89,6 +90,10 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         super.viewDidLoad()
         updateViews()
         imagePicker.delegate = self
+        if !senderIsMainCollection {
+            addToFavoriteButton.isHidden = true
+            
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
