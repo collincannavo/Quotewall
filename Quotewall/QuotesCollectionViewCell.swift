@@ -10,13 +10,17 @@ import UIKit
 
 class QuotesCollectionViewCell: UICollectionViewCell {
     
+    override func awakeFromNib() {
+        quoteOutlineView.layer.cornerRadius = 12
+        quoteOutlineView.clipsToBounds = true
+    }
+    
     var quote: Quote? {
         didSet {
             updateViews()
         }
     }
     
-    @IBOutlet weak var topViewOutline: UIView!
     @IBOutlet weak var quoteOutlineView: UIView!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
@@ -28,7 +32,7 @@ class QuotesCollectionViewCell: UICollectionViewCell {
         authorNameLabel.text = quote?.name
         quoteTextLabel.text = quote?.text
         quoteOutlineView.layer.cornerRadius = 40.0
-        topViewOutline.layer.cornerRadius = 40.0
+        
     }
     
 }

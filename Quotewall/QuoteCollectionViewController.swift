@@ -20,6 +20,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         self.dismiss(animated: true, completion: nil)
     }
     
+    let gradient = CAGradientLayer()
     var quotewall: Quotewall?
     
     var selectedQuote = UITapGestureRecognizer(target: self, action: #selector(quoteActions))
@@ -55,7 +56,12 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         cloudKitFetchQuotes()
         
         navigationBar.title = quotewall?.category
-        
+        gradient.colors = [UIColor.gradientBlueColor.cgColor, UIColor.gradientGreenColor.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.frame = view.frame
+        self.view.layer.insertSublayer(gradient, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,12 +108,14 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        
-//        let spacing: CGFloat
-//        
-//        
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        let spacing: CGFloat = 40.0
+        
+        return spacing
+        
+        
+    }
 
     // MARK: - Prepare for Segue
     

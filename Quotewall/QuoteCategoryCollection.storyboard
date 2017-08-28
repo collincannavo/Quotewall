@@ -92,6 +92,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Quotes" id="aih-nn-7ii"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

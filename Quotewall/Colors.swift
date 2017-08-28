@@ -20,7 +20,7 @@ extension UIColor {
     }
     
     class var gradientBlueColor: UIColor {
-        return UIColor(red: 66/255.0, green: 70/255.0, blue: 73/255.0, alpha: 1)
+        return UIColor(red: 31/255.0, green: 56/255.0, blue: 90/255.0, alpha: 1)
     }
 
     class var gradientGreenColor: UIColor {
