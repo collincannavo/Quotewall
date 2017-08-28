@@ -19,7 +19,7 @@ class NetworkQuotesController {
         
         let urlParameters = ["cat": text, "count": "10"]
        
-        let jsonHeader: [String: String] = ["X-Mashape-Key": "KWMaTjg8tXmshPlW12ZdsFf9jvOqp19FWGsjsnKHVoG3ZcqO6H", "application": "json"]
+        let jsonHeader: [String: String] = ["X-Mashape-Key": "KWMaTjg8tXmshPlW12ZdsFf9jvOqp19FWGsjsnKHVoG3ZcqO6H", "Accept": "application/json"]
         
         var request = URLRequest(url: url)
         

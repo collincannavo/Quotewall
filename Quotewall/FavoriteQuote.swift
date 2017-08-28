@@ -86,7 +86,8 @@ public class FavoriteQuote {
         if lhs.quote != rhs.quote  { return false }
         if lhs.backgroundImage != rhs.backgroundImage  { return false }
         
-        return true
+    
+    return true
     }
     
 

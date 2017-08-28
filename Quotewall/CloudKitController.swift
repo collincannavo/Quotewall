@@ -64,7 +64,7 @@ public class CloudKitController {
         operation.savePolicy = .changedKeys
         operation.queuePriority = .high
         operation.qualityOfService = .userInteractive
-        
+        operation.completionBlock = completion
         self.container.publicCloudDatabase.add(operation)
         
     }
@@ -318,5 +318,19 @@ public class CloudKitController {
         
     }
     
+    public func fetchCurrentFavoriteQuote(for person: Person, completion: @escaping(Bool) -> Void ) {
+        
+        guard let currentPersonID = PersonController.shared.currentPerson?.ckRecordID else { completion(false); return }
+        
+        let reference = CKReference(recordID: currentPersonID, action: .none)
+        
+        let predicate = NSPredicate(format: "reference == %@", reference)
+        
+        let query = CKQuery(recordType: FavoriteQuote.recordTypeKey, predicate: predicate)
+        
+//        container.publicCloudDatabase.perform(query, inZoneWith: nil) { (<#[CKRecord]?#>, <#Error?#>) in
+//            <#code#>
+//        }
+    }
     
 }

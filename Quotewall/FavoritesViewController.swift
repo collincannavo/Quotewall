@@ -13,6 +13,8 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var currentFavorite: FavoriteQuote?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -28,9 +30,13 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     @IBAction func removeButtonTapped(_ sender: Any) {
         
+        guard let person = PersonController.shared.currentPerson,
+            let favoriteQuote = currentFavorite
+        else { return }
         
+        PersonController.shared.removeFavoriteQuote(quote: favoriteQuote, from: person) { }
         
-//        PersonController.shared.removeFavoriteQuote(from: <#T##Person#>, at: <#T##IndexPath#>)
+        self.collectionView.reloadData()
     }
 
     
@@ -44,6 +50,8 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let favoriteQuote = PersonController.shared.currentPerson?.favoriteQuotes[indexPath.row]
+        
+        self.currentFavorite = favoriteQuote
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteQuoteCell", for: indexPath) as? FavoriteQuoteCollectionViewCell else { return FavoriteQuoteCollectionViewCell() }
         
@@ -78,16 +86,6 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
             
         }
     }
-    
-//    func removeQuote(favoriteQuote: FavoriteQuote, at indexPath: IndexPath) {
-//        
-//        guard let currentPerson = PersonController.shared.currentPerson else { return }
-//        
-//        let indexPath = person?.favoriteQuotes[indexPath.row]
-//        
-//        PersonController.shared.removeFavoriteQuote(from: <#T##Person#>, at: <#T##IndexPath#>)
-//        
-//    }
     
     
     // MARK: - Cell Setup

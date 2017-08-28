@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B61D05EA1F5370C0009417C4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D05E91F5370C0009417C4 /* Colors.swift */; };
-		B61D05EC1F5476C2009417C4 /* gradientTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B61D05EB1F5476C2009417C4 /* gradientTest.storyboard */; };
-		B61D05EE1F5476D9009417C4 /* GradientTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D05ED1F5476D9009417C4 /* GradientTestViewController.swift */; };
 		B6D368F61F47437B00F00DE9 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */; };
 		B6D368F81F47483000F00DE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F71F47483000F00DE9 /* Constants.swift */; };
 		B6D368FA1F474B7C00F00DE9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */; };
@@ -52,8 +50,6 @@
 
 /* Begin PBXFileReference section */
 		B61D05E91F5370C0009417C4 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		B61D05EB1F5476C2009417C4 /* gradientTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = gradientTest.storyboard; sourceTree = "<group>"; };
-		B61D05ED1F5476D9009417C4 /* GradientTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientTestViewController.swift; sourceTree = "<group>"; };
 		B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		B6D368F71F47483000F00DE9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -166,7 +162,6 @@
 				B6E726A91F43B2E60067B6F5 /* Favorites.storyboard */,
 				B6E726AD1F43B4150067B6F5 /* SearchQuotes.storyboard */,
 				B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */,
-				B61D05EB1F5476C2009417C4 /* gradientTest.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -206,7 +201,6 @@
 				B6E726B91F43C1140067B6F5 /* FavoritesViewController.swift */,
 				B6E726BD1F43C1760067B6F5 /* SearchQuotesViewController.swift */,
 				B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */,
-				B61D05ED1F5476D9009417C4 /* GradientTestViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -308,7 +302,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6E726851F436DBB0067B6F5 /* LaunchScreen.storyboard in Resources */,
-				B61D05EC1F5476C2009417C4 /* gradientTest.storyboard in Resources */,
 				B6E726A61F43AE3B0067B6F5 /* QuoteCollection.storyboard in Resources */,
 				B6E726AE1F43B4150067B6F5 /* SearchQuotes.storyboard in Resources */,
 				B6E726AA1F43B2E60067B6F5 /* Favorites.storyboard in Resources */,
@@ -334,7 +327,6 @@
 				B6E726B61F43C0B60067B6F5 /* QuoteCollectionViewController.swift in Sources */,
 				B6D368FC1F478EDF00F00DE9 /* CategoryCollectionViewCell.swift in Sources */,
 				B6D369041F4F611E00F00DE9 /* FavoriteQuoteController.swift in Sources */,
-				B61D05EE1F5476D9009417C4 /* GradientTestViewController.swift in Sources */,
 				B6E726C21F449E5C0067B6F5 /* NetworkController.swift in Sources */,
 				B6E7269A1F4396990067B6F5 /* QuoteController.swift in Sources */,
 				B6E726BE1F43C1760067B6F5 /* SearchQuotesViewController.swift in Sources */,

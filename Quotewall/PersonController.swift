@@ -18,7 +18,6 @@ public class PersonController {
     public var currentPerson: Person?
     
     
-    
     public func addPersonalQuote(_ quote: Quote, to person: Person) {
         person.personalQuotes.append(quote)
     }
@@ -37,15 +36,25 @@ public class PersonController {
         }
     }
     
-    public func removeFavoriteQuote(from person: Person, at indexPath: IndexPath) {
-        person.favoriteQuotes.remove(at: indexPath.row)
+   
+    public func removeFavoriteQuote(quote: FavoriteQuote, from person: Person, completion: @escaping () -> Void) {
+        if let indexPath = person.favoriteQuotes.index(where: { $0 == quote}) {
+        person.favoriteQuotes.remove(at: indexPath)
+        
+        
+        guard let favoriteCKRecordID = quote.ckRecordID else { return }
+        
+            CloudKitController.shared.deleteRecord(favoriteCKRecordID) {
+          completion()
+            }
+        }
     }
-    
+
     public func deleteQuote(_ quote: Quote, from person: Person, with completion: @escaping (Bool) -> Void) {
         if let index = person.quotes.index(where: {$0 == quote}) {
             person.quotes.remove(at: index)
             
-            self.updateQuote(for: person, completion: { (success) in
+            self.update(for: person, completion: { (success) in
                 if success {
                     completion(true)
                 } else {
@@ -72,7 +81,7 @@ public class PersonController {
     public func removeAllQuotes(from person: Person) {
         person.quotes.removeAll()
     }
-    public func updateQuote(for person: Person, completion: @escaping(Bool)-> Void) {
+    public func update(for person: Person, completion: @escaping(Bool)-> Void) {
         guard let recordID = person.ckRecordID else { return }
         CloudKitController.shared.fetchRecord(with: recordID) { (record, error) in
             if let error = error { NSLog("There was an error fetching the record for the update: \(error.localizedDescription)"); completion(false); return }

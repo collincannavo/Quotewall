@@ -13,9 +13,18 @@ import CloudKit
 class LaunchScreenViewController: UIViewController {
     
     let cloudKitManager = CloudKitController()
+    let gradient = CAGradientLayer()
+    
     
     override func viewDidLoad() {
         
+        
+        gradient.colors = [UIColor.gradientBlueColor.cgColor, UIColor.gradientGreenColor.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.frame = view.frame
+        self.view.layer.insertSublayer(gradient, at: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {

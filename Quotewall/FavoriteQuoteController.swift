@@ -15,6 +15,7 @@ class FavoriteQuoteController {
     
     public static let shared = FavoriteQuoteController()
     
+    public var currentFavoriteQuote: FavoriteQuote?
     
     
     // MARK: - Functions
