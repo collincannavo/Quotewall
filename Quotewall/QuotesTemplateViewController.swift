@@ -18,6 +18,8 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var addBackgroundImage: UIButton!
     @IBOutlet weak var quoteCellView: UIView!
     @IBOutlet weak var addToFavoriteButton: UIButton!
+    @IBOutlet weak var favoritesButton: UIBarButtonItem!
+    @IBOutlet weak var navigationBar: UINavigationBar!
 
     // MARK: - Properties
     
@@ -26,16 +28,18 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     var quote: Quote?
     var quoteCollectionCell = QuotesCollectionViewCell()
     let imagePicker = UIImagePickerController()
-    
+    let navigation = UINavigationController()
     // MARK: - Actions
     
-    @IBAction func uploadImageButtonTapped(_ sender: Any) {
+    @IBAction func uploadBackgroundButtonTapped(_ sender: Any) {
+        
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         
         present(imagePicker, animated: true, completion: nil)
         
     }
+   
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         
@@ -69,8 +73,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         }
         dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func addToFavoriteButtonTapped(_ sender: Any) {
+    @IBAction func addFavoriteButtonTapped(_ sender: Any) {
         
         print("Favorite button tapped")
         guard let quote = quoteTextField.text,
@@ -83,8 +86,8 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             }
         }
         
-
     }
+    
     // MARK: - Functions
     
     override func viewDidLoad() {
@@ -92,9 +95,15 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         updateViews()
         imagePicker.delegate = self
         if !senderIsMainCollection {
-            addToFavoriteButton.isHidden = true
+//            addToFavoriteButton.isHidden = true
+            
             
         }
+        
+        navigationBar.delegate = self as? UINavigationBarDelegate
+        navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.isTranslucent = true
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

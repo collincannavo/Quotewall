@@ -97,7 +97,16 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         guard let quotewall = quotewall else { return 0 }
         
         return quotewall.quotes.count
+
+        
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        
+//        let spacing: CGFloat
+//        
+//        
+//    }
 
     // MARK: - Prepare for Segue
     

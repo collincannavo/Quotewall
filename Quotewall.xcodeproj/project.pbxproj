@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B61D05EA1F5370C0009417C4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D05E91F5370C0009417C4 /* Colors.swift */; };
 		B6D368F61F47437B00F00DE9 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */; };
 		B6D368F81F47483000F00DE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F71F47483000F00DE9 /* Constants.swift */; };
 		B6D368FA1F474B7C00F00DE9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B61D05E91F5370C0009417C4 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		B6D368F71F47483000F00DE9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				B6E726D11F46026A0067B6F5 /* UIImageExtension.swift */,
+				B61D05E91F5370C0009417C4 /* Colors.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				B6E726C41F449EF10067B6F5 /* NetworkQuotes.swift in Sources */,
 				B6E726801F436DBB0067B6F5 /* Quotewall.xcdatamodeld in Sources */,
 				B6D369061F4F688200F00DE9 /* FavoriteQuoteCollectionViewCell.swift in Sources */,
+				B61D05EA1F5370C0009417C4 /* Colors.swift in Sources */,
 				B6E726B01F43BFE00067B6F5 /* SharedQuotesViewController.swift in Sources */,
 				B6E726921F4371EF0067B6F5 /* CloudKitController.swift in Sources */,
 				B6E726961F4374360067B6F5 /* Quote.swift in Sources */,
