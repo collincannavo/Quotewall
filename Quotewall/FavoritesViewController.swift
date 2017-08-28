@@ -13,6 +13,7 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let gradient = CAGradientLayer()
     var currentFavorite: FavoriteQuote?
     
     override func viewDidLoad() {
@@ -21,6 +22,12 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
         collectionView.dataSource = self
         updateView()
         
+        gradient.colors = [UIColor.gradientBlueColor.cgColor, UIColor.gradientGreenColor.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.frame = view.frame
+        self.view.layer.insertSublayer(gradient, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {

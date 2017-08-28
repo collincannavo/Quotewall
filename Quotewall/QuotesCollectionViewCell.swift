@@ -31,7 +31,7 @@ class QuotesCollectionViewCell: UICollectionViewCell {
 //        backgroundImage.image = quote?.image
         authorNameLabel.text = quote?.name
         quoteTextLabel.text = quote?.text
-        quoteOutlineView.layer.cornerRadius = 40.0
+        
         
     }
     

@@ -10,6 +10,10 @@ import UIKit
 
 class FavoriteQuoteCollectionViewCell: UICollectionViewCell {
     
+    override func awakeFromNib() {
+        favoriteQuoteView.layer.cornerRadius = 12
+        favoriteQuoteView.clipsToBounds = true
+    }
     
     var favoriteQuote: FavoriteQuote? {
         didSet {

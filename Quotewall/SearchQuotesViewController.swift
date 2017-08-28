@@ -18,8 +18,11 @@ import UIKit
 class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var networkSearchBar: UISearchBar!
     
     var quotes: [NetworkQuotes] = []
+    let gradient = CAGradientLayer()
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -31,6 +34,18 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        gradient.colors = [UIColor.gradientBlueColor.cgColor, UIColor.gradientGreenColor.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.frame = view.frame
+        self.view.layer.insertSublayer(gradient, at: 0)
+        
+        networkSearchBar.backgroundColor = UIColor.clear
+        networkSearchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        networkSearchBar.isTranslucent = true
+        networkSearchBar.delegate = self
+ 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
