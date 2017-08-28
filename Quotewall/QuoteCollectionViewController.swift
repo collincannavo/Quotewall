@@ -11,10 +11,10 @@ import UIKit
 
 
 
-class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
     
     
-    @IBOutlet weak var navigationBar: UINavigationItem!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBAction func backButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -55,7 +55,11 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         collectionView.dataSource = self
         cloudKitFetchQuotes()
         
-        navigationBar.title = quotewall?.category
+        navigationBar.topItem?.title = quotewall?.category
+        navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.isTranslucent = true
+        
         gradient.colors = [UIColor.gradientBlueColor.cgColor, UIColor.gradientGreenColor.cgColor]
         gradient.locations = [0.0, 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 1.0)

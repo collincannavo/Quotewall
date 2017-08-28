@@ -28,6 +28,7 @@
                                 <items>
                                     <navigationItem title="My Quotes Collection" id="RPl-lB-5Mn">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uxD-nb-i4d">
+                                            <color key="tintColor" red="0.16862745100000001" green="0.79607843140000001" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="addQuotewallButtonTapped:" destination="m1Z-gx-zgS" id="NXE-Wo-ZoS"/>
                                             </connections>
@@ -97,6 +98,7 @@
                     <tabBarItem key="tabBarItem" title="My Quotes" id="aih-nn-7ii"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="navigationBar" destination="Wj5-Q7-pB9" id="4wg-zo-z6o"/>
                         <outlet property="quoteCategoryCollection" destination="ifG-7h-5nD" id="j16-it-97K"/>
                     </connections>
                 </viewController>

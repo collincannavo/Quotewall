@@ -15,6 +15,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     
     // MARK: - Outlets
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var quoteCategoryCollection: UICollectionView!
     
     
@@ -40,6 +41,10 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
         gradient.frame = view.frame
         self.view.layer.insertSublayer(gradient, at: 0)
+        
+        navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.isTranslucent = true
         
         
     }
