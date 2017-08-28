@@ -92,7 +92,6 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.78039215689999997" green="0.79607843140000001" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Quotes" id="aih-nn-7ii"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -138,6 +137,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3Uv-dk-qsP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="EcC-vg-x4p">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>

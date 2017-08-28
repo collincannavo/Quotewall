@@ -16,6 +16,8 @@ class QuotesCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    @IBOutlet weak var topViewOutline: UIView!
+    @IBOutlet weak var quoteOutlineView: UIView!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var quoteTextLabel: UILabel!
@@ -25,6 +27,8 @@ class QuotesCollectionViewCell: UICollectionViewCell {
 //        backgroundImage.image = quote?.image
         authorNameLabel.text = quote?.name
         quoteTextLabel.text = quote?.text
+        quoteOutlineView.layer.cornerRadius = 40.0
+        topViewOutline.layer.cornerRadius = 40.0
     }
     
 }

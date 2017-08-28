@@ -33,6 +33,8 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: quotewallsWereSetNotification, object: nil)
+    
+//        backgroundGradient(<#T##rect: CGRect##CGRect#>)
     }
     
     func refresh() {
@@ -129,6 +131,29 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         cell.layer.shadowOffset = CGSize(width: 0, height: 4)
         cell.layer.shadowColor = UIColor.black.cgColor
         
+    }
+    
+    // MARK: - Background setup
+    
+    func backgroundGradient(_ rect: CGRect) {
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        
+        let drawAreaRect = rect.insetBy(dx: 10, dy: 10)
+        let drawArea = UIBezierPath(roundedRect: drawAreaRect, cornerRadius: 15.0)
+        
+        context.saveGState()
+        drawArea.addClip()
+        
+        let startColor = UIColor.gradientBlueColor
+        let endColor = UIColor.gradientGreenColor
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        guard let gradient = CGGradient(colorsSpace: colorSpace, colors: [startColor.cgColor, endColor.cgColor] as CFArray, locations: [0.0,1.0]) else { return }
+        
+        context.drawLinearGradient(gradient, start: CGPoint.zero, end: CGPoint(x:0.0, y: rect.height), options: [])
+        
+        context.restoreGState()
     }
     
     

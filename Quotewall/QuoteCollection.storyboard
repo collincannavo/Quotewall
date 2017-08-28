@@ -139,7 +139,9 @@
                                         <connections>
                                             <outlet property="authorNameLabel" destination="bJm-th-HrP" id="USt-cr-KrA"/>
                                             <outlet property="backgroundImage" destination="dHg-7Y-53Z" id="rIO-4y-gaM"/>
+                                            <outlet property="quoteOutlineView" destination="Irt-Jz-LV3" id="5hT-y7-D6S"/>
                                             <outlet property="quoteTextLabel" destination="OFc-bV-28e" id="3aC-Vb-tbo"/>
+                                            <outlet property="topViewOutline" destination="8zh-mk-3oN" id="bev-3B-RhV"/>
                                             <segue destination="Wer-Yq-9Iz" kind="show" identifier="editQuote" id="oZx-Ls-Pix"/>
                                         </connections>
                                     </collectionViewCell>

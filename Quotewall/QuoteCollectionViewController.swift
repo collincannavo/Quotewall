@@ -13,6 +13,7 @@ import UIKit
 
 class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBAction func backButtonTapped(_ sender: Any) {
