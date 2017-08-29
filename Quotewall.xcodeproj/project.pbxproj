@@ -16,6 +16,7 @@
 		B69ACD161F55C9480028B05C /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD151F55C9480028B05C /* ContactsViewController.swift */; };
 		B69ACD181F55CB4A0028B05C /* SharedQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD171F55CB4A0028B05C /* SharedQuote.swift */; };
 		B69ACD1A1F55CD2E0028B05C /* SharedQuoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD191F55CD2E0028B05C /* SharedQuoteController.swift */; };
+		B69ACD1C1F55E9A30028B05C /* SharedQuoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD1B1F55E9A30028B05C /* SharedQuoteCollectionViewCell.swift */; };
 		B6D368F61F47437B00F00DE9 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */; };
 		B6D368F81F47483000F00DE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F71F47483000F00DE9 /* Constants.swift */; };
 		B6D368FA1F474B7C00F00DE9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */; };
@@ -66,6 +67,7 @@
 		B69ACD151F55C9480028B05C /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		B69ACD171F55CB4A0028B05C /* SharedQuote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedQuote.swift; sourceTree = "<group>"; };
 		B69ACD191F55CD2E0028B05C /* SharedQuoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedQuoteController.swift; sourceTree = "<group>"; };
+		B69ACD1B1F55E9A30028B05C /* SharedQuoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedQuoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		B6D368F71F47483000F00DE9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				B6D368FB1F478EDF00F00DE9 /* CategoryCollectionViewCell.swift */,
 				B6D368FD1F48F79200F00DE9 /* QuotesCollectionViewCell.swift */,
 				B6D369051F4F688200F00DE9 /* FavoriteQuoteCollectionViewCell.swift */,
+				B69ACD1B1F55E9A30028B05C /* SharedQuoteCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				B6D368FC1F478EDF00F00DE9 /* CategoryCollectionViewCell.swift in Sources */,
 				B6D369041F4F611E00F00DE9 /* FavoriteQuoteController.swift in Sources */,
 				B61D05F21F54C70C009417C4 /* CircularCollectionViewLayout.swift in Sources */,
+				B69ACD1C1F55E9A30028B05C /* SharedQuoteCollectionViewCell.swift in Sources */,
 				B6E726C21F449E5C0067B6F5 /* NetworkController.swift in Sources */,
 				B6E7269A1F4396990067B6F5 /* QuoteController.swift in Sources */,
 				B6E726BE1F43C1760067B6F5 /* SearchQuotesViewController.swift in Sources */,

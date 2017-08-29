@@ -9,8 +9,9 @@
 import UIKit
 import CloudKit
 import Contacts
+import ContactsUI
 
-class ContactsTableViewController: UITableViewController {
+class ContactsTableViewController: UITableViewController, CNContactPickerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()

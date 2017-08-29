@@ -14,7 +14,6 @@ public class ContactsViewController {
     
     public static let shared = ContactsViewController()
     
-    
     lazy var contacts: [CNContact] = {
         let contactStore = CNContactStore()
         let keysToFetch = [
