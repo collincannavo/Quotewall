@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		B61D05EA1F5370C0009417C4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D05E91F5370C0009417C4 /* Colors.swift */; };
+		B61D05F21F54C70C009417C4 /* CircularCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D05F11F54C70C009417C4 /* CircularCollectionViewLayout.swift */; };
+		B69ACD0C1F54CAEA0028B05C /* CollectionViewTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B69ACD0B1F54CAEA0028B05C /* CollectionViewTest.storyboard */; };
+		B69ACD0E1F54CBC00028B05C /* CircularCollectionViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD0D1F54CBC00028B05C /* CircularCollectionViewLayoutAttributes.swift */; };
+		B69ACD101F55BA650028B05C /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B69ACD0F1F55BA650028B05C /* Contacts.storyboard */; };
+		B69ACD141F55BB4D0028B05C /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD131F55BB4D0028B05C /* ContactsTableViewController.swift */; };
+		B69ACD161F55C9480028B05C /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD151F55C9480028B05C /* ContactsViewController.swift */; };
 		B6D368F61F47437B00F00DE9 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */; };
 		B6D368F81F47483000F00DE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F71F47483000F00DE9 /* Constants.swift */; };
 		B6D368FA1F474B7C00F00DE9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */; };
@@ -50,6 +56,12 @@
 
 /* Begin PBXFileReference section */
 		B61D05E91F5370C0009417C4 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B61D05F11F54C70C009417C4 /* CircularCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayout.swift; sourceTree = "<group>"; };
+		B69ACD0B1F54CAEA0028B05C /* CollectionViewTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CollectionViewTest.storyboard; sourceTree = "<group>"; };
+		B69ACD0D1F54CBC00028B05C /* CircularCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
+		B69ACD0F1F55BA650028B05C /* Contacts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Contacts.storyboard; sourceTree = "<group>"; };
+		B69ACD131F55BB4D0028B05C /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		B69ACD151F55C9480028B05C /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		B6D368F71F47483000F00DE9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -162,6 +174,8 @@
 				B6E726A91F43B2E60067B6F5 /* Favorites.storyboard */,
 				B6E726AD1F43B4150067B6F5 /* SearchQuotes.storyboard */,
 				B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */,
+				B69ACD0B1F54CAEA0028B05C /* CollectionViewTest.storyboard */,
+				B69ACD0F1F55BA650028B05C /* Contacts.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -187,6 +201,7 @@
 				B6E726C51F44A0590067B6F5 /* NetworkQuotesController.swift */,
 				B6E726C71F44E0980067B6F5 /* PersonController.swift */,
 				B6D369031F4F611E00F00DE9 /* FavoriteQuoteController.swift */,
+				B69ACD151F55C9480028B05C /* ContactsViewController.swift */,
 			);
 			name = ModelController;
 			sourceTree = "<group>";
@@ -201,6 +216,7 @@
 				B6E726B91F43C1140067B6F5 /* FavoritesViewController.swift */,
 				B6E726BD1F43C1760067B6F5 /* SearchQuotesViewController.swift */,
 				B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */,
+				B69ACD131F55BB4D0028B05C /* ContactsTableViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -227,8 +243,10 @@
 		B6E726D01F4602550067B6F5 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				B61D05F11F54C70C009417C4 /* CircularCollectionViewLayout.swift */,
 				B6E726D11F46026A0067B6F5 /* UIImageExtension.swift */,
 				B61D05E91F5370C0009417C4 /* Colors.swift */,
+				B69ACD0D1F54CBC00028B05C /* CircularCollectionViewLayoutAttributes.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -307,8 +325,10 @@
 				B6E726AA1F43B2E60067B6F5 /* Favorites.storyboard in Resources */,
 				B6E726821F436DBB0067B6F5 /* Assets.xcassets in Resources */,
 				B6E726A21F43ACEE0067B6F5 /* QuoteCategoryCollection.storyboard in Resources */,
+				B69ACD0C1F54CAEA0028B05C /* CollectionViewTest.storyboard in Resources */,
 				B6E726A01F43AC6F0067B6F5 /* SharedQuotes.storyboard in Resources */,
 				B6D368FA1F474B7C00F00DE9 /* Onboarding.storyboard in Resources */,
+				B69ACD101F55BA650028B05C /* Contacts.storyboard in Resources */,
 				B6E7267D1F436DBB0067B6F5 /* Main.storyboard in Resources */,
 				B6E726A41F43ADE70067B6F5 /* QuotesTemplate1.storyboard in Resources */,
 			);
@@ -327,6 +347,7 @@
 				B6E726B61F43C0B60067B6F5 /* QuoteCollectionViewController.swift in Sources */,
 				B6D368FC1F478EDF00F00DE9 /* CategoryCollectionViewCell.swift in Sources */,
 				B6D369041F4F611E00F00DE9 /* FavoriteQuoteController.swift in Sources */,
+				B61D05F21F54C70C009417C4 /* CircularCollectionViewLayout.swift in Sources */,
 				B6E726C21F449E5C0067B6F5 /* NetworkController.swift in Sources */,
 				B6E7269A1F4396990067B6F5 /* QuoteController.swift in Sources */,
 				B6E726BE1F43C1760067B6F5 /* SearchQuotesViewController.swift in Sources */,
@@ -338,8 +359,10 @@
 				B6E726C41F449EF10067B6F5 /* NetworkQuotes.swift in Sources */,
 				B6E726801F436DBB0067B6F5 /* Quotewall.xcdatamodeld in Sources */,
 				B6D369061F4F688200F00DE9 /* FavoriteQuoteCollectionViewCell.swift in Sources */,
+				B69ACD0E1F54CBC00028B05C /* CircularCollectionViewLayoutAttributes.swift in Sources */,
 				B61D05EA1F5370C0009417C4 /* Colors.swift in Sources */,
 				B6E726B01F43BFE00067B6F5 /* SharedQuotesViewController.swift in Sources */,
+				B69ACD161F55C9480028B05C /* ContactsViewController.swift in Sources */,
 				B6E726921F4371EF0067B6F5 /* CloudKitController.swift in Sources */,
 				B6E726961F4374360067B6F5 /* Quote.swift in Sources */,
 				B6D368F61F47437B00F00DE9 /* LaunchScreenViewController.swift in Sources */,
@@ -349,6 +372,7 @@
 				B6E726781F436DBB0067B6F5 /* AppDelegate.swift in Sources */,
 				B6E726C01F43EFCA0067B6F5 /* Person.swift in Sources */,
 				B6E726B41F43C07A0067B6F5 /* QuotesTemplateViewController.swift in Sources */,
+				B69ACD141F55BB4D0028B05C /* ContactsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

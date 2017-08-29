@@ -23,6 +23,8 @@ public class Person {
     public var personalQuotes: [Quote] = []
     public var quotes: [Quote] = []
     public var favoriteQuotes: [FavoriteQuote] = []
+    public var followedUsers: [CKReference] = []
+//    public var sharedQuotes: [SharedQuotes] = []
     
     
     public var sortedPersonalQuotes: [Quote] {
