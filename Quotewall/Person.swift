@@ -16,15 +16,17 @@ public class Person {
     public static let appleUserReferenceKey = "appleUserReference"
     public static let receivedQuotesKey = "receivedQuotes"
     public static let parentCKReferenceKey = "parentReference"
+    public static let phoneKey = "phone"
     
     public var ckRecordID: CKRecordID?
     public var userCKReference: CKReference?
     public let name: String
+    public let phone: String
     public var personalQuotes: [Quote] = []
     public var quotes: [Quote] = []
     public var favoriteQuotes: [FavoriteQuote] = []
     public var followedUsers: [CKReference] = []
-//    public var sharedQuotes: [SharedQuotes] = []
+    public var sharedQuotes: [SharedQuote] = []
     
     
     public var sortedPersonalQuotes: [Quote] {
@@ -53,14 +55,18 @@ public class Person {
         return record
     }
     
-    public init(name: String, userCKReference: CKReference) {
+    public init(name: String, phone: String, userCKReference: CKReference) {
         self.name = name
         self.userCKReference = userCKReference
+        self.phone = phone
     }
     
     public init?(CKRecord: CKRecord) {
-        guard let name = CKRecord[Person.nameKey] as? String else { return nil }
+        guard let name = CKRecord[Person.nameKey] as? String,
+            let phone = CKRecord[Person.phoneKey] as? String
+        else { return nil }
         self.name = name
+        self.phone = phone
         self.userCKReference = CKRecord[Person.appleUserReferenceKey] as? CKReference
     
         self.ckRecordID = CKRecord.recordID

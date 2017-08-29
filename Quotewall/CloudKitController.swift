@@ -69,7 +69,7 @@ public class CloudKitController {
         
     }
     
-    public func createUser(with name: String, completion: @escaping (_ success: Bool) -> Void ) {
+    public func createUser(with name: String, phone: String, completion: @escaping (_ success: Bool) -> Void ) {
         
         container.fetchUserRecordID { (record, error) in
             if let error = error { print(error.localizedDescription); completion(false); return }
@@ -78,7 +78,7 @@ public class CloudKitController {
             
             let userCKReference = CKReference(recordID: appleUserRecordID, action: .none)
             
-            let user = Person(name: name, userCKReference: userCKReference)
+            let user = Person(name: name, phone: phone, userCKReference: userCKReference)
             
             self.container.publicCloudDatabase.save(user.ckRecord, completionHandler: { (_, error) in
                 if let error = error { print(error.localizedDescription); completion(false); return }
@@ -318,19 +318,31 @@ public class CloudKitController {
         
     }
     
-    public func fetchCurrentFavoriteQuote(for person: Person, completion: @escaping(Bool) -> Void ) {
+    public func fetchSharedQuotes(for person: Person, completion: @escaping(Bool, [SharedQuote]) -> Void) {
         
-        guard let currentPersonID = PersonController.shared.currentPerson?.ckRecordID else { completion(false); return }
+        let predicate = NSPredicate(format: "reference IN %@", person.followedUsers)
         
-        let reference = CKReference(recordID: currentPersonID, action: .none)
+        let query = CKQuery(recordType: SharedQuote.recordTypeKey, predicate: predicate)
         
-        let predicate = NSPredicate(format: "reference == %@", reference)
+        container.publicCloudDatabase.perform(query, inZoneWith: nil) { (ckRecords, error) in
+            if let error = error {
+                NSLog("There was an error fetching all the shared quotes: \(error.localizedDescription)")
+                completion(false, [])
+                return
+            }
+            
+            guard let records = ckRecords
+            
+                else { completion(false, []); return }
+            
+            let sharedQuotes = records.flatMap({SharedQuote(ckRecord: $0)})
+            
+            person.sharedQuotes = sharedQuotes
+            
+            completion(true, sharedQuotes)
+            
+        }
         
-        let query = CKQuery(recordType: FavoriteQuote.recordTypeKey, predicate: predicate)
-        
-//        container.publicCloudDatabase.perform(query, inZoneWith: nil) { (<#[CKRecord]?#>, <#Error?#>) in
-//            <#code#>
-//        }
     }
     
 }

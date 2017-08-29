@@ -96,21 +96,5 @@ class ContactsTableViewController: UITableViewController {
     
     // MARK: - Functions
     
-    
-    
-    func getContacts() {
-        let store = CNContactStore()
-        
-        if CNContactStore.authorizationStatus(for: .contacts) == .notDetermined {
-            store.requestAccess(for: .contacts, completionHandler: { (authorized, error) in
-                if authorized {
-                    self.retrieveContactsWithStore(store)
-                }
-            })
-            
-        }else if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
-            self.retrieveContactsWithStore(store)
-        }
-    }
 
 }

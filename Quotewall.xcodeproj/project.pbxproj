@@ -14,6 +14,8 @@
 		B69ACD101F55BA650028B05C /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B69ACD0F1F55BA650028B05C /* Contacts.storyboard */; };
 		B69ACD141F55BB4D0028B05C /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD131F55BB4D0028B05C /* ContactsTableViewController.swift */; };
 		B69ACD161F55C9480028B05C /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD151F55C9480028B05C /* ContactsViewController.swift */; };
+		B69ACD181F55CB4A0028B05C /* SharedQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD171F55CB4A0028B05C /* SharedQuote.swift */; };
+		B69ACD1A1F55CD2E0028B05C /* SharedQuoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD191F55CD2E0028B05C /* SharedQuoteController.swift */; };
 		B6D368F61F47437B00F00DE9 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */; };
 		B6D368F81F47483000F00DE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D368F71F47483000F00DE9 /* Constants.swift */; };
 		B6D368FA1F474B7C00F00DE9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */; };
@@ -62,6 +64,8 @@
 		B69ACD0F1F55BA650028B05C /* Contacts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Contacts.storyboard; sourceTree = "<group>"; };
 		B69ACD131F55BB4D0028B05C /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		B69ACD151F55C9480028B05C /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		B69ACD171F55CB4A0028B05C /* SharedQuote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedQuote.swift; sourceTree = "<group>"; };
+		B69ACD191F55CD2E0028B05C /* SharedQuoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedQuoteController.swift; sourceTree = "<group>"; };
 		B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		B6D368F71F47483000F00DE9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B6D368F91F474B7C00F00DE9 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 				B6E726951F4374360067B6F5 /* Quote.swift */,
 				B6E726BF1F43EFCA0067B6F5 /* Person.swift */,
 				B6D369011F4F4D1E00F00DE9 /* FavoriteQuote.swift */,
+				B69ACD171F55CB4A0028B05C /* SharedQuote.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 				B6E726C71F44E0980067B6F5 /* PersonController.swift */,
 				B6D369031F4F611E00F00DE9 /* FavoriteQuoteController.swift */,
 				B69ACD151F55C9480028B05C /* ContactsViewController.swift */,
+				B69ACD191F55CD2E0028B05C /* SharedQuoteController.swift */,
 			);
 			name = ModelController;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6E726BA1F43C1140067B6F5 /* FavoritesViewController.swift in Sources */,
+				B69ACD1A1F55CD2E0028B05C /* SharedQuoteController.swift in Sources */,
 				B6E726D21F46026B0067B6F5 /* UIImageExtension.swift in Sources */,
 				B6D369021F4F4D1E00F00DE9 /* FavoriteQuote.swift in Sources */,
 				B6E726B61F43C0B60067B6F5 /* QuoteCollectionViewController.swift in Sources */,
@@ -353,6 +360,7 @@
 				B6E726BE1F43C1760067B6F5 /* SearchQuotesViewController.swift in Sources */,
 				B6D368F81F47483000F00DE9 /* Constants.swift in Sources */,
 				B6E726981F43966D0067B6F5 /* QuotewallController.swift in Sources */,
+				B69ACD181F55CB4A0028B05C /* SharedQuote.swift in Sources */,
 				B6E726C81F44E0980067B6F5 /* PersonController.swift in Sources */,
 				B6E726C61F44A0590067B6F5 /* NetworkQuotesController.swift in Sources */,
 				B6E726941F4372BC0067B6F5 /* Quotewall.swift in Sources */,

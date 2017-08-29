@@ -14,7 +14,7 @@ class LaunchScreenViewController: UIViewController {
     
     let cloudKitManager = CloudKitController()
     let gradient = CAGradientLayer()
-    
+    let person = PersonController()
     
     override func viewDidLoad() {
         
@@ -71,17 +71,39 @@ class LaunchScreenViewController: UIViewController {
                         
                     })
                 } else {
-                    CloudKitController.shared.createUser(with: "DefaultName", completion: { (_) in
-                        DispatchQueue.main.async {
-                            NotificationCenter.default.post(name: Constants.sharedQuotesFetchedNotification, object: self)
-                            
-                            self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
-                        }
-                        
-                    })
+                    
+                    self.createUser()
+                    
                 }
             }
             
         }
+    }
+    
+    func createUser() {
+        
+        var phoneNumberTextField: UITextField?
+        
+        let alert = UIAlertController(title: "Please Enter Your Phone Number", message: "This will allow your friends and family to follow any quotes you want to share", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            phoneNumberTextField = textField
+            phoneNumberTextField?.placeholder = "Phone Number"
+            phoneNumberTextField?.keyboardType = .phonePad
+        }
+        
+        let okAction = UIAlertAction(title: "Save", style: .default, handler: { (phoneNumber) in
+            guard let phoneNumber = phoneNumberTextField?.text else { return }
+            self.cloudKitManager.createUser(with: "DefaultName", phone: phoneNumber, completion: { (_) in
+                DispatchQueue.main.async {
+                    
+                }
+                self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
+            })
+        })
+
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+        
     }
 }
