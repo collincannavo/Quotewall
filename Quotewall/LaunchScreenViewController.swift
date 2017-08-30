@@ -70,11 +70,12 @@ class LaunchScreenViewController: UIViewController {
                         
                         
                     })
-                } else {
-                    
-                    self.createUser()
                     
                 }
+            } else {
+                    
+                    self.createUser()
+
             }
             
         }
