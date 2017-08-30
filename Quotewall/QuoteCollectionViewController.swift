@@ -24,10 +24,15 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     var quotewall: Quotewall?
     var person: Person?
     
-//    var selectedQuote = UITapGestureRecognizer(target: self, action: #selector(quoteActions))
+
     
-    func quoteActions(cell: UICollectionViewCell) {
+    func quoteActions(author: String, quote: String, image: Data?) {
         let alert = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
+        
+        let shareQuoteButton = UIAlertAction(title: "Share Quote", style: .default) { (share) in
+            
+            self.createSharedQuote(author: author, quote: quote, image: image)
+        }
         
         let deleteButton = UIAlertAction(title: "Delete Quote", style: .default) { (delete) in
             
@@ -50,24 +55,24 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         cancel.setValue(UIColor.red, forKey: "titleTextColor")
         
-        alert.addAction(deleteButton)
+        alert.addAction(shareQuoteButton)
         alert.addAction(removeFromSharedButton)
+        alert.addAction(deleteButton)
         alert.addAction(cancel)
         
         present(alert, animated: true, completion: nil)
         
     }
     
+    
     override func viewDidLoad() {
         
-        let longPress: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress(gesture:)))
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gesture:)))
         longPress.minimumPressDuration = 0.5
         longPress.delegate = self as? UIGestureRecognizerDelegate
         longPress.delaysTouchesBegan = true
         self.collectionView?.addGestureRecognizer(longPress)
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: Constants.currentUserQuotewallsNotification, object: nil)
+
         collectionView.delegate = self
         collectionView.dataSource = self
         cloudKitFetchQuotes()
@@ -83,6 +88,8 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
         gradient.frame = view.frame
         self.view.layer.insertSublayer(gradient, at: 0)
+        
+        QuotewallController.shared.currentQuotewall = self.quotewall
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -199,14 +206,49 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         let p = gesture.location(in: self.collectionView)
         
         if let indexPath = self.collectionView.indexPathForItem(at: p) {
-            guard let cell = self.collectionView.cellForItem(at: indexPath) else { return }
             
-            quoteActions(cell: cell)
+            guard let cell = quotewall?.quotes[indexPath.row] else { return }
+            
+                let author = cell.name
+                let quote = cell.text
+                let image = cell.image
+        
+            quoteActions(author: author, quote: quote, image: image)
         } else {
             NSLog("Couldn't find the right index path")
         }
         
     }
 
+    func createSharedQuote(author: String, quote: String, image: Data?) {
+
+                let author = author
+                let quote = quote
+                let image = image
+        
+        SharedQuoteController.shared.createSharedQuote(with: author, quote: quote, image: image) { (success) in
+            if success {
+                self.successfullyAdded()
+            }
+        }
+        
+    }
+    
+    func successfullyAdded() {
+        let alert = UIAlertController(title: "Successfully Shared!", message: "", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK!", style: .default, handler: nil)
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
+    }
     
 }
+
+
+
+
+
+
+
+
+
+

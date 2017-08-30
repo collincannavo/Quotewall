@@ -14,10 +14,10 @@ public class SharedQuoteController {
     
     public static let shared = SharedQuoteController()
     
-    
     public func createSharedQuote(with name: String, quote: String, image backgroundImage: Data? = nil, completion: @escaping (Bool) -> Void) {
         
-        guard let currentUser = PersonController.shared.currentPerson else { completion(false); return }
+        guard let currentUser = PersonController.shared.currentPerson else
+        { completion(false); return }
         
         let sharedQuote = SharedQuote(name: name, quote: quote, backgroundImage: backgroundImage)
         
@@ -26,6 +26,5 @@ public class SharedQuoteController {
         PersonController.shared.addSharedQuotes(sharedQuote, to: currentUser)
         
     }
-    
     
 }
