@@ -44,41 +44,29 @@ class LaunchScreenViewController: UIViewController {
             if success {
                 if person != nil {
                     CloudKitController.shared.fetchQuotewalls(completion: { (success) in
-                        if success {
-                            DispatchQueue.main.async {
-                                NotificationCenter.default.post(name: Constants.currentQuotewallFetchedNotification, object: self)
-                            }
-                        }
+
                     })
                     
                     CloudKitController.shared.fetchCurrentQuotewall(completion: { (success, quotewall) in
-                        if success {
-                            DispatchQueue.main.async {
-                                
-                            }
-                        }
+
+                        })
+                        
                     
                     CloudKitController.shared.fetchCurrentQuotewallQuotes(completion: { (success) in
-                        if success {
-                            DispatchQueue.main.async {
-                                
-                            }
-                        }
+
                     })
-                        
-                        self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
-                        
-                        
-                    })
+                    
+                    self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
+                    
                 } else {
                     
                     self.createUser()
-                    
+                
                 }
             }
-            
         }
     }
+    
     
     func createUser() {
         
@@ -93,11 +81,12 @@ class LaunchScreenViewController: UIViewController {
         }
         
         let okAction = UIAlertAction(title: "Save", style: .default, handler: { (phoneNumber) in
-            guard let phoneNumber = phoneNumberTextField?.text else { return }
+            
+            guard let phoneNumber = phoneNumberTextField?.text
+                else { return }
+            
             self.cloudKitManager.createUser(with: "DefaultName", phone: phoneNumber, completion: { (_) in
-                DispatchQueue.main.async {
-                    
-                }
+                
                 self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
             })
         })

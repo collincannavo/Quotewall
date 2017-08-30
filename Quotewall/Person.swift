@@ -50,6 +50,7 @@ public class Person {
         let record = CKRecord(recordType: Person.recordTypeKey, recordID: recordID)
         record[Person.nameKey] = name as CKRecordValue?
         record[Person.appleUserReferenceKey] = userCKReference as CKRecordValue?
+        record[Person.phoneKey] = phone as CKRecordValue?
         
         self.ckRecordID = recordID
         return record

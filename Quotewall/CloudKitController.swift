@@ -96,7 +96,8 @@ public class CloudKitController {
                 NSLog("There was an error fetching the current user: \(error.localizedDescription)")
                 completion(false, nil)
                 return }
-            guard let appleUserRecordID = appleUserRecordID else { completion(false, nil); return }
+            guard let appleUserRecordID = appleUserRecordID else {
+                completion(false, nil); return }
             
             let appleUserReference = CKReference(recordID: appleUserRecordID, action: .none)
             
@@ -105,7 +106,8 @@ public class CloudKitController {
             let query = CKQuery(recordType: Person.recordTypeKey, predicate: predicate)
             
             self.container.publicCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
-                if let error = error { print(error.localizedDescription); completion(false, nil); return }
+                if let error = error { print(error.localizedDescription);
+                    completion(false, nil); return }
                 
                 guard let currentUserRecord = records?.first else {
                     completion(true, nil) ; return }
@@ -120,9 +122,11 @@ public class CloudKitController {
         }
     }
     
+    
     public func fetchCurrentQuotewall(completion: @escaping(Bool, Quotewall?) -> Void) {
             
-            guard let currentUserRecordID = PersonController.shared.currentPerson?.ckRecordID else { completion(false, nil); return }
+            guard let currentUserRecordID = PersonController.shared.currentPerson?.ckRecordID
+                else { completion(false, nil); return }
             
             let predicate = NSPredicate(format: "parentReference == %@", currentUserRecordID)
             
@@ -131,7 +135,8 @@ public class CloudKitController {
             self.container.publicCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
                 if let error = error { print(error.localizedDescription); completion(false, nil); return }
                 
-                guard let currentQuotewall = records?.first else { completion(false, nil); return }
+                guard let currentQuotewall = records?.first
+                    else { completion(false, nil); return }
                 
                 let newCurrentQuotewall = Quotewall(CKRecord: currentQuotewall)
                 
@@ -210,7 +215,8 @@ public class CloudKitController {
     }
     public func fetchCurrentQuotewallQuotes(completion: @escaping(Bool)-> Void) {
         
-        guard let currentQuotewallID = QuotewallController.shared.currentQuotewall?.ckRecordID else { completion(false); return }
+        guard let currentQuotewallID = QuotewallController.shared.currentQuotewall?.ckRecordID
+            else { completion(false); return }
         
         let currentQuotewallCKReference = CKReference(recordID: currentQuotewallID, action: .none)
         
@@ -264,7 +270,8 @@ public class CloudKitController {
     
     public func fetchQuotewalls(completion: @escaping (Bool)-> Void) {
 
-        guard let currentUsersID = PersonController.shared.currentPerson?.ckRecordID else { return }
+        guard let currentUsersID = PersonController.shared.currentPerson?.ckRecordID
+            else { return }
         
         let reference = CKReference(recordID: currentUsersID, action: .none)
         
@@ -279,7 +286,8 @@ public class CloudKitController {
                 return
             }
             
-            guard let records = records else { completion(false); return }
+            guard let records = records
+                else { completion(false); return }
             
             let quotewalls = records.flatMap({Quotewall(CKRecord: $0)})
             

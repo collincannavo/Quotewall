@@ -87,14 +87,14 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         alertController.addTextField { (textField) in
             quotewallTitle = textField
             quotewallTitle?.placeholder = "Title of Quotewall"
-            guard let title = quotewallTitle?.text else { return }
-//            self.quotewall?.category = title
-            
         }
         
         let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let saveAction = UIAlertAction(title: "Save", style: .default) { (_) in
-            guard let title = quotewallTitle?.text else { return }
+           
+           
+            guard let title = quotewallTitle?.text
+                else { return }
             
             if title.isEmpty {
                 let alert = UIAlertController(title: "Sorry, I couldn't save it. Please add a title", message: nil, preferredStyle: .alert)
@@ -112,6 +112,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
                 }
         }
     }
+
         alertController.addAction(dismissAction)
         alertController.addAction(saveAction)
         
