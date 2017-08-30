@@ -1,5 +1,5 @@
 //
-//  SavedQuotes.swift
+//  FavoriteQuotes.swift
 //  Quotewall
 //
 //  Created by Collin Cannavo on 8/24/17.
@@ -12,7 +12,7 @@ import CloudKit
 
 public class FavoriteQuote {
     
-    public static let recordTypeKey = "SavedQuotes"
+    public static let recordTypeKey = "FavoriteQuote"
     public static let quoteKey = "quote"
     public static let nameKey = "name"
     public static let backgroundImageDataKey = "backgroundImageAsset"
