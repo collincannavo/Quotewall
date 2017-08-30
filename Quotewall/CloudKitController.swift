@@ -354,13 +354,15 @@ public class CloudKitController {
         container.publicCloudDatabase.perform(query, inZoneWith: nil) { (ckRecords, error) in
             if let error = error {
                 NSLog("There was an error fetching a person to follow: \(error.localizedDescription)")
-                completion(false, reference)
+//                completion(false, reference)
                 return
         }
             
             guard let record = ckRecords?.first,
                 let person = PersonController.shared.currentPerson
-                else { completion(false, reference); return }
+                else {
+//completion(false, reference);
+                    return }
             
             let reference = CKReference(record: record, action: .none)
             
