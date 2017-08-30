@@ -344,8 +344,7 @@ public class CloudKitController {
         }
         
     }
-    
-    public func createFollowedUsers(with phone: String, completion: @escaping (Bool, CKReference) -> Void) {
+    public func createFollowedUsers(with phone: String, completion: @escaping (Bool) -> Void) {
         
         let predicate = NSPredicate(format: "phone == %@", phone)
         
@@ -354,23 +353,22 @@ public class CloudKitController {
         container.publicCloudDatabase.perform(query, inZoneWith: nil) { (ckRecords, error) in
             if let error = error {
                 NSLog("There was an error fetching a person to follow: \(error.localizedDescription)")
-//                completion(false, reference)
+                completion(false)
                 return
-        }
+            }
             
             guard let record = ckRecords?.first,
                 let person = PersonController.shared.currentPerson
-                else {
-//completion(false, reference);
-                    return }
+                else
+            { completion(false);
+                return }
             
             let reference = CKReference(record: record, action: .none)
             
             person.followedUsers.append(reference)
             
-            completion(true, reference)
+            completion(true)
             
         }
-        
     }
 }

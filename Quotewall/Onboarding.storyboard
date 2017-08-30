@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="1170.4000000000001" y="-436.73163418290858"/>
         </scene>
-        <!--QuoteCategoryCollection-->
+        <!--SharedQuotes-->
         <scene sceneID="QPL-z8-BUK">
             <objects>
-                <viewControllerPlaceholder storyboardName="QuoteCategoryCollection" id="pt9-Jy-kIG" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SharedQuotes" id="pt9-Jy-kIG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LcQ-6B-O0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1055" y="-23"/>

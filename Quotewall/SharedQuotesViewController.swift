@@ -13,6 +13,7 @@ import ContactsUI
 class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CNContactPickerDelegate {
     
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var sharedCollectionView: UICollectionView!
     
     @IBAction func addContactsButtonTapped(_ sender: Any) {
@@ -67,7 +68,7 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
                 
                 let phoneNumber = number.value.stringValue
                 
-                CloudKitController.shared.createFollowedUsers(with: phoneNumber, completion: { (success, ckReference) in
+                CloudKitController.shared.createFollowedUsers(with: phoneNumber, completion: { (success) in
                     if success {
                         
                         dispatchGroup.leave()

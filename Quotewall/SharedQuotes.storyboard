@@ -87,6 +87,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="cCI-GY-2cl"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="fJs-FI-fEl" id="FGj-1S-8Db"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJt-ND-Jb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
