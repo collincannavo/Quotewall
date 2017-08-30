@@ -58,33 +58,62 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
     
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contacts: [CNContact]) {
         
-        let dispatchGroup = DispatchGroup()
+        let contactsDispatchGroup = DispatchGroup()
+        
+        var contactsCount = 0
+        
+        let phoneNumberDispatchGroup = DispatchGroup()
+        var contactsPhoneCount = 0
         
         contacts.forEach { contact in
             
+            contactsDispatchGroup.enter()
+            contactsCount += 1
+            print(contactsCount)
+            
             for number in contact.phoneNumbers {
                 
-                dispatchGroup.enter()
+                phoneNumberDispatchGroup.enter()
+                contactsPhoneCount += 1
+                print(contactsPhoneCount)
                 
                 let phoneNumber = number.value.stringValue
                 
                 CloudKitController.shared.createFollowedUsers(with: phoneNumber, completion: { (success) in
-                    if success {
+                    if !success {
                         
-                        dispatchGroup.leave()
+                        
                     }
+                    phoneNumberDispatchGroup.leave()
+                    contactsPhoneCount -= 1
+                    print(contactsPhoneCount)
                 })
+            }
+            
+            phoneNumberDispatchGroup.notify(queue: DispatchQueue.main, execute: {
+                contactsDispatchGroup.leave()
+                contactsCount -= 1
+                print(contactsCount)
+            })
+            
+        }
+        
+        contactsDispatchGroup.notify(queue: DispatchQueue.main) {
+            self.sharedCollectionView.reloadData()
+            
+            guard let currentPerson = PersonController.shared.currentPerson?.ckRecord else { return }
+            
+            CloudKitController.shared.updateRecord(currentPerson) { (ckRecords, ckRecordID, error) in
+                
+                if let error = error {
+                    NSLog("There was an error updating the current record: \(error.localizedDescription)")
+                    
+                }
                 
             }
             
         }
-        
-        dispatchGroup.notify(queue: DispatchQueue.main) { 
-                self.sharedCollectionView.reloadData()
-        }
-          
     }
-    
     
     func fetchSharedQuotes() {
         
