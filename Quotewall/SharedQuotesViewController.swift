@@ -22,6 +22,7 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
         self.present(contactPicker, animated: true, completion: nil)
     }
     
+    let gradient = CAGradientLayer()
     var sharedQuotes: [SharedQuote]? {
         didSet {
            self.sharedCollectionView.reloadData()
@@ -31,6 +32,16 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
     
     override func viewDidLoad() {
         fetchSharedQuotes()
+        gradient.colors = [UIColor.gradientBlueColor.cgColor, UIColor.gradientGreenColor.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.frame = view.frame
+        self.view.layer.insertSublayer(gradient, at: 0)
+        
+        navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.isTranslucent = true
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -99,7 +110,7 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
         }
         
         contactsDispatchGroup.notify(queue: DispatchQueue.main) {
-            self.sharedCollectionView.reloadData()
+//            self.sharedCollectionView.reloadData()
             
             guard let currentPerson = PersonController.shared.currentPerson?.ckRecord else { return }
             

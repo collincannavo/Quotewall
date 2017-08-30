@@ -27,6 +27,7 @@
                                 <items>
                                     <navigationItem title="Shared Quotewall" id="BBe-tA-bPJ">
                                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="vob-yX-C7z">
+                                            <color key="tintColor" red="0.16862745100000001" green="0.79607843140000001" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="addContactsButtonTapped:" destination="73S-Hh-Wyc" id="YYw-s6-JVe"/>
                                             </connections>
