@@ -22,10 +22,11 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     let gradient = CAGradientLayer()
     var quotewall: Quotewall?
+    var person: Person?
     
-    var selectedQuote = UITapGestureRecognizer(target: self, action: #selector(quoteActions))
+//    var selectedQuote = UITapGestureRecognizer(target: self, action: #selector(quoteActions))
     
-    func quoteActions() {
+    func quoteActions(cell: UICollectionViewCell) {
         let alert = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
         
         let deleteButton = UIAlertAction(title: "Delete Quote", style: .default) { (delete) in
@@ -37,18 +38,34 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
             })
         }
         
-        let addImageButton = UIAlertAction(title: "Add Background Image", style: .default) { (image) in
+        let removeFromSharedButton = UIAlertAction(title: "Remove Shared", style: .default) { (remove) in
             
+            guard let sharedQuote = self.person?.sharedQuotes.first,
+                let person = self.person
+                else { return }
+            
+            PersonController.shared.removeSharedQuote(quote: sharedQuote, from: person, completion: {})
         }
         
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancel.setValue(UIColor.red, forKey: "titleTextColor")
+        
         alert.addAction(deleteButton)
-        alert.addAction(addImageButton)
+        alert.addAction(removeFromSharedButton)
+        alert.addAction(cancel)
         
         present(alert, animated: true, completion: nil)
         
     }
     
     override func viewDidLoad() {
+        
+        let longPress: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress(gesture:)))
+        longPress.minimumPressDuration = 0.5
+        longPress.delegate = self as? UIGestureRecognizerDelegate
+        longPress.delaysTouchesBegan = true
+        self.collectionView?.addGestureRecognizer(longPress)
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: Constants.currentUserQuotewallsNotification, object: nil)
         collectionView.delegate = self
@@ -172,6 +189,23 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         cell.layer.shadowRadius = 4
         cell.layer.shadowOffset = CGSize(width: 0, height: 4)
         cell.layer.shadowColor = UIColor.black.cgColor
+    }
+    
+    func handleLongPress(gesture: UILongPressGestureRecognizer) {
+        if gesture.state != .ended {
+            return
+        }
+        
+        let p = gesture.location(in: self.collectionView)
+        
+        if let indexPath = self.collectionView.indexPathForItem(at: p) {
+            guard let cell = self.collectionView.cellForItem(at: indexPath) else { return }
+            
+            quoteActions(cell: cell)
+        } else {
+            NSLog("Couldn't find the right index path")
+        }
+        
     }
 
     

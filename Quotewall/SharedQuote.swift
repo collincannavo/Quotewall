@@ -83,3 +83,9 @@ public class SharedQuote {
     }
     
 }
+
+extension SharedQuote: Equatable {
+    public static func ==(lhs: SharedQuote, rhs: SharedQuote) -> Bool {
+        return lhs.name == rhs.name && lhs.ckRecordID == rhs.ckRecordID
+    }
+}

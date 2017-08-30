@@ -80,13 +80,13 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
             
             contactsDispatchGroup.enter()
             contactsCount += 1
-            print(contactsCount)
+            print("contacts Count #1: ", contactsCount)
             
             for number in contact.phoneNumbers {
                 
                 phoneNumberDispatchGroup.enter()
                 contactsPhoneCount += 1
-                print(contactsPhoneCount)
+                print("contacts Phone Count #1: ", contactsPhoneCount)
                 
                 let phoneNumber = number.value.stringValue
                 
@@ -97,14 +97,14 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
                     }
                     phoneNumberDispatchGroup.leave()
                     contactsPhoneCount -= 1
-                    print(contactsPhoneCount)
+                    print("contacts Phone count #2: ", contactsPhoneCount)
                 })
             }
             
             phoneNumberDispatchGroup.notify(queue: DispatchQueue.main, execute: {
                 contactsDispatchGroup.leave()
                 contactsCount -= 1
-                print(contactsCount)
+                print("contacts Count #2: ", contactsCount)
             })
             
         }

@@ -59,6 +59,18 @@ public class PersonController {
             }
         }
     }
+    
+    public func removeSharedQuote(quote: SharedQuote, from person: Person, completion: @escaping () -> Void) {
+        if let indexPath = person.sharedQuotes.index(where: { $0 == quote }) {
+            person.sharedQuotes.remove(at: indexPath)
+            
+            guard let sharedQuoteCKRecordID = quote.ckRecordID else { return }
+            
+            CloudKitController.shared.deleteRecord(sharedQuoteCKRecordID, with: { 
+                completion()
+            })
+        }
+    }
 
     public func deleteQuote(_ quote: Quote, from person: Person, with completion: @escaping (Bool) -> Void) {
         if let index = person.quotes.index(where: {$0 == quote}) {
