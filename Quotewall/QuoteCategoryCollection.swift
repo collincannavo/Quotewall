@@ -76,8 +76,6 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         
         cell.quotewallTitle.text = newQuotewall.category
         
-        cellShadowing(cell)
-        
         cell.quotewall = quotewall
         
         return cell
@@ -89,10 +87,6 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         let alert = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
         
         let addBackgroundImageButton = UIAlertAction(title: "Add Background Image", style: .default) { (backgroundImage) in
-            
-            
-            
-//            QuotewallController.shared.createQuotewall(with: <#T##String#>, backgroundImage: <#T##Data?#>)
             
         }
         
@@ -188,16 +182,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
             }
         }
     }
-    
-    // MARK: - Cell Setup
-    
-    fileprivate func cellShadowing(_ cell: CategoryCollectionViewCell) {
-        cell.layer.shadowOpacity = 1.0
-        cell.layer.shadowRadius = 4
-        cell.layer.shadowOffset = CGSize(width: 0, height: 4)
-        cell.layer.shadowColor = UIColor.black.cgColor
-        
-    }
+
     
     // MARK: - Fetch quotewalls function
     func fetchQuotewalls(completion: @escaping(Bool) -> Void) {
@@ -228,10 +213,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
                         })
                         
                     }
-                    
-                    // Use dispatch group to loop through and get all the quotes for the quotewall
-                    
-                    //  All quotes for all quotewalls
+
                     
                 })
                 

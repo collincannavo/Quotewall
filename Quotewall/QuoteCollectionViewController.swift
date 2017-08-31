@@ -172,6 +172,8 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     
+    // MARK: - CloudKit Fetch Quotes
+    
     func cloudKitFetchQuotes() {
         
         CloudKitController.shared.fetchPersonalQuotes(completion: { (success, quotes) in
@@ -183,12 +185,22 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         })
     }
     
+    // MARK: - Alert Successful
+    
     func deleteSuccessful() {
         let alert = UIAlertController(title: "Successfully Deleted", message: "", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okButton)
         present(alert, animated: true, completion: nil)
     }
+    
+    func successfullyAdded() {
+        let alert = UIAlertController(title: "Successfully Shared!", message: "", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK!", style: .default, handler: nil)
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
+    }
+    
     
     // MARK: - Cell Setup
     
@@ -235,13 +247,9 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         
     }
     
-    func successfullyAdded() {
-        let alert = UIAlertController(title: "Successfully Shared!", message: "", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK!", style: .default, handler: nil)
-        alert.addAction(okButton)
-        present(alert, animated: true, completion: nil)
-    }
     
+    
+  
 }
 
 

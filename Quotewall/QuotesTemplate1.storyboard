@@ -101,7 +101,7 @@
                                                     <action selector="saveButtonTapped:" destination="0YT-5A-j32" id="OCi-qw-gJK"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem systemItem="bookmarks" id="SIa-cO-FTs">
+                                            <barButtonItem image="Heart4" id="SIa-cO-FTs">
                                                 <color key="tintColor" red="0.16862745100000001" green="0.79607843140000001" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="addFavoriteButtonTapped:" destination="0YT-5A-j32" id="KzV-NC-iSB"/>
@@ -163,6 +163,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Heart4" width="35" height="31"/>
         <image name="closeQuoteLightBlue" width="355" height="279"/>
         <image name="openQuoteLightBlue" width="355" height="279"/>
     </resources>

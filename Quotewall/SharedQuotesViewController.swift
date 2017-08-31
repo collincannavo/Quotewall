@@ -61,7 +61,12 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
         cell.authorLabel.text = sharedQuotes.name
         cell.quoteLabel.text = sharedQuotes.quote
         
-        
+        if let data = sharedQuotes.backgroundImage,
+            let image = UIImage(data: data) {
+            cell.backgroundImage.image = image
+            cell.backgroundImage.contentMode = .scaleToFill
+        }
+
         return cell
         
     }
@@ -119,7 +124,7 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
         }
         
         contactsDispatchGroup.notify(queue: DispatchQueue.main) {
-//            self.sharedCollectionView.reloadData()
+
             
             guard let currentPerson = PersonController.shared.currentPerson?.ckRecord else { return }
             

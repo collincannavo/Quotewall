@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Quotes-->
+        <!--My Quotewalls-->
         <scene sceneID="AcY-2u-8qr">
             <objects>
                 <viewController id="m1Z-gx-zgS" customClass="QuoteCategoryViewController" customModule="Quotewall" customModuleProvider="target" sceneMemberID="viewController">
@@ -100,7 +100,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Quotes" id="aih-nn-7ii"/>
+                    <tabBarItem key="tabBarItem" title="My Quotewalls" image="quoteBook" id="aih-nn-7ii"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="navigationBar" destination="Wj5-Q7-pB9" id="4wg-zo-z6o"/>
@@ -140,4 +140,7 @@
             <point key="canvasLocation" x="1348" y="569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="quoteBook" width="35" height="32"/>
+    </resources>
 </document>
