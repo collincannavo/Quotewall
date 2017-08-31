@@ -93,6 +93,7 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
                 print("contacts Phone Count #1: ", contactsPhoneCount)
                 
                 let phoneNumber = number.value.stringValue
+                print("the phone number format: ", phoneNumber)
                 
                 CloudKitController.shared.createFollowedUsers(with: phoneNumber, completion: { (success) in
                     if !success {

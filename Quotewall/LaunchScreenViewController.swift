@@ -10,11 +10,12 @@ import Foundation
 import UIKit
 import CloudKit
 
-class LaunchScreenViewController: UIViewController {
+class LaunchScreenViewController: UIViewController, UITextFieldDelegate {
     
     let cloudKitManager = CloudKitController()
     let gradient = CAGradientLayer()
     let person = PersonController()
+    var cellTextField = UITextField()
     
     override func viewDidLoad() {
         
@@ -76,6 +77,8 @@ class LaunchScreenViewController: UIViewController {
         
         alert.addTextField { (textField) in
             phoneNumberTextField = textField
+            textField.delegate = self
+            self.cellTextField = textField
             phoneNumberTextField?.placeholder = "Phone Number"
             phoneNumberTextField?.keyboardType = .phonePad
         }
@@ -94,5 +97,23 @@ class LaunchScreenViewController: UIViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
         
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let cellTextField = textField.text, !cellTextField.isEmpty else { return }
+        textField.resignFirstResponder()
+        
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else {return true}
+        
+        let lastText = (text as NSString).replacingCharacters(in: range, with: string) as String
+        
+        if self.cellTextField == textField {
+            textField.text = lastText.format("(NNN) NNN-NNNN", oldString: text)
+            return false
+        }
+        return true
     }
 }

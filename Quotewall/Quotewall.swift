@@ -49,7 +49,7 @@ public class Quotewall {
        
         let record = CKRecord(recordType: Quotewall.recordTypeKey, recordID: recordID)
         record[Quotewall.categoryKey] = category as CKRecordValue?
-        
+        record[Quotewall.backgroundImage] = backgroundImage as CKRecordValue?
         record[Quotewall.parentUserReferenceKey] = userReference as CKRecordValue?
 
         self.ckRecordID = recordID

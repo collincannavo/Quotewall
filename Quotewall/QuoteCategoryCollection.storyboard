@@ -57,10 +57,14 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0b-DI-Om0">
                                                     <rect key="frame" x="0.0" y="0.0" width="165" height="143"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xm4-Mz-vXL">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hEp-oo-TT5">
+                                                            <rect key="frame" x="6" y="17" width="151" height="94"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xm4-Mz-vXL">
                                                             <rect key="frame" x="6" y="17" width="153" height="94"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" red="0.0" green="0.0050816729400000003" blue="0.52639197339999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.25882352941176467" green="0.27450980392156865" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-hn-SGz">
                                                             <rect key="frame" x="8" y="53" width="149" height="24"/>
@@ -82,6 +86,7 @@
                                             <constraint firstAttribute="bottomMargin" secondItem="y0b-DI-Om0" secondAttribute="bottom" constant="-21" id="qK4-22-tYT"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="backgroundImage" destination="hEp-oo-TT5" id="x9C-Mq-unL"/>
                                             <outlet property="quotewallTitle" destination="FfM-hn-SGz" id="GKk-FF-uQm"/>
                                             <segue destination="3sL-UQ-7Iv" kind="show" identifier="editQuoteCollection" id="pIN-ox-ReS"/>
                                         </connections>

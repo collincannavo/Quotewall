@@ -11,6 +11,7 @@ import UIKit
 class CategoryCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var quotewallTitle: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     var quotewall: Quotewall?{
         didSet {
@@ -20,10 +21,12 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     func updateViews() {
         
-        guard let quotewall = quotewall else { return }
+        guard let quotewall = quotewall,
+            let backgroundImage = backgroundImage
+        else { return }
         
         self.quotewallTitle.text = quotewall.category
-            
+//        self.backgroundImage.image = quotewall.backgroundImage
         
     }
     

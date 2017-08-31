@@ -70,13 +70,13 @@ public class QuotewallController {
         }
     }
     
-    public func createQuotewall(with category: String) {
+    public func createQuotewall(with category: String, backgroundImage: Data? = nil) {
         
         guard let userCKReference = PersonController.shared.currentPerson?.ckReference,
             let person = PersonController.shared.currentPerson
             else { return }
         
-        let newQuotewall = Quotewall(userCKReference: userCKReference, category: category)
+        let newQuotewall = Quotewall(userCKReference: userCKReference, category: category, backgroundImage: backgroundImage)
         
         newQuotewall.userReference = PersonController.shared.currentPerson?.ckReference
         

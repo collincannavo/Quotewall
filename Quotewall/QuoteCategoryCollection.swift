@@ -12,11 +12,14 @@ import UIKit
 class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
     
     let gradient = CAGradientLayer()
+    let longGesture = UILongPressGestureRecognizer()
+    
     
     // MARK: - Outlets
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var quoteCategoryCollection: UICollectionView!
+    
     
     
     // MARK: - Actions
@@ -33,7 +36,11 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         self.quoteCategoryCollection.reloadData()
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: quotewallsWereSetNotification, object: nil)
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gesture:)))
+        longPress.minimumPressDuration = 0.5
+        longPress.delegate = self as? UIGestureRecognizerDelegate
+        longPress.delaysTouchesBegan = true
+        self.quoteCategoryCollection?.addGestureRecognizer(longPress)
     
         gradient.colors = [UIColor.gradientBlueColor.cgColor, UIColor.gradientGreenColor.cgColor]
         gradient.locations = [0.0, 1.0]
@@ -74,6 +81,52 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         cell.quotewall = quotewall
         
         return cell
+    }
+    
+    // MARK: - Alert
+    
+    func quoteActions(image: Data?) {
+        let alert = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
+        
+        let addBackgroundImageButton = UIAlertAction(title: "Add Background Image", style: .default) { (backgroundImage) in
+            
+            
+            
+//            QuotewallController.shared.createQuotewall(with: <#T##String#>, backgroundImage: <#T##Data?#>)
+            
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancel.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        alert.addAction(addBackgroundImageButton)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+
+    
+    // MARK: - Long Gesture Press Function
+    
+    func handleLongPress(gesture: UILongPressGestureRecognizer) {
+        if gesture.state != .ended {
+            return
+        }
+        
+        let p = gesture.location(in: self.quoteCategoryCollection)
+        
+        if let indexPath = self.quoteCategoryCollection.indexPathForItem(at: p) {
+            
+            let cell = QuotewallController.shared.quotewalls[indexPath.row]
+            
+            let image = cell.backgroundImage
+            
+            quoteActions(image: image)
+        } else {
+            NSLog("Couldn't find the right index path")
+        }
+        
     }
     
     // MARK: - Create Quotewall title
