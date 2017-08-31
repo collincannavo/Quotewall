@@ -24,11 +24,14 @@ class FavoriteQuoteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var favoriteQuoteView: UIView!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     fileprivate func updateViews() {
         
         authorLabel.text = favoriteQuote?.name
         quoteLabel.text = favoriteQuote?.quote
+        
+        
         
     }
     

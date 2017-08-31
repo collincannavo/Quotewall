@@ -79,6 +79,14 @@ public class FavoriteQuote {
         
     }
     
+    public func updateCKRecordLocally(record: inout CKRecord) {
+        record[FavoriteQuote.nameKey] = name as CKRecordValue?
+        record[FavoriteQuote.quoteKey] = quote as CKRecordValue?
+        let imageDataAsset = QuotewallController.shared.createCKAsset(for: backgroundImage)
+        record[FavoriteQuote.backgroundImageDataKey] = imageDataAsset as CKRecordValue?
+    }
+
+    
 }
 
  func ==(lhs: FavoriteQuote, rhs: FavoriteQuote) -> Bool {

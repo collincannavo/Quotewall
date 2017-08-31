@@ -65,10 +65,33 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
         cell.authorLabel.text = favoriteQuote?.name
         cell.quoteLabel.text = favoriteQuote?.quote
         
+        if let data = favoriteQuote?.backgroundImage,
+            let image = UIImage(data: data) {
+            cell.backgroundImage.image = image
+            cell.backgroundImage.contentMode = .scaleToFill
+        }
+
+        
         cellShadowing(cell)
         
         return cell
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toQuoteTemplate",
+            let indexPath = self.collectionView.indexPathsForSelectedItems?.first {
+            
+            let destinationVC = segue.destination as? QuotesTemplateViewController
+            
+
+            let selectedQuote = PersonController.shared.currentPerson?.favoriteQuotes[indexPath.row]
+            
+            destinationVC?.favoriteQuote = selectedQuote
+            destinationVC?.senderIsFavoriteCollection = true
+            
+        }
     }
     
     func updateView() {

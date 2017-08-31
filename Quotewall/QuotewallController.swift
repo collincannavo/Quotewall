@@ -85,14 +85,13 @@ public class QuotewallController {
     }
     
     public func createCKAsset(for data: Data?) -> CKAsset? {
-        guard let data = data,
-            let directory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
+        guard let data = data else { return nil }
         
-        let directoryAsNSString = directory as NSString
-        let path = directoryAsNSString.appendingPathComponent("asset.txt")
+        let temporaryDirectory = NSTemporaryDirectory()
+        let temporaryDirectoryURL = URL(fileURLWithPath: temporaryDirectory)
+        let fileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("jpg")
         
-        FileManager.default.createFile(atPath: path, contents: data, attributes: nil)
-        let fileURL = URL(fileURLWithPath: path)
+        try? data.write(to: fileURL, options: [.atomic])
         
         return CKAsset(fileURL: fileURL)
     }

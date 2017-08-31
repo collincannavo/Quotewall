@@ -25,7 +25,9 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     var quotewall: Quotewall?
     var senderIsMainCollection: Bool = false
+    var senderIsFavoriteCollection: Bool = false
     var quote: Quote?
+    var favoriteQuote: FavoriteQuote?
     var quoteCollectionCell = QuotesCollectionViewCell()
     let imagePicker = UIImagePickerController()
     let navigation = UINavigationController()
@@ -48,39 +50,68 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
-        guard let quote = quoteTextField.text,
+        if senderIsFavoriteCollection {
+            
+            guard let favoriteQuote = favoriteQuote,
+                let quote = quoteTextField.text,
+                let author = personNameTextField.text
+                else { return }
+            
+            var backgroundImageData: Data? = nil
+            if let backgroundImage = backgroundImage.image {
+                    backgroundImageData = UIImagePNGRepresentation(backgroundImage)
+            }
+            
+            if quote.isEmpty || author.isEmpty {
+                
+                unableToSaveAlert()
+                return
+                
+            } else {
+                
+                updateFavoriteQuote(favoriteQuote, author: author, quote: quote, backgroundImage: backgroundImageData)
+            }
+     
+        } else {
+        
+            guard let quote = quoteTextField.text,
             let person = personNameTextField.text
             else { return }
         
-        if quote.isEmpty || person.isEmpty {
+                if quote.isEmpty || person.isEmpty {
             
-            unableToSaveAlert()
-            return
+                    unableToSaveAlert()
+                    return
             
-        } else {
+                } else {
            
-            saveQuoteToQuotewall(with: { (success) in
-                if success {
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
-                    
+                    saveQuoteToQuotewall(with: { (success) in
+                        if success {
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true, completion: nil)
+                            
                     }
-                    
                 }
             })
-            
- 
+            }
         }
         dismiss(animated: true, completion: nil)
     }
     @IBAction func addFavoriteButtonTapped(_ sender: Any) {
         
-        print("Favorite button tapped")
+        
         guard let quote = quoteTextField.text,
             let author = personNameTextField.text
+            
             else { return }
         
-        FavoriteQuoteController.shared.createFavoriteQuote(with: author, quote: quote, image: nil) { (success) in
+        var backgroundData: Data? = nil
+        if let backgroundImage = backgroundImage.image {
+            backgroundData = UIImagePNGRepresentation(backgroundImage)
+        }
+        
+        
+        FavoriteQuoteController.shared.createFavoriteQuote(with: author, quote: quote, image: backgroundData) { (success) in
             if !success {
                 NSLog("There was an error creating a favorite quote")
             }
@@ -92,14 +123,16 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateViews()
-        imagePicker.delegate = self
-        if !senderIsMainCollection {
-//            addToFavoriteButton.isHidden = true
-            
-            
-        }
         
+        if senderIsFavoriteCollection {
+            
+            updateViewsWithFavorite()
+            print("The sender favorite is: ", senderIsFavoriteCollection)
+        } else {
+        
+            updateViews()
+        }
+        imagePicker.delegate = self
         navigationBar.delegate = self as? UINavigationBarDelegate
         navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationBar.shadowImage = UIImage()
@@ -154,6 +187,11 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         }
     }
     
+    func updateFavoriteQuote(with completion: @escaping (Bool) -> Void) {
+        
+        
+    }
+    
 
     // MARK: - Alert controllers
     
@@ -189,6 +227,26 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         }
     }
     
+    func updateViewsWithFavorite() {
+        guard let favoriteQuote = favoriteQuote else { return }
+        
+        personNameTextField.text = favoriteQuote.name
+        quoteTextField.text = favoriteQuote.quote
+        
+        if let data = favoriteQuote.backgroundImage,
+            let image = UIImage(data: data) {
+            backgroundImage.image = image
+            backgroundImage.contentMode = .scaleToFill
+        }
+    }
+ 
+    func updateFavoriteQuote(_ favoriteQuote: FavoriteQuote, author: String, quote: String, backgroundImage: Data? = nil) {
+        
+        FavoriteQuoteController.shared.updateFavoriteQuote(favoriteQuote, author: author, quote: quote, backgroundImage: backgroundImage) { (_) in
+            
+            return print("Success")
+        }
+    }
     
 }
 
