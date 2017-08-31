@@ -18,7 +18,7 @@ public class SharedQuote {
     public static let quoteKey = "quote"
     public static let backgroundImageDataKey = "backgroundImageAsset"
     public static let ckRecordIDKey = "CKRecordID"
-    public static let referenceKey = "reference"
+    public static let referenceKey = "sharedQuoteReference"
     
     
     public var name: String
@@ -30,7 +30,7 @@ public class SharedQuote {
     public var ckRecord: CKRecord {
         let recordID = self.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
         
-        let record = CKRecord(recordType: FavoriteQuote.recordTypeKey, recordID: recordID)
+        let record = CKRecord(recordType: SharedQuote.recordTypeKey, recordID: recordID)
         
         record[SharedQuote.nameKey] = name as CKRecordValue?
         record[SharedQuote.referenceKey] = reference as CKRecordValue?

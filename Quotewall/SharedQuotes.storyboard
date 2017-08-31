@@ -87,7 +87,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="cCI-GY-2cl"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="profileIcon2" id="cCI-GY-2cl"/>
                     <connections>
                         <outlet property="navigationBar" destination="fJs-FI-fEl" id="FGj-1S-8Db"/>
                     </connections>
@@ -125,7 +125,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YXd-Jx-b7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-394" y="534"/>
+            <point key="canvasLocation" x="-180" y="536"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="W24-Mf-Yt7">
@@ -148,4 +148,7 @@
             <point key="canvasLocation" x="572" y="524"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="profileIcon2" width="30" height="31"/>
+    </resources>
 </document>

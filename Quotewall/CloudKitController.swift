@@ -40,6 +40,8 @@ public class CloudKitController {
             if let error = error {
                 completion(record, error)
             }
+            
+            completion(record, error)
         }
     }
     

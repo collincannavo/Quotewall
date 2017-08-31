@@ -42,6 +42,10 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
         navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        tabBarController?.tabBar.backgroundColor = UIColor.clear
+        tabBarController?.tabBar.backgroundImage = UIImage()
+        tabBarController?.tabBar.shadowImage = UIImage()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -36,13 +36,15 @@ public class PersonController {
         }
     }
     
-    public func addSharedQuotes(_ quote: SharedQuote, to person: Person) {
+    public func addSharedQuotes(_ quote: SharedQuote, to person: Person, completion: @escaping () -> Void) {
         person.sharedQuotes.append(quote)
         
         CloudKitController.shared.save(record: quote.ckRecord) { (ckRecord, error) in
             if let error = error {
                 NSLog("there was an error saving a shared quote: \(error.localizedDescription)")
             }
+            
+            completion()
         }
     }
     

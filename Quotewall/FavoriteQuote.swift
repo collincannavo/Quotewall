@@ -17,7 +17,7 @@ public class FavoriteQuote {
     public static let nameKey = "name"
     public static let backgroundImageDataKey = "backgroundImageAsset"
     public static let ckRecordIDKey = "ckRecordID"
-    public static let referenceKey = "reference"
+    public static let referenceKey = "favoriteQuoteReference"
     
     public var quote: String
     public var name: String

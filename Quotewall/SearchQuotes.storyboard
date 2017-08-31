@@ -120,7 +120,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.78039215689999997" green="0.79607843140000001" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="bFY-KZ-wzK"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="Search" id="bFY-KZ-wzK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="wuL-DQ-dtF" id="1eC-Er-Kg1"/>
@@ -132,4 +132,7 @@
             <point key="canvasLocation" x="1096.8" y="118.29085457271366"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Search" width="30" height="30"/>
+    </resources>
 </document>

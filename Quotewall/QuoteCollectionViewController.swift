@@ -78,6 +78,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         cloudKitFetchQuotes()
         
         navigationBar.topItem?.title = quotewall?.category
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
@@ -138,7 +139,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        let spacing: CGFloat = 40.0
+        let spacing: CGFloat = 20.0
         
         return spacing
         
