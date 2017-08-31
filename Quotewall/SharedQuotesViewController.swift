@@ -31,6 +31,10 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
     
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        sharedCollectionView.delegate = self
+        sharedCollectionView.dataSource = self
+        
         fetchSharedQuotes()
         gradient.colors = [UIColor.gradientBlueColor.cgColor, UIColor.gradientGreenColor.cgColor]
         gradient.locations = [0.0, 1.0]
@@ -52,7 +56,7 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
         
         guard let sharedQuotes = self.sharedQuotes?[indexPath.row] else { return SharedQuoteCollectionViewCell() }
         
-        guard let cell = self.sharedCollectionView.dequeueReusableCell(withReuseIdentifier: "sharedCell", for: indexPath) as? SharedQuoteCollectionViewCell else { return SharedQuoteCollectionViewCell() }
+        guard let cell = self.sharedCollectionView.dequeueReusableCell(withReuseIdentifier: "sharedQuoteCell", for: indexPath) as? SharedQuoteCollectionViewCell else { return SharedQuoteCollectionViewCell() }
         
         cell.authorLabel.text = sharedQuotes.name
         cell.quoteLabel.text = sharedQuotes.quote

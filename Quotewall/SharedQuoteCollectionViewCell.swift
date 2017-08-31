@@ -22,6 +22,7 @@ class SharedQuoteCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var sharedQuoteView: UIView!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!

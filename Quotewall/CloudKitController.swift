@@ -306,7 +306,7 @@ public class CloudKitController {
         
         let reference = CKReference(recordID: currentPersonID, action: .none)
         
-        let predicate = NSPredicate(format: "reference == %@", reference)
+        let predicate = NSPredicate(format: "favoriteQuoteReference == %@", reference)
         
         let query = CKQuery(recordType: FavoriteQuote.recordTypeKey, predicate: predicate)
         
@@ -330,7 +330,7 @@ public class CloudKitController {
     
     public func fetchSharedQuotes(for person: Person, completion: @escaping(Bool, [SharedQuote]) -> Void) {
         
-        let predicate = NSPredicate(format: "reference IN %@", person.followedUsers)
+        let predicate = NSPredicate(format: "sharedQuoteReference IN %@", person.followedUsers)
         
         let query = CKQuery(recordType: SharedQuote.recordTypeKey, predicate: predicate)
         
