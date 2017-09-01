@@ -50,6 +50,7 @@ public class PersonController {
     
    
     public func removeFavoriteQuote(quote: FavoriteQuote, from person: Person, completion: @escaping () -> Void) {
+       
         if let indexPath = person.favoriteQuotes.index(where: { $0 == quote}) {
         person.favoriteQuotes.remove(at: indexPath)
         
@@ -60,6 +61,8 @@ public class PersonController {
           completion()
             }
         }
+        
+        completion()
     }
     
     public func removeSharedQuote(quote: SharedQuote, from person: Person, completion: @escaping () -> Void) {
@@ -72,6 +75,8 @@ public class PersonController {
                 completion()
             })
         }
+        
+        completion()
     }
 
     public func deleteQuote(_ quote: Quote, from person: Person, with completion: @escaping (Bool) -> Void) {

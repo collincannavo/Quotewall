@@ -62,7 +62,9 @@ public class Quote {
         let record = CKRecord(recordType: Quote.recordTypeKey, recordID: recordID)
         record.setValue(name, forKey: Quote.nameKey)
         record.setValue(text, forKey: Quote.textKey)
+        
         let imageDataAsset = QuotewallController.shared.createCKAsset(for: image)
+        
         record.setValue(imageDataAsset, forKey: Quote.imageDataKey)
         record[Quotewall.quotewallReferenceKey] = quotewallReference as CKRecordValue?
         
@@ -88,13 +90,6 @@ public class Quote {
         
         self.ckRecordID = ckRecord.recordID
         
-    }
-    
-    public func updateCKRecordLocally(record: inout CKRecord) {
-        record[Quote.nameKey] = name as CKRecordValue?
-        record[Quote.textKey] = text as CKRecordValue?
-        let imageDataAsset = QuotewallController.shared.createCKAsset(for: image)
-        record[Quote.imageKey] = imageDataAsset as CKRecordValue?
     }
 
 }

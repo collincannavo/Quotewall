@@ -96,8 +96,35 @@ public class QuotewallController {
         return CKAsset(fileURL: fileURL)
     }
     
+    public func updatedQuote(with quote: Quote, name: String, text: String, backgroundImage: Data? = nil, completion: @escaping (Bool) -> Void ) {
+        
+        quote.name = name
+        quote.text = text
+        quote.image = backgroundImage
+        
+        updateToNewQuote(quote) { (success) in
+            if success {
+                completion(true)
+            } else {
+                completion(false)
+            }   
+        }
+    }
     
-    
+    public func updateToNewQuote(_ quote: Quote, completion: @escaping (Bool)-> Void) {
+        
+        CloudKitController.shared.updateRecord(quote.ckRecord, with: { (records, recordIDs, error) in
+            if let error = error {
+                NSLog("There was an error fetching the Favorite Quote to modify: \(error.localizedDescription)")
+                completion(false)
+                return }
+            
+            guard (records?.first != nil) else { NSLog("Did not successfully return the modified Favorite Quote"); completion(false); return }
+            
+            completion(true)
+        })
+    }
+
 }
 
 
