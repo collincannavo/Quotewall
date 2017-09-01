@@ -37,25 +37,19 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
             
             CloudKitController.shared.deleteRecord(recordID, with: { 
                 self.deleteSuccessful()
-                self.collectionView.reloadData()
-            })  
+               
+                DispatchQueue.main.async {
+                    
+                    self.collectionView.reloadData()
+                }
+            })
             
-        }
-        
-        let removeFromSharedButton = UIAlertAction(title: "Remove Shared", style: .default) { (remove) in
-            
-            guard let person = self.person,
-                let sharedQuote = PersonController.shared.currentPerson?.sharedQuotes.first
-                else { return }
-            
-            PersonController.shared.removeSharedQuote(quote: sharedQuote, from: person, completion: {})
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         cancel.setValue(UIColor.red, forKey: "titleTextColor")
         
         alert.addAction(shareQuoteButton)
-        alert.addAction(removeFromSharedButton)
         alert.addAction(deleteButton)
         alert.addAction(cancel)
         
@@ -90,12 +84,6 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         
         QuotewallController.shared.currentQuotewall = self.quotewall
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(true)
-//        collectionView.reloadData()
-//        cloudKitFetchQuotes()
-//    }
     
     func refresh(){
         self.collectionView.reloadData()

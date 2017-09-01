@@ -217,13 +217,13 @@
 			isa = PBXGroup;
 			children = (
 				B6E726AF1F43BFE00067B6F5 /* SharedQuotesViewController.swift */,
+				B6DAB23E1F59FAE700B16290 /* MySharedQuotesCollectionViewController.swift */,
 				B6E726B11F43C03C0067B6F5 /* QuoteCategoryCollection.swift */,
 				B6E726B51F43C0B60067B6F5 /* QuoteCollectionViewController.swift */,
 				B6E726B31F43C07A0067B6F5 /* QuotesTemplateViewController.swift */,
 				B6E726B91F43C1140067B6F5 /* FavoritesViewController.swift */,
 				B6E726BD1F43C1760067B6F5 /* SearchQuotesViewController.swift */,
 				B6D368F51F47437B00F00DE9 /* LaunchScreenViewController.swift */,
-				B6DAB23E1F59FAE700B16290 /* MySharedQuotesCollectionViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";

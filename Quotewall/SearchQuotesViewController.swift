@@ -22,7 +22,7 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
     
     var quotes: [NetworkQuotes] = []
     let gradient = CAGradientLayer()
-    
+    var quotewall: Quotewall?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -33,6 +33,12 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gesture:)))
+        longPress.minimumPressDuration = 0.5
+        longPress.delegate = self as? UIGestureRecognizerDelegate
+        longPress.delaysTouchesBegan = true
+        self.collectionView?.addGestureRecognizer(longPress)
         
         gradient.colors = [UIColor.gradientBlueColor.cgColor, UIColor.gradientGreenColor.cgColor]
         gradient.locations = [0.0, 1.0]
@@ -99,5 +105,69 @@ class SearchQuotesViewController: UIViewController, UISearchBarDelegate, UIColle
         cell.layer.shadowOffset = CGSize(width: 0, height: 4)
         cell.layer.shadowColor = UIColor.black.cgColor
     }
+    
+    func quoteActions(cell: NetworkQuotes, author: String, quote: String) {
+        let alert = UIAlertController(title: "Options", message: "You read something cool? Why not share it?", preferredStyle: .actionSheet)
+        
+        let shareQuoteButton = UIAlertAction(title: "Share Quote", style: .default) { (share) in
+            
+            self.createSharedQuote(author: author, quote: quote, image: nil)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancel.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        alert.addAction(shareQuoteButton)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func handleLongPress(gesture: UILongPressGestureRecognizer) {
+        if gesture.state != .ended {
+            return
+        }
+        
+        let p = gesture.location(in: self.collectionView)
+        
+        if let indexPath = self.collectionView.indexPathForItem(at: p) {
+            
+            let cell = self.quotes[indexPath.row]
+            
+            let author = cell.author
+            let quote = cell.quote
+            
+            
+            quoteActions(cell: cell, author: author, quote: quote)
+        } else {
+            NSLog("Couldn't find the right index path")
+        }
+        
+    }
+    
+    func createSharedQuote(author: String, quote: String, image: Data?) {
+        
+        let author = author
+        let quote = quote
+        let image = image
+        
+        SharedQuoteController.shared.createSharedQuote(with: author, quote: quote, image: image) { (success) in
+            if success {
+                self.successfullyAdded()
+            }
+        }
+        
+    }
+
+    // MARK: - Successfully Added Alert
+    
+    func successfullyAdded() {
+        let alert = UIAlertController(title: "Successfully Shared!", message: "", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK!", style: .default, handler: nil)
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
+    }
+    
     
 }
