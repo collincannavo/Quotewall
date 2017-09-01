@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
+class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate, UITextViewDelegate {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var imageTransparentView: UIView!
@@ -97,32 +97,13 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         }
         dismiss(animated: true, completion: nil)
     }
-    @IBAction func addFavoriteButtonTapped(_ sender: Any) {
-        
-        
-        guard let quote = quoteTextField.text,
-            let author = personNameTextField.text
-            
-            else { return }
-        
-        var backgroundData: Data? = nil
-        if let backgroundImage = backgroundImage.image {
-            backgroundData = UIImagePNGRepresentation(backgroundImage)
-        }
-        
-        
-        FavoriteQuoteController.shared.createFavoriteQuote(with: author, quote: quote, image: backgroundData) { (success) in
-            if !success {
-                NSLog("There was an error creating a favorite quote")
-            }
-        }
-        
-    }
-    
+       
     // MARK: - Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        quoteTextField.delegate = self
+        personNameTextField.delegate = self
         
         if senderIsFavoriteCollection {
             
@@ -137,7 +118,10 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
+        
     }
+    
+    // MARK: - Image Picker Functions
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -187,9 +171,30 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         }
     }
     
-    func updateFavoriteQuote(with completion: @escaping (Bool) -> Void) {
+    // MARK: - Text Field and View Delegate methods
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        
+        textFieldReturnResponder(textField)
+       
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        animateViewMoving(up: true, moveValue: 100)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        animateViewMoving(up: false, moveValue: 100)
+    }
+    
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+    return true
     }
     
 
@@ -213,6 +218,8 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         alert.addAction(okButton)
         present(alert, animated: true, completion: nil)
     }
+    
+    // MARK: - Helper Functions
     
     func updateViews() {
         guard let quote = quote else { return }
@@ -247,6 +254,24 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             return print("Success")
         }
     }
+    
+    func textFieldReturnResponder(_ textField: UITextField) {
+        
+            textField.resignFirstResponder()
+        }
+    
+    func animateViewMoving(up: Bool, moveValue: CGFloat) {
+        
+            let movementDuration: TimeInterval = 0.5
+            
+            let movement: CGFloat = (up ? -moveValue : moveValue)
+            
+            UIView.beginAnimations("animateView", context: nil)
+            UIView.setAnimationBeginsFromCurrentState(true)
+            UIView.setAnimationDuration(movementDuration)
+            self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+            UIView.commitAnimations()
+        }
     
 }
 
