@@ -24,8 +24,11 @@ public class SharedQuoteController {
         sharedQuote.reference = PersonController.shared.currentPerson?.ckReference
         
         PersonController.shared.addSharedQuotes(sharedQuote, to: currentUser) { 
+            
             completion(true)
         }
+        
+            completion(true)
         
     }
     

@@ -32,15 +32,6 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     let imagePicker = UIImagePickerController()
     let navigation = UINavigationController()
     // MARK: - Actions
-    
-    @IBAction func uploadBackgroundButtonTapped(_ sender: Any) {
-        
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        
-        present(imagePicker, animated: true, completion: nil)
-        
-    }
    
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -56,20 +47,13 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
                 let quote = quoteTextField.text,
                 let author = personNameTextField.text
                 else { return }
-            
-            var backgroundImageData: Data? = nil
-            if let backgroundImage = backgroundImage.image {
-                    backgroundImageData = UIImagePNGRepresentation(backgroundImage)
-            }
+
             
             if quote.isEmpty || author.isEmpty {
                 
                 unableToSaveAlert()
                 return
                 
-            } else {
-                
-                updateFavoriteQuote(favoriteQuote, author: author, quote: quote, backgroundImage: backgroundImageData)
             }
      
         } else {
@@ -95,7 +79,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             })
             }
         }
-        dismiss(animated: true, completion: nil)
+
     }
        
     // MARK: - Functions
@@ -105,14 +89,8 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         quoteTextField.delegate = self
         personNameTextField.delegate = self
         
-        if senderIsFavoriteCollection {
-            
-            updateViewsWithFavorite()
-            print("The sender favorite is: ", senderIsFavoriteCollection)
-        } else {
-        
-            updateViews()
-        }
+        updateViews()
+       
         imagePicker.delegate = self
         navigationBar.delegate = self as? UINavigationBarDelegate
         navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -226,34 +204,9 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         
         personNameTextField.text = quote.name
         quoteTextField.text = quote.text
-        
-        if let data = quote.image,
-            let image = UIImage(data: data) {
-            backgroundImage.image = image
-            backgroundImage.contentMode = .scaleToFill
-        }
+
     }
-    
-    func updateViewsWithFavorite() {
-        guard let favoriteQuote = favoriteQuote else { return }
-        
-        personNameTextField.text = favoriteQuote.name
-        quoteTextField.text = favoriteQuote.quote
-        
-        if let data = favoriteQuote.backgroundImage,
-            let image = UIImage(data: data) {
-            backgroundImage.image = image
-            backgroundImage.contentMode = .scaleToFill
-        }
-    }
- 
-    func updateFavoriteQuote(_ favoriteQuote: FavoriteQuote, author: String, quote: String, backgroundImage: Data? = nil) {
-        
-        FavoriteQuoteController.shared.updateFavoriteQuote(favoriteQuote, author: author, quote: quote, backgroundImage: backgroundImage) { (_) in
-            
-            return print("Success")
-        }
-    }
+
     
     func textFieldReturnResponder(_ textField: UITextField) {
         

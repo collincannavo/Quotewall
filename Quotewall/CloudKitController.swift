@@ -69,6 +69,7 @@ public class CloudKitController {
         operation.completionBlock = completion
         self.container.publicCloudDatabase.add(operation)
         
+        
     }
     
     public func createUser(with name: String, phone: String, completion: @escaping (_ success: Bool) -> Void ) {
@@ -179,8 +180,6 @@ public class CloudKitController {
             guard let records = records else { completion(false, []); return }
             
             let quotes = records.flatMap({Quote(ckRecord: $0)})
-            
-            self.quotewall?.quotes = quotes
             
             completion(true, quotes)
         }

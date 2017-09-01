@@ -13,7 +13,6 @@ import UIKit
 
 class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
     
-    
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -23,10 +22,8 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     let gradient = CAGradientLayer()
     var quotewall: Quotewall?
     var person: Person?
-    
 
-    
-    func quoteActions(author: String, quote: String, image: Data?) {
+    func quoteActions(cell: Quote, author: String, quote: String, image: Data?) {
         let alert = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
         
         let shareQuoteButton = UIAlertAction(title: "Share Quote", style: .default) { (share) in
@@ -36,17 +33,19 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         
         let deleteButton = UIAlertAction(title: "Delete Quote", style: .default) { (delete) in
             
-            guard let recordID = QuoteController.shared.quotes.first?.ckRecordID else { return }
+            guard let recordID = cell.ckRecordID else { return }
             
             CloudKitController.shared.deleteRecord(recordID, with: { 
                 self.deleteSuccessful()
-            })
+                self.collectionView.reloadData()
+            })  
+            
         }
         
         let removeFromSharedButton = UIAlertAction(title: "Remove Shared", style: .default) { (remove) in
             
-            guard let sharedQuote = self.person?.sharedQuotes.first,
-                let person = self.person
+            guard let person = self.person,
+                let sharedQuote = PersonController.shared.currentPerson?.sharedQuotes.first
                 else { return }
             
             PersonController.shared.removeSharedQuote(quote: sharedQuote, from: person, completion: {})
@@ -63,7 +62,6 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         present(alert, animated: true, completion: nil)
         
     }
-    
     
     override func viewDidLoad() {
         
@@ -93,11 +91,11 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         QuotewallController.shared.currentQuotewall = self.quotewall
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        collectionView.reloadData()
-        cloudKitFetchQuotes()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        collectionView.reloadData()
+//        cloudKitFetchQuotes()
+//    }
     
     func refresh(){
         self.collectionView.reloadData()
@@ -115,12 +113,6 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         
         cell.authorNameLabel?.text = newquotes.name
         cell.quoteTextLabel?.text = newquotes.text
-        
-        if let data = newquotes.image,
-            let image = UIImage(data: data) {
-            cell.backgroundImage.image = image
-            cell.backgroundImage.contentMode = .scaleToFill
-        }
         
         cellShadowing(cell)
         
@@ -142,7 +134,6 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         let spacing: CGFloat = 20.0
         
         return spacing
-        
         
     }
 
@@ -178,6 +169,9 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         
         CloudKitController.shared.fetchPersonalQuotes(completion: { (success, quotes) in
             if success {
+                
+                self.quotewall?.quotes = quotes
+                
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -200,7 +194,6 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         alert.addAction(okButton)
         present(alert, animated: true, completion: nil)
     }
-    
     
     // MARK: - Cell Setup
     
@@ -226,7 +219,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
                 let quote = cell.text
                 let image = cell.image
         
-            quoteActions(author: author, quote: quote, image: image)
+            quoteActions(cell: cell, author: author, quote: quote, image: image)
         } else {
             NSLog("Couldn't find the right index path")
         }
@@ -246,10 +239,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
         
     }
-    
-    
-    
-  
+ 
 }
 
 

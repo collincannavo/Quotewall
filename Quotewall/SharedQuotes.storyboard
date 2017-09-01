@@ -180,6 +180,7 @@
                         <segue destination="73S-Hh-Wyc" kind="relationship" relationship="viewControllers" id="3cX-06-TZE"/>
                         <segue destination="iEp-tk-Unz" kind="relationship" relationship="viewControllers" id="C3m-Cb-ZJN"/>
                         <segue destination="mGa-XD-WTS" kind="relationship" relationship="viewControllers" id="6iA-Zk-GYy"/>
+                        <segue destination="8Ma-E8-a3n" kind="relationship" relationship="viewControllers" id="0AH-5k-fc1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCD-dk-QEP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -195,6 +196,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YXd-Jx-b7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-180" y="536"/>
+        </scene>
+        <!--UserSharedQuotes-->
+        <scene sceneID="ciH-4a-RDD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserSharedQuotes" id="8Ma-E8-a3n" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="HnI-6e-ek0"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hvn-dj-HYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="189" y="579"/>
         </scene>
         <!--SearchQuotes-->
         <scene sceneID="5Uf-GQ-eRC">

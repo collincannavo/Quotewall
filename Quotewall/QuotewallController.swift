@@ -85,7 +85,8 @@ public class QuotewallController {
     }
     
     public func createCKAsset(for data: Data?) -> CKAsset? {
-        guard let data = data else { return nil }
+        guard let data = data
+            else { return nil }
         
         let temporaryDirectory = NSTemporaryDirectory()
         let temporaryDirectoryURL = URL(fileURLWithPath: temporaryDirectory)
@@ -96,6 +97,11 @@ public class QuotewallController {
         return CKAsset(fileURL: fileURL)
     }
     
+    public func deleteCKAssetRecord(ckAsset: CKAsset) {
+        
+//        ckAsset.fileURL = nil
+        
+    }
     
     
 }

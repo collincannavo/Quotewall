@@ -29,6 +29,8 @@ public class QuoteController {
         QuotewallController.shared.addPersonalQuote(quote, to: quotewall)
         
         quote.parentCKReference = QuotewallController.shared.currentQuotewall?.ckReference
+        
+        completion(true)
     }
 
 }

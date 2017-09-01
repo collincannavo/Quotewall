@@ -61,7 +61,10 @@ class LaunchScreenViewController: UIViewController, UITextFieldDelegate {
                     
                 } else {
                     
-                    self.createUser()
+                    DispatchQueue.main.async {
+                        
+                        self.createUser()
+                    }
                 
                 }
             }
@@ -90,7 +93,10 @@ class LaunchScreenViewController: UIViewController, UITextFieldDelegate {
             
             self.cloudKitManager.createUser(with: "DefaultName", phone: phoneNumber, completion: { (_) in
                 
-                self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
+                DispatchQueue.main.async {
+                    
+                    self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
+                }
             })
         })
 
