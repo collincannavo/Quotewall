@@ -13,6 +13,7 @@ import UIKit
 
 class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
     
+    
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -93,6 +94,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         
         cell.authorNameLabel?.text = newquotes.name
         cell.quoteTextLabel?.text = newquotes.text
+        cell.titleLabel?.text = newquotes.title
         
         cellShadowing(cell)
         

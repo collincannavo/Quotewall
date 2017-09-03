@@ -16,9 +16,9 @@ public class QuoteController {
     
     // MARK: - CRUD Functions
     
-    public func createQuote(with name: String, text: String, image: Data?, quotewall: Quotewall, completion: @escaping (Bool) -> Void) {
+    public func createQuote(with name: String, text: String, title: String?, image: Data?, quotewall: Quotewall, completion: @escaping (Bool) -> Void) {
         
-        let quote = Quote(name: name, text: text, image: image, quotewallReference: quotewall.ckReference)
+        let quote = Quote(name: name, text: text, title: title, image: image, quotewallReference: quotewall.ckReference)
         
         QuotewallController.shared.addPersonalQuote(quote, to: quotewall)
         

@@ -21,18 +21,21 @@ public class Quote {
     public static let ckRecordIDKey = "ckRecordID"
     public static let quotewallReferenceKey = "quotewallReference"
     public static let imageDataKey = "imageAsset"
+    public static let titleKey = "title"
     
     
     public var name: String
     public var vote: Double?
     public var text: String
+    public var title: String?
     public var image: Data?
     public var ckRecordID: CKRecordID?
     public var quotewallReference: CKReference?
     public var quotes: [Quote] = []
     
-    public init(name: String, text: String, image: Data? = nil, quotewallReference: CKReference?) {
+    public init(name: String, text: String, title: String?, image: Data? = nil, quotewallReference: CKReference?) {
         self.name = name
+        self.title = title
         self.text = text
         self.image = image
         self.quotewallReference = quotewallReference
@@ -62,6 +65,7 @@ public class Quote {
         let record = CKRecord(recordType: Quote.recordTypeKey, recordID: recordID)
         record.setValue(name, forKey: Quote.nameKey)
         record.setValue(text, forKey: Quote.textKey)
+        record.setValue(title, forKeyPath: Quote.titleKey)
        
         let imageDataAsset = QuotewallController.shared.createCKAsset(for: image)
         
@@ -77,6 +81,7 @@ public class Quote {
         
         guard let name = ckRecord[Quote.nameKey] as? String,
             let text = ckRecord[Quote.textKey] as? String,
+            let title = ckRecord[Quote.titleKey] as? String,
             let userCKReference = ckRecord[Quotewall.quotewallReferenceKey] as? CKReference
         else { return nil }
         
@@ -86,7 +91,7 @@ public class Quote {
 //            newImageData = try? Data(contentsOf: imageDataURL, options: .mappedIfSafe)
 //        }
         
-        self.init(name: name, text: text, image: nil, quotewallReference: userCKReference)
+        self.init(name: name, text: text, title: title, image: nil, quotewallReference: userCKReference)
         
         self.ckRecordID = ckRecord.recordID
         

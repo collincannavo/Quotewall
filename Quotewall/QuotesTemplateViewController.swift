@@ -21,6 +21,9 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var addToFavoriteButton: UIButton!
     @IBOutlet weak var favoritesButton: UIBarButtonItem!
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var quoteCard: UIView!
+    @IBOutlet weak var deleteImage: UIImageView!
+    @IBOutlet weak var titleTextField: UITextField!
 
     // MARK: - Properties
     
@@ -32,6 +35,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     var quoteCollectionCell = QuotesCollectionViewCell()
     let imagePicker = UIImagePickerController()
     let navigation = UINavigationController()
+    let gradient = CAGradientLayer()
     
     // MARK: - Actions
    
@@ -106,13 +110,27 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         
         if senderIsMainCollection {
             deleteButton.isHidden = false
+            deleteImage.isHidden = false
         }
+        
+        gradient.colors = [UIColor.gradientBlueColor.cgColor, UIColor.gradientGreenColor.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.frame = view.frame
+        self.view.layer.insertSublayer(gradient, at: 0)
        
         imagePicker.delegate = self
         navigationBar.delegate = self as? UINavigationBarDelegate
         navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
+        
+        quoteCard.layer.shadowOpacity = 1.0
+        quoteCard.layer.shadowRadius = 4
+        quoteCard.layer.shadowOffset = CGSize(width: 0, height: 4)
+        quoteCard.layer.shadowColor = UIColor.black.cgColor
+
         
     }
     
@@ -146,7 +164,8 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         
         guard let name = personNameTextField.text,
             let text = quoteTextField.text,
-            let quotewall = quotewall
+            let quotewall = quotewall,
+            let title = titleTextField.text
             else { return }
         
         var backgroundImageData:  Data? = nil
@@ -154,7 +173,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             backgroundImageData = UIImagePNGRepresentation(imageData)
         }
     
-        QuoteController.shared.createQuote(with: name, text: text, image: backgroundImageData, quotewall: quotewall) { (success) in
+        QuoteController.shared.createQuote(with: name, text: text, title: title, image: backgroundImageData, quotewall: quotewall) { (success) in
             
             DispatchQueue.main.async {
                 if success {
@@ -253,11 +272,13 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     func updateViews() {
         
         deleteButton.isHidden = true
+        deleteImage.isHidden = true
         
         guard let quote = quote else { return }
         
         personNameTextField.text = quote.name
         quoteTextField.text = quote.text
+        
 
     }
 
@@ -279,6 +300,9 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
             UIView.commitAnimations()
         }
+    
+    
+  
     
 }
 
