@@ -17,13 +17,7 @@ public class QuotewallController {
     
     public var currentQuotewall: Quotewall?
     
-    public var quotewalls: [Quotewall] = [] {
-        didSet{
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: quotewallsWereSetNotification, object: self)
-            }
-        }
-    }
+    public var quotewalls: [Quotewall] = []
     
     public func addQuotewall(_ quotewall: Quotewall) {
         
@@ -97,11 +91,6 @@ public class QuotewallController {
         return CKAsset(fileURL: fileURL)
     }
     
-    public func deleteCKAssetRecord(ckAsset: CKAsset) {
-        
-//        ckAsset.fileURL = nil
-        
-    }
     
     
 }

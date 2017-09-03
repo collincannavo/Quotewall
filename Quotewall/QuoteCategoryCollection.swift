@@ -174,11 +174,12 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         if segue.identifier == "editQuoteCollection" {
             
             if let indexPath = self.quoteCategoryCollection.indexPathsForSelectedItems?.first,
+                
                 let detailsVC = segue.destination as? QuoteCollectionViewController {
                 
                 let quotewall = QuotewallController.shared.quotewalls[indexPath.row]
                 
-                        detailsVC.quotewall = quotewall
+                detailsVC.quotewall = quotewall
             }
         }
     }
@@ -202,7 +203,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
                         for quotewall in QuotewallController.shared.quotewalls {
                             dispatchGroup.enter()
                             
-                            CloudKitController.shared.fetchQuotesForQuotewall(quotewall, completion: { (success, quotes) in
+                        CloudKitController.shared.fetchQuotesForQuotewall(quotewall, completion: { (success, quotes) in
                                 quotewall.quotes = quotes
                                 dispatchGroup.leave()
                             })

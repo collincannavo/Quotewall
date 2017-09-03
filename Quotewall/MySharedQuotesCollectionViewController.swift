@@ -103,6 +103,8 @@ class MySharedQuotesCollectionViewController: UIViewController, UICollectionView
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
+        cancelButton.setValue(UIColor.red, forKey: "titleTextColor")
+        
         alert.addAction(removeSharedButton)
         alert.addAction(cancelButton)
         

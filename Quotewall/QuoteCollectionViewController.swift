@@ -32,17 +32,8 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
         
         let deleteButton = UIAlertAction(title: "Delete Quote", style: .default) { (delete) in
-            
-            guard let recordID = cell.ckRecordID else { return }
-            
-            CloudKitController.shared.deleteRecord(recordID, with: { 
-                self.deleteSuccessful()
-               
-                DispatchQueue.main.async {
-                    
-                    self.collectionView.reloadData()
-                }
-            })
+         
+            self.deleteQuote(cell: cell)
             
         }
         
@@ -67,7 +58,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
 
         collectionView.delegate = self
         collectionView.dataSource = self
-        cloudKitFetchQuotes()
+
         
         navigationBar.topItem?.title = quotewall?.category
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
@@ -82,10 +73,11 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         gradient.frame = view.frame
         self.view.layer.insertSublayer(gradient, at: 0)
         
-        QuotewallController.shared.currentQuotewall = self.quotewall
+
     }
     
-    func refresh(){
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         self.collectionView.reloadData()
     }
     
@@ -113,7 +105,6 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         guard let quotewall = quotewall else { return 0 }
         
         return quotewall.quotes.count
-
         
     }
     
@@ -143,28 +134,13 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
             
             let destinationVC = segue.destination as? QuotesTemplateViewController
             
-            let selectedQuote = QuotewallController.shared.currentQuotewall?.quotes[indexPath.row]
+            let selectedQuote = self.quotewall?.quotes[indexPath.row]
             
             destinationVC?.quote = selectedQuote
+            destinationVC?.quotewall = quotewall
             destinationVC?.senderIsMainCollection = true
             
         }
-    }
-    
-    // MARK: - CloudKit Fetch Quotes
-    
-    func cloudKitFetchQuotes() {
-        
-        CloudKitController.shared.fetchPersonalQuotes(completion: { (success, quotes) in
-            if success {
-                
-                self.quotewall?.quotes = quotes
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-        })
     }
     
     // MARK: - Alert Successful
@@ -226,6 +202,19 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
             }
         }
         
+    }
+    
+    func deleteQuote(cell: Quote) {
+        guard let ckRecordID = cell.ckRecordID else { return }
+        
+        CloudKitController.shared.deleteRecord(ckRecordID) { 
+            
+            DispatchQueue.main.async {
+                
+                self.collectionView.reloadData()
+                
+            }
+        }
     }
  
 }

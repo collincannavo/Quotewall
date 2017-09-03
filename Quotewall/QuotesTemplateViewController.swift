@@ -11,6 +11,7 @@ import UIKit
 
 class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var imageTransparentView: UIView!
     @IBOutlet weak var quoteTextField: UITextView!
@@ -31,8 +32,21 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     var quoteCollectionCell = QuotesCollectionViewCell()
     let imagePicker = UIImagePickerController()
     let navigation = UINavigationController()
+    
     // MARK: - Actions
    
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        
+        guard let currentQuote = quote,
+            let currentQuotewall = quotewall
+            else { return }
+        
+        self.delete(quote: currentQuote, from: currentQuotewall) { (success) in
+            if success {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         
@@ -88,8 +102,11 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         super.viewDidLoad()
         quoteTextField.delegate = self
         personNameTextField.delegate = self
-        
         updateViews()
+        
+        if senderIsMainCollection {
+            deleteButton.isHidden = false
+        }
        
         imagePicker.delegate = self
         navigationBar.delegate = self as? UINavigationBarDelegate
@@ -149,6 +166,24 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         }
     }
     
+    func delete(quote: Quote, from quotewall: Quotewall, with completion: @escaping (Bool) -> Void) {
+        let currentQuote = quote
+        let currentQuotewall = quotewall
+        
+        QuoteController.shared.removeQuote(currentQuote, from: currentQuotewall) { (success) in
+            if success {
+                
+                
+                completion(true)
+                
+            } else {
+                self.unableToDeleteAlert()
+                completion(false)
+            }
+        }
+        
+    }
+    
     // MARK: - Text Field and View Delegate methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -197,9 +232,28 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         present(alert, animated: true, completion: nil)
     }
     
+    func deleteSuccessful() {
+        let alert = UIAlertController(title: "Successfully Deleted!", message: "", preferredStyle: .alert)
+        
+        let okButton = UIAlertAction(title: "OK!", style: .default, handler: nil)
+        
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func unableToDeleteAlert() {
+        let alert = UIAlertController(title: "Unable to Delete", message: "Please try again later", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK!", style: .default, handler: nil)
+        
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
+    }
     // MARK: - Helper Functions
     
     func updateViews() {
+        
+        deleteButton.isHidden = true
+        
         guard let quote = quote else { return }
         
         personNameTextField.text = quote.name

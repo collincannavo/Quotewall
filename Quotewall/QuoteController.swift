@@ -10,15 +10,9 @@ import Foundation
 import UIKit
 import CloudKit
 
-let quotesWereSetNotification = Notification.Name(rawValue: "quotesWereSet")
-
 public class QuoteController {
     
     public static let shared = QuoteController()
-    
-    // MARK: - Properties
-    
-    var quotes: [Quote] = []
     
     // MARK: - CRUD Functions
     
@@ -33,4 +27,17 @@ public class QuoteController {
         completion(true)
     }
 
+    public func removeQuote(_ quote: Quote, from quotewall: Quotewall, completion: @escaping(Bool)->Void) {
+        
+        if let index = quotewall.quotes.index(where: {$0 == quote }) {
+            quotewall.quotes.remove(at: index)
+        }
+        
+        guard let ckRecordID = quote.ckRecordID else { completion(false); return }
+        
+        CloudKitController.shared.deleteRecord(ckRecordID) { 
+                completion(true)
+        }
+    }
+    
 }
