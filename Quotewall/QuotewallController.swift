@@ -91,9 +91,21 @@ public class QuotewallController {
         return CKAsset(fileURL: fileURL)
     }
     
-    
+    public func delete(quotewall: Quotewall, completion: @escaping (Bool) -> Void) {
+        
+        if let index = QuotewallController.shared.quotewalls.index(where: {$0 == quotewall}) {
+            QuotewallController.shared.quotewalls.remove(at: index)
+        }
+        
+        guard let ckRecordID = quotewall.ckRecordID else { completion(false); return }
+        
+        CloudKitController.shared.deleteRecord(ckRecordID) { 
+            completion(true)
+        }
+    }
     
 }
+
 
 
 

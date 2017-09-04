@@ -83,17 +83,23 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
     
     // MARK: - Alert
     
-    func quoteActions(image: Data?) {
+    func quoteActions(quotewall: Quotewall) {
         let alert = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
         
-        let addBackgroundImageButton = UIAlertAction(title: "Add Background Image", style: .default) { (backgroundImage) in
+        let deleteButton = UIAlertAction(title: "Delete", style: .default) { (delete) in
+            
+            self.delete(quotewall: quotewall, with: { (success) in
+                if success {
+                    self.quoteCategoryCollection.reloadData()
+                }
+            })
             
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         cancel.setValue(UIColor.red, forKey: "titleTextColor")
         
-        alert.addAction(addBackgroundImageButton)
+        alert.addAction(deleteButton)
         alert.addAction(cancel)
         
         present(alert, animated: true, completion: nil)
@@ -114,9 +120,7 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
             
             let cell = QuotewallController.shared.quotewalls[indexPath.row]
             
-            let image = cell.backgroundImage
-            
-            quoteActions(image: image)
+            quoteActions(quotewall: cell)
         } else {
             NSLog("Couldn't find the right index path")
         }
@@ -166,6 +170,34 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         present(alertController, animated: true, completion: nil)
         
     }
+    
+    // MARK: - Delete Quotewall
+    
+    func delete(quotewall: Quotewall, with completion: @escaping (Bool) -> Void) {
+     
+        let currentQuotewall = quotewall
+        
+        QuotewallController.shared.delete(quotewall: currentQuotewall) { (success) in
+            if success {
+                completion(true)
+            } else {
+                self.unableToDelete()
+        }
+        
+        
+    }
+}
+    // MARK: - Alerts
+        
+    func unableToDelete() {
+        let alert = UIAlertController(title: "Sorry!", message: "I couldn't delete it at this time. Try again later.", preferredStyle: .alert)
+        
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
+    }
+    
     
     // MARK: - Background Image picker Functions
     

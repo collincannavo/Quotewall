@@ -54,18 +54,19 @@ class MySharedQuotesCollectionViewController: UIViewController, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let sharedQuotes = self.sharedQuotes?[indexPath.row] else { return SharedQuoteCollectionViewCell() }
+        guard let sharedQuotes = self.sharedQuotes?[indexPath.row] else { return QuotesCollectionViewCell() }
         
-        guard let cell = self.sharedCollectionView.dequeueReusableCell(withReuseIdentifier: "sharedQuoteCell", for: indexPath) as? SharedQuoteCollectionViewCell else { return SharedQuoteCollectionViewCell() }
+        guard let cell = self.sharedCollectionView.dequeueReusableCell(withReuseIdentifier: "sharedQuoteCell", for: indexPath) as? QuotesCollectionViewCell else { return QuotesCollectionViewCell() }
         
-        cell.authorLabel.text = sharedQuotes.name
-        cell.quoteLabel.text = sharedQuotes.quote
+        cell.authorNameLabel.text = sharedQuotes.name
+        cell.quoteTextLabel.text = sharedQuotes.quote
+        cell.titleLabel.text = sharedQuotes.title
         
-        if let data = sharedQuotes.backgroundImage,
-            let image = UIImage(data: data) {
-            cell.backgroundImage.image = image
-            cell.backgroundImage.contentMode = .scaleToFill
-        }
+//        if let data = sharedQuotes.backgroundImage,
+//            let image = UIImage(data: data) {
+//            cell.backgroundImage.image = image
+//            cell.backgroundImage.contentMode = .scaleToFill
+//        }
         
         cellShadowing(cell)
         
@@ -114,7 +115,7 @@ class MySharedQuotesCollectionViewController: UIViewController, UICollectionView
     
     // MARK: - Cell Setup
     
-    fileprivate func cellShadowing(_ cell: SharedQuoteCollectionViewCell) {
+    fileprivate func cellShadowing(_ cell: QuotesCollectionViewCell) {
         cell.layer.shadowOpacity = 1.0
         cell.layer.shadowRadius = 4
         cell.layer.shadowOffset = CGSize(width: 0, height: 4)

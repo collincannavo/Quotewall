@@ -57,12 +57,12 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0b-DI-Om0">
                                                     <rect key="frame" x="0.0" y="0.0" width="165" height="143"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hEp-oo-TT5">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="quotewallBackground2" translatesAutoresizingMaskIntoConstraints="NO" id="hEp-oo-TT5">
                                                             <rect key="frame" x="6" y="17" width="151" height="94"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xm4-Mz-vXL">
-                                                            <rect key="frame" x="6" y="17" width="153" height="94"/>
+                                                            <rect key="frame" x="6" y="17" width="151" height="94"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" red="0.25882352941176467" green="0.27450980392156865" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
@@ -119,28 +119,9 @@
             </objects>
             <point key="canvasLocation" x="2681.5999999999999" y="112.44377811094454"/>
         </scene>
-        <!--Favorites-->
-        <scene sceneID="yqj-y6-R0H">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Favorites" id="IyG-Uz-uYH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="0cp-1N-mxK"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9NB-eq-iWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="771" y="569"/>
-        </scene>
-        <!--SearchQuotes-->
-        <scene sceneID="M7d-de-8oW">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SearchQuotes" id="mSx-uz-7iw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="O3Q-UP-lDe"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lSu-AD-q1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1348" y="569"/>
-        </scene>
     </scenes>
     <resources>
         <image name="quoteBook" width="35" height="32"/>
+        <image name="quotewallBackground2" width="2813" height="1614"/>
     </resources>
 </document>

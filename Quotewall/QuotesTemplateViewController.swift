@@ -59,18 +59,30 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
-        if senderIsFavoriteCollection {
+        if senderIsMainCollection {
             
-            guard let favoriteQuote = favoriteQuote,
-                let quote = quoteTextField.text,
-                let author = personNameTextField.text
+            guard let quoteText = quoteTextField.text,
+                let author = personNameTextField.text,
+                let title = titleTextField.text,
+                let currentQuote = self.quote
+//                let currentQuotewall = self.quotewall
                 else { return }
 
             
-            if quote.isEmpty || author.isEmpty {
+            if quoteText.isEmpty || author.isEmpty {
                 
                 unableToSaveAlert()
                 return
+                
+            } else {
+                
+                self.update(quote: currentQuote, author: author, quoteText: quoteText, title: title, completion: { (success) in
+
+                        if success {
+                            self.dismiss(animated: true, completion: nil)
+                        
+                    }
+                })
                 
             }
      
@@ -106,6 +118,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         super.viewDidLoad()
         quoteTextField.delegate = self
         personNameTextField.delegate = self
+        titleTextField.delegate = self
         updateViews()
         
         if senderIsMainCollection {
@@ -192,7 +205,6 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         QuoteController.shared.removeQuote(currentQuote, from: currentQuotewall) { (success) in
             if success {
                 
-                
                 completion(true)
                 
             } else {
@@ -278,7 +290,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         
         personNameTextField.text = quote.name
         quoteTextField.text = quote.text
-        
+        titleTextField.text = quote.title
 
     }
 
@@ -301,7 +313,17 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             UIView.commitAnimations()
         }
     
-    
+    func update(quote: Quote, author: String, quoteText: String, title: String, completion: @escaping (Bool) -> Void) {
+        
+        QuoteController.shared.updateQuote(quote, withQuoteData: author, quoteText: quoteText, title: title) { (success) in
+            if success {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+        
+    }
   
     
 }

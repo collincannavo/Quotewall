@@ -57,7 +57,11 @@ class LaunchScreenViewController: UIViewController, UITextFieldDelegate {
 
                     })
                     
-                    self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
+                    DispatchQueue.main.async {
+                        
+                        self.performSegue(withIdentifier: "toSharedQuotes", sender: self)
+                    }
+                    
                     
                 } else {
                     

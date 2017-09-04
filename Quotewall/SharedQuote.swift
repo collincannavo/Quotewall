@@ -19,10 +19,12 @@ public class SharedQuote {
     public static let backgroundImageDataKey = "backgroundImageAsset"
     public static let ckRecordIDKey = "CKRecordID"
     public static let referenceKey = "sharedQuoteReference"
+    public static let titleKey = "title"
     
     
     public var name: String
     public var quote: String
+    public var title: String?
     public var backgroundImage: Data?
     
     public var ckRecordID: CKRecordID?
@@ -35,6 +37,7 @@ public class SharedQuote {
         record[SharedQuote.nameKey] = name as CKRecordValue?
         record[SharedQuote.referenceKey] = reference as CKRecordValue?
         record[SharedQuote.quoteKey] = quote as CKRecordValue?
+        record[SharedQuote.titleKey] = title as CKRecordValue?
         
         let backgroundImageAsset = QuotewallController.shared.createCKAsset(for: backgroundImage)
         
@@ -56,9 +59,10 @@ public class SharedQuote {
 
     // MARK: - CloudKit initializers
     
-    public init(name: String, quote: String, backgroundImage: Data? = nil) {
+    public init(name: String, quote: String, title: String?, backgroundImage: Data? = nil) {
         self.name = name
         self.quote = quote
+        self.title = title
         self.backgroundImage = backgroundImage
     }
     
@@ -66,6 +70,7 @@ public class SharedQuote {
         
         guard let name = ckRecord[SharedQuote.nameKey] as? String,
             let quote = ckRecord[SharedQuote.quoteKey] as? String,
+            let title = ckRecord[SharedQuote.titleKey] as? String,
             let ckReference = ckRecord[SharedQuote.referenceKey] as? CKReference
             else { return nil }
         
@@ -75,7 +80,7 @@ public class SharedQuote {
             backgroundImageData = try? Data(contentsOf: backgroundDataURL, options: .mappedIfSafe)
         }
         
-        self.init(name: name, quote: quote, backgroundImage: backgroundImageData)
+        self.init(name: name, quote: quote, title: title, backgroundImage: backgroundImageData)
         
         self.reference = ckReference
         self.ckRecordID = ckRecord.recordID

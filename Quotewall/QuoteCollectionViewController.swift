@@ -24,25 +24,21 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     var quotewall: Quotewall?
     var person: Person?
 
-    func quoteActions(cell: Quote, author: String, quote: String, image: Data?) {
+    func quoteActions(cell: Quote, author: String, quote: String, title: String, image: Data?) {
         let alert = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
         
         let shareQuoteButton = UIAlertAction(title: "Share Quote", style: .default) { (share) in
             
-            self.createSharedQuote(author: author, quote: quote, image: image)
+            self.createSharedQuote(author: author, quote: quote, title: title, image: image)
         }
         
-        let deleteButton = UIAlertAction(title: "Delete Quote", style: .default) { (delete) in
-         
-            self.deleteQuote(cell: cell)
-            
-        }
+        
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         cancel.setValue(UIColor.red, forKey: "titleTextColor")
         
         alert.addAction(shareQuoteButton)
-        alert.addAction(deleteButton)
+    
         alert.addAction(cancel)
         
         present(alert, animated: true, completion: nil)
@@ -185,38 +181,28 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
                 let quote = cell.text
                 let image = cell.image
         
-            quoteActions(cell: cell, author: author, quote: quote, image: image)
+            guard let title = cell.title else { return }
+            
+            quoteActions(cell: cell, author: author, quote: quote, title: title, image: image)
         } else {
             NSLog("Couldn't find the right index path")
         }
         
     }
 
-    func createSharedQuote(author: String, quote: String, image: Data?) {
+    func createSharedQuote(author: String, quote: String, title: String, image: Data?) {
 
                 let author = author
                 let quote = quote
+                let title = title
                 let image = image
         
-        SharedQuoteController.shared.createSharedQuote(with: author, quote: quote, image: image) { (success) in
+        SharedQuoteController.shared.createSharedQuote(with: author, quote: quote, title: title, image: image) { (success) in
             if success {
                 self.successfullyAdded()
             }
         }
         
-    }
-    
-    func deleteQuote(cell: Quote) {
-        guard let ckRecordID = cell.ckRecordID else { return }
-        
-        CloudKitController.shared.deleteRecord(ckRecordID) { 
-            
-            DispatchQueue.main.async {
-                
-                self.collectionView.reloadData()
-                
-            }
-        }
     }
  
 }

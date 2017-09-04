@@ -40,4 +40,20 @@ public class QuoteController {
         }
     }
     
+    public func updateQuote(_ quote: Quote, withQuoteData author: String, quoteText: String, title: String, completion: @escaping (Bool) -> Void) {
+        
+        
+        quote.name = author
+        quote.text = quoteText
+        quote.title = title
+        
+        
+        CloudKitController.shared.updateQuoteRecord(with: quote) { (success) in
+            if success {
+                completion(true)
+            }
+        }
+        
+    }
+    
 }

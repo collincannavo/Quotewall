@@ -54,18 +54,13 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let sharedQuotes = self.sharedQuotes?[indexPath.row] else { return SharedQuoteCollectionViewCell() }
+        guard let sharedQuotes = self.sharedQuotes?[indexPath.row] else { return QuotesCollectionViewCell() }
         
-        guard let cell = self.sharedCollectionView.dequeueReusableCell(withReuseIdentifier: "sharedQuoteCell", for: indexPath) as? SharedQuoteCollectionViewCell else { return SharedQuoteCollectionViewCell() }
+        guard let cell = self.sharedCollectionView.dequeueReusableCell(withReuseIdentifier: "sharedQuote", for: indexPath) as? QuotesCollectionViewCell else { return QuotesCollectionViewCell() }
         
-        cell.authorLabel.text = sharedQuotes.name
-        cell.quoteLabel.text = sharedQuotes.quote
-        
-        if let data = sharedQuotes.backgroundImage,
-            let image = UIImage(data: data) {
-            cell.backgroundImage.image = image
-            cell.backgroundImage.contentMode = .scaleToFill
-        }
+        cell.authorNameLabel.text = sharedQuotes.name
+        cell.quoteTextLabel.text = sharedQuotes.quote
+        cell.titleLabel.text = sharedQuotes.title
 
         return cell
         
@@ -84,25 +79,20 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
         
         let contactsDispatchGroup = DispatchGroup()
         
-        var contactsCount = 0
-        
         let phoneNumberDispatchGroup = DispatchGroup()
-        var contactsPhoneCount = 0
         
         contacts.forEach { contact in
             
             contactsDispatchGroup.enter()
-            contactsCount += 1
-            print("contacts Count #1: ", contactsCount)
+
+            PersonController.shared.currentPerson?.followedUserNames.append(contact)
             
             for number in contact.phoneNumbers {
                 
                 phoneNumberDispatchGroup.enter()
-                contactsPhoneCount += 1
-                print("contacts Phone Count #1: ", contactsPhoneCount)
+     
                 
                 let phoneNumber = number.value.stringValue
-                print("the phone number format: ", phoneNumber)
                 
                 CloudKitController.shared.createFollowedUsers(with: phoneNumber, completion: { (success) in
                     if !success {
@@ -110,15 +100,13 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
                         
                     }
                     phoneNumberDispatchGroup.leave()
-                    contactsPhoneCount -= 1
-                    print("contacts Phone count #2: ", contactsPhoneCount)
+
                 })
             }
             
             phoneNumberDispatchGroup.notify(queue: DispatchQueue.main, execute: {
                 contactsDispatchGroup.leave()
-                contactsCount -= 1
-                print("contacts Count #2: ", contactsCount)
+
             })
             
         }
@@ -142,7 +130,8 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
     
     func fetchSharedQuotes() {
         
-        guard let currentPerson = PersonController.shared.currentPerson else { return }
+        guard let currentPerson = PersonController.shared.currentPerson
+            else { return }
         
         CloudKitController.shared.fetchSharedQuotes(for: currentPerson) { (success, sharedQuotes) in
             if success {

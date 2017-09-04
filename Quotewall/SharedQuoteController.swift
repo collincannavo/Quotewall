@@ -14,12 +14,12 @@ public class SharedQuoteController {
     
     public static let shared = SharedQuoteController()
     
-    public func createSharedQuote(with name: String, quote: String, image backgroundImage: Data? = nil, completion: @escaping (Bool) -> Void) {
+    public func createSharedQuote(with name: String, quote: String, title: String?, image backgroundImage: Data? = nil, completion: @escaping (Bool) -> Void) {
         
         guard let currentUser = PersonController.shared.currentPerson else
         { completion(false); return }
         
-        let sharedQuote = SharedQuote(name: name, quote: quote, backgroundImage: backgroundImage)
+        let sharedQuote = SharedQuote(name: name, quote: quote, title: title, backgroundImage: backgroundImage)
         
         sharedQuote.reference = PersonController.shared.currentPerson?.ckReference
         

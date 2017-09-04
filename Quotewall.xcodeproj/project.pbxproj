@@ -25,6 +25,7 @@
 		B6D369061F4F688200F00DE9 /* FavoriteQuoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D369051F4F688200F00DE9 /* FavoriteQuoteCollectionViewCell.swift */; };
 		B6DAB23D1F59F4DF00B16290 /* UserSharedQuotes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6DAB23C1F59F4DF00B16290 /* UserSharedQuotes.storyboard */; };
 		B6DAB23F1F59FAE700B16290 /* MySharedQuotesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DAB23E1F59FAE700B16290 /* MySharedQuotesCollectionViewController.swift */; };
+		B6DAB2411F5CD53000B16290 /* iCloudReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DAB2401F5CD53000B16290 /* iCloudReminderViewController.swift */; };
 		B6E726781F436DBB0067B6F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E726771F436DBB0067B6F5 /* AppDelegate.swift */; };
 		B6E7267D1F436DBB0067B6F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E7267B1F436DBB0067B6F5 /* Main.storyboard */; };
 		B6E726801F436DBB0067B6F5 /* Quotewall.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6E7267E1F436DBB0067B6F5 /* Quotewall.xcdatamodeld */; };
@@ -76,6 +77,7 @@
 		B6D369051F4F688200F00DE9 /* FavoriteQuoteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteQuoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6DAB23C1F59F4DF00B16290 /* UserSharedQuotes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserSharedQuotes.storyboard; sourceTree = "<group>"; };
 		B6DAB23E1F59FAE700B16290 /* MySharedQuotesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySharedQuotesCollectionViewController.swift; sourceTree = "<group>"; };
+		B6DAB2401F5CD53000B16290 /* iCloudReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCloudReminderViewController.swift; sourceTree = "<group>"; };
 		B6E726741F436DBB0067B6F5 /* Quotewall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotewall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E726771F436DBB0067B6F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E7267C1F436DBB0067B6F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 		B6E726D01F4602550067B6F5 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				B6DAB2401F5CD53000B16290 /* iCloudReminderViewController.swift */,
 				B61D05F11F54C70C009417C4 /* CircularCollectionViewLayout.swift */,
 				B6E726D11F46026A0067B6F5 /* UIImageExtension.swift */,
 				B61D05E91F5370C0009417C4 /* Colors.swift */,
@@ -366,6 +369,7 @@
 				B6E726981F43966D0067B6F5 /* QuotewallController.swift in Sources */,
 				B69ACD181F55CB4A0028B05C /* SharedQuote.swift in Sources */,
 				B6E726C81F44E0980067B6F5 /* PersonController.swift in Sources */,
+				B6DAB2411F5CD53000B16290 /* iCloudReminderViewController.swift in Sources */,
 				B6E726C61F44A0590067B6F5 /* NetworkQuotesController.swift in Sources */,
 				B6E726941F4372BC0067B6F5 /* Quotewall.swift in Sources */,
 				B6E726C41F449EF10067B6F5 /* NetworkQuotes.swift in Sources */,

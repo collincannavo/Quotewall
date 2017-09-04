@@ -380,6 +380,22 @@ public class CloudKitController {
             
         }
     }
+    
+    public func updateQuoteRecord(with quote: Quote, completion: @escaping (Bool) -> Void) {
+        let record = quote.ckRecord
+        
+        CloudKitController.shared.updateRecord(record) { (records, recordIDs, error) in
+            if let error = error {
+                NSLog("There was an error updating the Quote: \(error.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            guard (records?.first != nil) else { NSLog("Did not successfully return the modified quote record"); completion(false); return }
+            
+            completion(true)
+        }
+    }
 }
 
     
