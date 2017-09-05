@@ -35,7 +35,7 @@ class LaunchScreenViewController: UIViewController, UITextFieldDelegate {
             if success {
                 self.fetchData()
             } else {
-                self.performSegue(withIdentifier: "toDeadEnd", sender: self)
+                self.iCloudReminder()
             }
         }
     }
@@ -125,5 +125,12 @@ class LaunchScreenViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         return true
+    }
+    
+    func iCloudReminder() {
+        let alert = UIAlertController(title: "Please Log into iCloud", message: "Please check you Settings and ensure you sign into iCloud before you can access Quotewall", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .destructive, handler: nil)
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
     }
 }
