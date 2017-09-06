@@ -50,7 +50,7 @@ public class Person {
         
         let record = CKRecord(recordType: Person.recordTypeKey, recordID: recordID)
         record[Person.nameKey] = name as CKRecordValue?
-//        record[Person.followedUsersNamesKey] = followedUserNames as CKRecordValue?
+
         record[Person.appleUserReferenceKey] = userCKReference as CKRecordValue?
         record[Person.phoneKey] = phone as CKRecordValue?
         
@@ -67,10 +67,9 @@ public class Person {
     public init?(CKRecord: CKRecord) {
         guard let name = CKRecord[Person.nameKey] as? String,
             let phone = CKRecord[Person.phoneKey] as? String
-//            let followedUsers = CKRecord[Person.followedUsersNamesKey] as? CNContact
         else { return nil }
         self.name = name
-//        self.followedUserNames = followedUsers
+
         self.phone = phone
         self.userCKReference = CKRecord[Person.appleUserReferenceKey] as? CKReference
     

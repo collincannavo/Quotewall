@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B61D05EA1F5370C0009417C4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D05E91F5370C0009417C4 /* Colors.swift */; };
-		B61D05F21F54C70C009417C4 /* CircularCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D05F11F54C70C009417C4 /* CircularCollectionViewLayout.swift */; };
 		B69ACD0E1F54CBC00028B05C /* CircularCollectionViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD0D1F54CBC00028B05C /* CircularCollectionViewLayoutAttributes.swift */; };
 		B69ACD161F55C9480028B05C /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD151F55C9480028B05C /* ContactsViewController.swift */; };
 		B69ACD181F55CB4A0028B05C /* SharedQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD171F55CB4A0028B05C /* SharedQuote.swift */; };
@@ -60,7 +59,6 @@
 
 /* Begin PBXFileReference section */
 		B61D05E91F5370C0009417C4 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		B61D05F11F54C70C009417C4 /* CircularCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayout.swift; sourceTree = "<group>"; };
 		B69ACD0D1F54CBC00028B05C /* CircularCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
 		B69ACD151F55C9480028B05C /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		B69ACD171F55CB4A0028B05C /* SharedQuote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedQuote.swift; sourceTree = "<group>"; };
@@ -254,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				B6DAB2401F5CD53000B16290 /* iCloudReminderViewController.swift */,
-				B61D05F11F54C70C009417C4 /* CircularCollectionViewLayout.swift */,
 				B6E726D11F46026A0067B6F5 /* UIImageExtension.swift */,
 				B61D05E91F5370C0009417C4 /* Colors.swift */,
 				B69ACD0D1F54CBC00028B05C /* CircularCollectionViewLayoutAttributes.swift */,
@@ -359,7 +356,6 @@
 				B6E726B61F43C0B60067B6F5 /* QuoteCollectionViewController.swift in Sources */,
 				B6D368FC1F478EDF00F00DE9 /* CategoryCollectionViewCell.swift in Sources */,
 				B6D369041F4F611E00F00DE9 /* FavoriteQuoteController.swift in Sources */,
-				B61D05F21F54C70C009417C4 /* CircularCollectionViewLayout.swift in Sources */,
 				B69ACD1C1F55E9A30028B05C /* SharedQuoteCollectionViewCell.swift in Sources */,
 				B6E726C21F449E5C0067B6F5 /* NetworkController.swift in Sources */,
 				B6E7269A1F4396990067B6F5 /* QuoteController.swift in Sources */,
@@ -549,7 +545,7 @@
 				B6E726881F436DBB0067B6F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		B6E726891F436DBB0067B6F5 /* Build configuration list for PBXNativeTarget "Quotewall" */ = {
 			isa = XCConfigurationList;
@@ -558,7 +554,7 @@
 				B6E7268B1F436DBB0067B6F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

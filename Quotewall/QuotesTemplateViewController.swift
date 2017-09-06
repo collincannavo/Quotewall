@@ -65,7 +65,6 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
                 let author = personNameTextField.text,
                 let title = titleTextField.text,
                 let currentQuote = self.quote
-//                let currentQuotewall = self.quotewall
                 else { return }
 
             

@@ -74,23 +74,6 @@ public class PersonController {
         }
     }
 
-    public func deleteQuote(_ quote: Quote, from person: Person, with completion: @escaping (Bool) -> Void) {
-        if let index = person.quotes.index(where: {$0 == quote}) {
-            person.quotes.remove(at: index)
-            
-            self.update(for: person, completion: { (success) in
-                if success {
-                    completion(true)
-                } else {
-                    completion(false)
-                }
-            })
-        }
-    }
-    
-    public func removeAllQuotes(from person: Person) {
-        person.quotes.removeAll()
-    }
     public func update(for person: Person, completion: @escaping(Bool)-> Void) {
         guard let recordID = person.ckRecordID else { return }
         CloudKitController.shared.fetchRecord(with: recordID) { (record, error) in

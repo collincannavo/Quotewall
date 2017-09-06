@@ -62,12 +62,6 @@ class MySharedQuotesCollectionViewController: UIViewController, UICollectionView
         cell.quoteTextLabel.text = sharedQuotes.quote
         cell.titleLabel.text = sharedQuotes.title
         
-//        if let data = sharedQuotes.backgroundImage,
-//            let image = UIImage(data: data) {
-//            cell.backgroundImage.image = image
-//            cell.backgroundImage.contentMode = .scaleToFill
-//        }
-        
         cellShadowing(cell)
         
         return cell
@@ -153,7 +147,6 @@ class MySharedQuotesCollectionViewController: UIViewController, UICollectionView
         present(alert, animated: true, completion: nil)
     }
 
-    
     
     // MARK: - Fetch My Shared Quotes
     
