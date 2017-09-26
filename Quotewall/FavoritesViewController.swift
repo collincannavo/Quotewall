@@ -65,7 +65,7 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
        
         // Move below to cell
         
-        if let data = self.currentFavorite?.backgroundImage,
+        if let data = cell.favoriteQuote?.backgroundImage,
             let image = UIImage(data: data) {
             cell.backgroundImage.image = image.fixOrientation()
             cell.backgroundImage.contentMode = .scaleToFill
