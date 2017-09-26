@@ -68,6 +68,7 @@ class LaunchScreenViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Add user's name so they can see who shared it
     
     func createUser() {
         
