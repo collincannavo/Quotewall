@@ -110,11 +110,18 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         }
 
     }
+    
+    @IBAction func backgroundPhotoButtonTapped(_ sender: UIButton!) {
+        self.selectPhotoTapped(sender: sender)
+        
+    }
+    
        
     // MARK: - Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         quoteTextField.delegate = self
         personNameTextField.delegate = self
         titleTextField.delegate = self
