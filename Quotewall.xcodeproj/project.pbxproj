@@ -145,7 +145,6 @@
 			children = (
 				B6E726D01F4602550067B6F5 /* Helper */,
 				B6E726C91F44F6C00067B6F5 /* View */,
-				B6E7269B1F43A19F0067B6F5 /* Quotewall.entitlements */,
 				B6E726901F4371830067B6F5 /* ViewController */,
 				B6E7268F1F4371790067B6F5 /* ModelController */,
 				B6E7268E1F4371620067B6F5 /* Model */,
@@ -158,6 +157,7 @@
 		B6E7268C1F4371530067B6F5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B6E7269B1F43A19F0067B6F5 /* Quotewall.entitlements */,
 				B6E726C11F449E5C0067B6F5 /* NetworkController.swift */,
 				B6E7267B1F436DBB0067B6F5 /* Main.storyboard */,
 				B6E726831F436DBB0067B6F5 /* LaunchScreen.storyboard */,

@@ -9,7 +9,6 @@
 import Foundation
 import CloudKit
 
-let quotewallsWereSetNotification = Notification.Name(rawValue: "quotewallsWereSet")
 
 public class QuotewallController {
     

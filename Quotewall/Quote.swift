@@ -66,10 +66,7 @@ public class Quote {
         record.setValue(name, forKey: Quote.nameKey)
         record.setValue(text, forKey: Quote.textKey)
         record.setValue(title, forKeyPath: Quote.titleKey)
-       
-        let imageDataAsset = QuotewallController.shared.createCKAsset(for: image)
         
-//        record.setValue(imageDataAsset, forKey: Quote.imageDataKey)
         record[Quotewall.quotewallReferenceKey] = quotewallReference as CKRecordValue?
         
         self.ckRecordID = record.recordID
@@ -84,12 +81,6 @@ public class Quote {
             let title = ckRecord[Quote.titleKey] as? String,
             let userCKReference = ckRecord[Quotewall.quotewallReferenceKey] as? CKReference
         else { return nil }
-        
-//        let imageAsset = ckRecord[Quote.imageDataKey] as? CKAsset
-//        var newImageData: Data?
-//        if let imageDataURL = imageAsset?.fileURL {
-//            newImageData = try? Data(contentsOf: imageDataURL, options: .mappedIfSafe)
-//        }
         
         self.init(name: name, text: text, title: title, image: nil, quotewallReference: userCKReference)
         
