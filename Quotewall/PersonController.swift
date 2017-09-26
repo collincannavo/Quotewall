@@ -34,6 +34,7 @@ public class PersonController {
                 NSLog("There was an error saving a favorite quote: \(error.localizedDescription)")
             }
         }
+        
     }
     
     public func addSharedQuotes(_ quote: SharedQuote, to person: Person, completion: @escaping () -> Void) {

@@ -123,7 +123,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     @IBAction func addFavoriteButtonTapped(_ sender: Any) {
         
-        
+        print("Favorite button tapped")
         guard let quote = quoteTextField.text,
             let author = personNameTextField.text
             

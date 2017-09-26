@@ -71,8 +71,6 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
             cell.backgroundImage.contentMode = .scaleToFill
         }
         
-        cell.favoriteQuote = self.favoriteQuote[indexPath.row]
-        
         cellShadowing(cell)
         
         return cell
