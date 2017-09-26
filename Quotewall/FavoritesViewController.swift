@@ -54,18 +54,18 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-//        let favoriteQuote = PersonController.shared.currentPerson?.favoriteQuotes[indexPath.row]
+        let favoriteQuote = PersonController.shared.currentPerson?.favoriteQuotes[indexPath.row]
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteQuoteCell", for: indexPath) as? FavoriteQuoteCollectionViewCell else { return FavoriteQuoteCollectionViewCell() }
         
-//        cell.favoriteQuote = self.favoriteQuote
-//        cell.authorLabel.text = self.favoriteQuote.name
-//        cell.quoteLabel.text = self.favoriteQuote.quote
+        cell.favoriteQuote = favoriteQuote
+        cell.authorLabel.text = favoriteQuote?.name
+        cell.quoteLabel.text = favoriteQuote?.quote
         cell.delegate = self
        
         // Move below to cell
         
-        if let data = self.favoriteQuote.backgroundImage,
+        if let data = self.currentFavorite?.backgroundImage,
             let image = UIImage(data: data) {
             cell.backgroundImage.image = image.fixOrientation()
             cell.backgroundImage.contentMode = .scaleToFill
