@@ -9,6 +9,7 @@
 import Foundation
 import CloudKit
 
+
 let quotewallsWereSetNotification = Notification.Name(rawValue: "quotewallsWereSet")
 
 public class QuotewallController {
@@ -95,6 +96,7 @@ public class QuotewallController {
         
         return CKAsset(fileURL: fileURL)
     }
+    
     
     public func updatedQuote(with quote: Quote, name: String, text: String, backgroundImage: Data? = nil, completion: @escaping (Bool) -> Void ) {
         
