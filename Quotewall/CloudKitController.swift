@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import CloudKit
 
 public class CloudKitController {
@@ -380,6 +381,20 @@ public class CloudKitController {
             completion(true)
             
         }
+    }
+    
+    public func compressImage(named: String) -> UIImage {
+        
+        guard let oldImage = UIImage(contentsOfFile: named) else
+        { return UIImage() }
+        
+        guard let imageData = UIImageJPEGRepresentation(oldImage, 0.025) else
+        { return UIImage() }
+        
+       guard let image = UIImage(data: imageData) else
+       { return UIImage() }
+        return image
+        
     }
 }
 

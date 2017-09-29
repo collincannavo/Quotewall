@@ -31,4 +31,5 @@ public class QuoteController {
         quote.parentCKReference = QuotewallController.shared.currentQuotewall?.ckReference
     }
 
+
 }
