@@ -95,6 +95,8 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
             contactsCount += 1
             print("contacts Count #1: ", contactsCount)
             
+            let contactID = contact.identifier
+            
             for number in contact.phoneNumbers {
                 
                 phoneNumberDispatchGroup.enter()

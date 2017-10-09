@@ -1,4 +1,4 @@
-    //
+//
 //  CloudKitController.swift
 //  Quotewall
 //
