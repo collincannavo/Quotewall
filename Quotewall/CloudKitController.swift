@@ -383,28 +383,28 @@ public class CloudKitController {
         }
     }
     
-    public func createFollowedUserWithID(with identifier: String, completion: @escaping (Bool) -> Void) {
-        let predicate = NSPredicate(format: "identifier == %@", identifier)
-        
-        let query = CKQuery(recordType: Person.recordTypeKey, predicate: predicate)
-        
-        container.publicCloudDatabase.perform(query, inZoneWith: nil) { (ckRecords, error) in
-            if let error = error {
-                NSLog("There was an error creating a person to follow: \(error.localizedDescription)")
-                completion(false)
-                return
-            }
-            guard let record = ckRecords?.first,
-            let person = PersonController.shared.currentPerson
-            else
-            {completion(false); return}
-            
-            let reference = CKReference(record: record, action: .none)
-            person.followedUsers.append(reference)
-            
-            completion(true)
-        }
-    }
+//    public func createFollowedUserWithID(with identifier: String, phone: String, completion: @escaping (Bool) -> Void) {
+//        let predicate = NSPredicate(format: "identifier == %@ AND phone == %@", [identifier, phone])
+//
+//        let query = CKQuery(recordType: Person.recordTypeKey, predicate: predicate)
+//
+//        container.publicCloudDatabase.perform(query, inZoneWith: nil) { (ckRecords, error) in
+//            if let error = error {
+//                NSLog("There was an error creating a person to follow: \(error.localizedDescription)")
+//                completion(false)
+//                return
+//            }
+//            guard let record = ckRecords?.first,
+//            let person = PersonController.shared.currentPerson
+//            else
+//            {completion(false); return}
+//
+//            let reference = CKReference(record: record, action: .none)
+//            person.followedUsers.append(reference)
+//
+//            completion(true)
+//        }
+//    }
     
     public func compressImage(named: String) -> UIImage {
         
