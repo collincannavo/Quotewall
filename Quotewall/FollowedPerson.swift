@@ -19,12 +19,12 @@ public class FollowedPerson{
     
     
     public let name: String
-    public let phone: String
+    public let phone: [String]
     public let identifier: String
     public var ckRecordID: CKRecordID?
     public var userCKReference: CKReference?
     
-    public init(name: String, phone: String, identifier: String, userCKReference: CKReference) {
+    public init(name: String, phone: [String], identifier: String, userCKReference: CKReference) {
         self.name = name
         self.phone = phone
         self.identifier = identifier
@@ -58,7 +58,7 @@ public class FollowedPerson{
             else { return nil}
         
         self.name = name
-        self.phone = phone
+        self.phone = [phone]
         self.identifier = identifier
 
         self.userCKReference = CKrecord[FollowedPerson.userReferenceKey] as? CKReference
