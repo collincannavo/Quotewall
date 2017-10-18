@@ -19,7 +19,7 @@ public class FollowedPerson{
     
     
     public let name: String
-    public let phone: [String]
+    public let phone: [String] // not sure if I want this phone to be an array...
     public let identifier: String
     public var ckRecordID: CKRecordID?
     public var userCKReference: CKReference?
