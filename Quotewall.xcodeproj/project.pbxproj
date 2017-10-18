@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		B61D05EA1F5370C0009417C4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D05E91F5370C0009417C4 /* Colors.swift */; };
+<<<<<<< HEAD
+=======
+		B61D05F21F54C70C009417C4 /* CircularCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61D05F11F54C70C009417C4 /* CircularCollectionViewLayout.swift */; };
+		B63551C01F8C1F2600020F5A /* FollowedPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63551BF1F8C1F2600020F5A /* FollowedPerson.swift */; };
+		B69ACD0C1F54CAEA0028B05C /* CollectionViewTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B69ACD0B1F54CAEA0028B05C /* CollectionViewTest.storyboard */; };
+>>>>>>> version2ID
 		B69ACD0E1F54CBC00028B05C /* CircularCollectionViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD0D1F54CBC00028B05C /* CircularCollectionViewLayoutAttributes.swift */; };
 		B69ACD161F55C9480028B05C /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD151F55C9480028B05C /* ContactsViewController.swift */; };
 		B69ACD181F55CB4A0028B05C /* SharedQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69ACD171F55CB4A0028B05C /* SharedQuote.swift */; };
@@ -59,6 +65,12 @@
 
 /* Begin PBXFileReference section */
 		B61D05E91F5370C0009417C4 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
+		B61D05F11F54C70C009417C4 /* CircularCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayout.swift; sourceTree = "<group>"; };
+		B63551BF1F8C1F2600020F5A /* FollowedPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowedPerson.swift; sourceTree = "<group>"; };
+		B69ACD0B1F54CAEA0028B05C /* CollectionViewTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CollectionViewTest.storyboard; sourceTree = "<group>"; };
+>>>>>>> version2ID
 		B69ACD0D1F54CBC00028B05C /* CircularCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
 		B69ACD151F55C9480028B05C /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		B69ACD171F55CB4A0028B05C /* SharedQuote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedQuote.swift; sourceTree = "<group>"; };
@@ -194,6 +206,7 @@
 				B6E726BF1F43EFCA0067B6F5 /* Person.swift */,
 				B6D369011F4F4D1E00F00DE9 /* FavoriteQuote.swift */,
 				B69ACD171F55CB4A0028B05C /* SharedQuote.swift */,
+				B63551BF1F8C1F2600020F5A /* FollowedPerson.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -356,6 +369,11 @@
 				B6E726B61F43C0B60067B6F5 /* QuoteCollectionViewController.swift in Sources */,
 				B6D368FC1F478EDF00F00DE9 /* CategoryCollectionViewCell.swift in Sources */,
 				B6D369041F4F611E00F00DE9 /* FavoriteQuoteController.swift in Sources */,
+<<<<<<< HEAD
+=======
+				B61D05F21F54C70C009417C4 /* CircularCollectionViewLayout.swift in Sources */,
+				B63551C01F8C1F2600020F5A /* FollowedPerson.swift in Sources */,
+>>>>>>> version2ID
 				B69ACD1C1F55E9A30028B05C /* SharedQuoteCollectionViewCell.swift in Sources */,
 				B6E726C21F449E5C0067B6F5 /* NetworkController.swift in Sources */,
 				B6E7269A1F4396990067B6F5 /* QuoteController.swift in Sources */,

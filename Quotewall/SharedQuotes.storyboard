@@ -206,8 +206,12 @@
                     <connections>
                         <segue destination="73S-Hh-Wyc" kind="relationship" relationship="viewControllers" id="3cX-06-TZE"/>
                         <segue destination="iEp-tk-Unz" kind="relationship" relationship="viewControllers" id="C3m-Cb-ZJN"/>
+<<<<<<< HEAD
                         <segue destination="mGa-XD-WTS" kind="relationship" relationship="viewControllers" id="6iA-Zk-GYy"/>
                         <segue destination="8Ma-E8-a3n" kind="relationship" relationship="viewControllers" id="0AH-5k-fc1"/>
+=======
+                        <segue destination="Qg7-1z-SF5" kind="relationship" relationship="viewControllers" id="IMd-dE-dav"/>
+>>>>>>> version2ID
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCD-dk-QEP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -233,16 +237,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvn-dj-HYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="189" y="579"/>
-        </scene>
-        <!--SearchQuotes-->
-        <scene sceneID="5Uf-GQ-eRC">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SearchQuotes" id="mGa-XD-WTS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="FtO-Tm-3AI"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OQ3-EZ-tS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="572" y="524"/>
         </scene>
     </scenes>
     <resources>

@@ -38,7 +38,10 @@ class FavoriteQuoteController {
     
     public func createFavoriteQuote(with name: String, quote: String, image: Data? = nil, completion: @escaping (Bool) -> Void) {
         
-        guard let person = PersonController.shared.currentPerson else { completion(false); return }
+        guard let person = PersonController.shared.currentPerson
+            else { completion(false); return }
+        
+        // compress image here
         
         let quote = FavoriteQuote(name: name, quote: quote, backgroundImage: image)
         

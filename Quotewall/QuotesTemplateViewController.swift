@@ -51,7 +51,11 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             }
         }
     }
+<<<<<<< HEAD
     
+=======
+   
+>>>>>>> version2ID
     @IBAction func cancelButtonTapped(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
@@ -59,7 +63,12 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
+<<<<<<< HEAD
         if senderIsMainCollection {
+=======
+        view.endEditing(true)
+        if senderIsFavoriteCollection {
+>>>>>>> version2ID
             
             guard let quoteText = quoteTextField.text,
                 let author = personNameTextField.text,
@@ -68,7 +77,16 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
                 else { return }
 
             
+<<<<<<< HEAD
             if quoteText.isEmpty || author.isEmpty {
+=======
+            var backgroundImageData: Data? = nil
+            if let backgroundImage = backgroundImage.image {
+                backgroundImageData = UIImagePNGRepresentation(backgroundImage)
+            }
+            
+            if quote.isEmpty || author.isEmpty {
+>>>>>>> version2ID
                 
                 unableToSaveAlert()
                 return
@@ -84,31 +102,80 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
                 })
                 
             }
-     
+            
+        } else if senderIsMainCollection {
+            
+            guard let quote = quote,
+                let author = personNameTextField.text,
+                let text = quoteTextField.text
+                else { return }
+            
+            var backgroundImageData: Data? = nil
+            
+            if let backgroundImage = backgroundImage.image {
+                backgroundImageData = UIImagePNGRepresentation(backgroundImage) }
+            
+            if text.isEmpty || author.isEmpty {
+                
+                unableToSaveAlert()
+                return
+                
+            } else {
+                
+                updatedSavedQuote(quote, author: author, text: text, backgroundImage: backgroundImageData)
+                
+            }
+            
         } else {
-        
+            
             guard let quote = quoteTextField.text,
-            let person = personNameTextField.text
-            else { return }
-        
-                if quote.isEmpty || person.isEmpty {
+                let person = personNameTextField.text
+                else { return }
             
-                    unableToSaveAlert()
-                    return
-            
-                } else {
-           
-                    saveQuoteToQuotewall(with: { (success) in
-                        if success {
+            if quote.isEmpty || person.isEmpty {
+                
+                unableToSaveAlert()
+                return
+                
+            } else {
+                
+                saveQuoteToQuotewall(with: { (success) in
+                    if success {
                         DispatchQueue.main.async {
                             self.dismiss(animated: true, completion: nil)
                             
+                        }
                     }
-                }
-            })
+                })
             }
         }
+<<<<<<< HEAD
 
+=======
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func addFavoriteButtonTapped(_ sender: Any) {
+        
+        print("Favorite button tapped")
+        guard let quote = quoteTextField.text,
+            let author = personNameTextField.text
+            
+            else { return }
+        
+        var backgroundData: Data? = nil
+        if let backgroundImage = backgroundImage.image {
+            backgroundData = UIImagePNGRepresentation(backgroundImage)
+        }
+        
+        
+        FavoriteQuoteController.shared.createFavoriteQuote(with: author, quote: quote, image: backgroundData) { (success) in
+            if !success {
+                NSLog("There was an error creating a favorite quote")
+            }
+        }
+        
+>>>>>>> version2ID
     }
        
     // MARK: - Functions
@@ -151,6 +218,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             backgroundImage.contentMode = .scaleToFill
+            backgroundImage.image = pickedImage.fixOrientation()
             backgroundImage.image = pickedImage
             dismiss(animated: true, completion: nil)
         }
@@ -197,6 +265,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         }
     }
     
+<<<<<<< HEAD
     func delete(quote: Quote, from quotewall: Quotewall, with completion: @escaping (Bool) -> Void) {
         let currentQuote = quote
         let currentQuotewall = quotewall
@@ -238,6 +307,14 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             return false
         }
     return true
+=======
+    func updatedSavedQuote(_ quote: Quote, author: String, text: String, backgroundImage: Data? = nil) {
+        
+        QuotewallController.shared.updatedQuote(with: quote, name: author, text: text, backgroundImage: backgroundImage) { (_) in
+            
+            return
+        }
+>>>>>>> version2ID
     }
     
 

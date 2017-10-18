@@ -82,10 +82,13 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
         let phoneNumberDispatchGroup = DispatchGroup()
         
         contacts.forEach { contact in
+
+            let contactID = contact.identifier
             
             contactsDispatchGroup.enter()
 
             PersonController.shared.currentPerson?.followedUserNames.append(contact)
+            
             
             for number in contact.phoneNumbers {
                 
@@ -96,7 +99,6 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
                 
                 CloudKitController.shared.createFollowedUsers(with: phoneNumber, completion: { (success) in
                     if !success {
-                        
                         
                     }
                     phoneNumberDispatchGroup.leave()

@@ -1,4 +1,4 @@
-    //
+//
 //  CloudKitController.swift
 //  Quotewall
 //
@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import CloudKit
 
 public class CloudKitController {
@@ -346,6 +347,7 @@ public class CloudKitController {
         }
     }
     
+<<<<<<< HEAD
     public func updateQuoteRecord(with quote: Quote, completion: @escaping (Bool) -> Void) {
         let record = quote.ckRecord
         
@@ -360,6 +362,43 @@ public class CloudKitController {
             
             completion(true)
         }
+=======
+//    public func createFollowedUserWithID(with identifier: String, phone: String, completion: @escaping (Bool) -> Void) {
+//        let predicate = NSPredicate(format: "identifier == %@ AND phone == %@", [identifier, phone])
+//
+//        let query = CKQuery(recordType: Person.recordTypeKey, predicate: predicate)
+//
+//        container.publicCloudDatabase.perform(query, inZoneWith: nil) { (ckRecords, error) in
+//            if let error = error {
+//                NSLog("There was an error creating a person to follow: \(error.localizedDescription)")
+//                completion(false)
+//                return
+//            }
+//            guard let record = ckRecords?.first,
+//            let person = PersonController.shared.currentPerson
+//            else
+//            {completion(false); return}
+//
+//            let reference = CKReference(record: record, action: .none)
+//            person.followedUsers.append(reference)
+//
+//            completion(true)
+//        }
+//    }
+    
+    public func compressImage(named: String) -> UIImage {
+        
+        guard let oldImage = UIImage(contentsOfFile: named) else
+        { return UIImage() }
+        
+        guard let imageData = UIImageJPEGRepresentation(oldImage, 0.025) else
+        { return UIImage() }
+        
+       guard let image = UIImage(data: imageData) else
+       { return UIImage() }
+        return image
+        
+>>>>>>> version2ID
     }
 }
 

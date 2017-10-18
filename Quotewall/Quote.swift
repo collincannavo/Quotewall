@@ -65,8 +65,15 @@ public class Quote {
         let record = CKRecord(recordType: Quote.recordTypeKey, recordID: recordID)
         record.setValue(name, forKey: Quote.nameKey)
         record.setValue(text, forKey: Quote.textKey)
+<<<<<<< HEAD
         record.setValue(title, forKeyPath: Quote.titleKey)
         
+=======
+        
+        let imageDataAsset = QuotewallController.shared.createCKAsset(for: image)
+        
+        record.setValue(imageDataAsset, forKey: Quote.imageDataKey)
+>>>>>>> version2ID
         record[Quotewall.quotewallReferenceKey] = quotewallReference as CKRecordValue?
         
         self.ckRecordID = record.recordID

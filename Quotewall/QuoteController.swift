@@ -27,6 +27,7 @@ public class QuoteController {
         completion(true)
     }
 
+<<<<<<< HEAD
     public func removeQuote(_ quote: Quote, from quotewall: Quotewall, completion: @escaping(Bool)->Void) {
         
         if let index = quotewall.quotes.index(where: {$0 == quote }) {
@@ -56,4 +57,7 @@ public class QuoteController {
         
     }
     
+=======
+
+>>>>>>> version2ID
 }

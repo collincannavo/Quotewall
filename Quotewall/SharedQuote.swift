@@ -26,6 +26,7 @@ public class SharedQuote {
     public var quote: String
     public var title: String?
     public var backgroundImage: Data?
+    public var contributor: String?
     
     public var ckRecordID: CKRecordID?
     
@@ -59,11 +60,16 @@ public class SharedQuote {
 
     // MARK: - CloudKit initializers
     
+<<<<<<< HEAD
     public init(name: String, quote: String, title: String?, backgroundImage: Data? = nil) {
+=======
+    public init(name: String, quote: String, backgroundImage: Data? = nil, contributor: String? = "") {
+>>>>>>> version2ID
         self.name = name
         self.quote = quote
         self.title = title
         self.backgroundImage = backgroundImage
+        self.contributor = contributor
     }
     
     public convenience init?(ckRecord: CKRecord) {

@@ -9,12 +9,17 @@
 import Foundation
 import UIKit
 
-class FavoritesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class FavoritesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, RemoveButtonTappedDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     let gradient = CAGradientLayer()
     var currentFavorite: FavoriteQuote?
+    var favoriteQuote: [FavoriteQuote] = [] {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +40,10 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
         updateView()
         
     }
-    @IBAction func removeButtonTapped(_ sender: Any) {
-        
-        guard let person = PersonController.shared.currentPerson,
-            let favoriteQuote = currentFavorite
-        else { return }
-        
-        PersonController.shared.removeFavoriteQuote(quote: favoriteQuote, from: person) { }
-        
+
+    func reloadTableViewFromDeletion(cell: FavoriteQuoteCollectionViewCell) {
         self.collectionView.reloadData()
     }
-
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -58,19 +56,20 @@ class FavoritesViewController: UIViewController, UICollectionViewDataSource, UIC
         
         let favoriteQuote = PersonController.shared.currentPerson?.favoriteQuotes[indexPath.row]
         
-        self.currentFavorite = favoriteQuote
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteQuoteCell", for: indexPath) as? FavoriteQuoteCollectionViewCell else { return FavoriteQuoteCollectionViewCell() }
         
+        cell.favoriteQuote = favoriteQuote
         cell.authorLabel.text = favoriteQuote?.name
         cell.quoteLabel.text = favoriteQuote?.quote
+        cell.delegate = self
+       
+        // Move below to cell
         
-        if let data = favoriteQuote?.backgroundImage,
+        if let data = cell.favoriteQuote?.backgroundImage,
             let image = UIImage(data: data) {
-            cell.backgroundImage.image = image
+            cell.backgroundImage.image = image.fixOrientation()
             cell.backgroundImage.contentMode = .scaleToFill
         }
-
         
         cellShadowing(cell)
         

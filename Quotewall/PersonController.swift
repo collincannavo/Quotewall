@@ -34,6 +34,7 @@ public class PersonController {
                 NSLog("There was an error saving a favorite quote: \(error.localizedDescription)")
             }
         }
+        
     }
     
     public func addSharedQuotes(_ quote: SharedQuote, to person: Person, completion: @escaping () -> Void) {
@@ -50,6 +51,7 @@ public class PersonController {
     
    
     public func removeFavoriteQuote(quote: FavoriteQuote, from person: Person, completion: @escaping () -> Void) {
+       
         if let indexPath = person.favoriteQuotes.index(where: { $0 == quote}) {
         person.favoriteQuotes.remove(at: indexPath)
         
@@ -60,6 +62,8 @@ public class PersonController {
           completion()
             }
         }
+        
+        completion()
     }
     
     public func removeSharedQuote(quote: SharedQuote, from person: Person, completion: @escaping () -> Void) {
@@ -72,6 +76,8 @@ public class PersonController {
                 completion()
             })
         }
+        
+        completion()
     }
 
     public func update(for person: Person, completion: @escaping(Bool)-> Void) {

@@ -9,6 +9,11 @@
 import Foundation
 import CloudKit
 
+<<<<<<< HEAD
+=======
+
+let quotewallsWereSetNotification = Notification.Name(rawValue: "quotewallsWereSet")
+>>>>>>> version2ID
 
 public class QuotewallController {
     
@@ -78,18 +83,51 @@ public class QuotewallController {
     }
     
     public func createCKAsset(for data: Data?) -> CKAsset? {
+<<<<<<< HEAD
         guard let data = data
             else { return nil }
         
         let temporaryDirectory = NSTemporaryDirectory()
         let temporaryDirectoryURL = URL(fileURLWithPath: temporaryDirectory)
         let fileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("jpg")
+=======
+
+        guard let data = data,
+            let directory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
+        let directoryAsNSString = directory as NSString
+        let path = directoryAsNSString.appendingPathComponent("asset.txt")
+>>>>>>> version2ID
         
-        try? data.write(to: fileURL, options: [.atomic])
+        FileManager.default.createFile(atPath: path, contents: data, attributes: nil)
+        let fileURL = URL(fileURLWithPath: path)
         
         return CKAsset(fileURL: fileURL)
+        
+        //        guard let data = data else { return nil }
+//        
+//        let temporaryDirectory = NSTemporaryDirectory()
+//        let temporaryDirectoryURL = URL(fileURLWithPath: temporaryDirectory)
+//        let fileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("jpg")
+//        
+//        try? data.write(to: fileURL, options: [.atomic])
+//        
+//        return CKAsset(fileURL: fileURL)
     }
     
+    public func removeFile(fileURL: URL){
+        
+        let fileManager = FileManager.default
+        
+        do {
+            try fileManager.removeItem(at: fileURL)
+        } catch let error as NSError {
+            NSLog("There was an error: \(error.localizedDescription)")
+        }
+        
+        
+    }
+    
+<<<<<<< HEAD
     public func delete(quotewall: Quotewall, completion: @escaping (Bool) -> Void) {
         
         if let index = QuotewallController.shared.quotewalls.index(where: {$0 == quotewall}) {
@@ -100,9 +138,38 @@ public class QuotewallController {
         
         CloudKitController.shared.deleteRecord(ckRecordID) { 
             completion(true)
+=======
+    
+    public func updatedQuote(with quote: Quote, name: String, text: String, backgroundImage: Data? = nil, completion: @escaping (Bool) -> Void ) {
+        
+        quote.name = name
+        quote.text = text
+        quote.image = backgroundImage
+        
+        updateToNewQuote(quote) { (success) in
+            if success {
+                completion(true)
+            } else {
+                completion(false)
+            }   
+>>>>>>> version2ID
         }
     }
     
+    public func updateToNewQuote(_ quote: Quote, completion: @escaping (Bool)-> Void) {
+        
+        CloudKitController.shared.updateRecord(quote.ckRecord, with: { (records, recordIDs, error) in
+            if let error = error {
+                NSLog("There was an error fetching the Favorite Quote to modify: \(error.localizedDescription)")
+                completion(false)
+                return }
+            
+            guard (records?.first != nil) else { NSLog("Did not successfully return the modified Favorite Quote"); completion(false); return }
+            
+            completion(true)
+        })
+    }
+
 }
 
 

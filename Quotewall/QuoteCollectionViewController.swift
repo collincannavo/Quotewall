@@ -23,8 +23,16 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     let gradient = CAGradientLayer()
     var quotewall: Quotewall?
     var person: Person?
+<<<<<<< HEAD
 
     func quoteActions(cell: Quote, author: String, quote: String, title: String, image: Data?) {
+=======
+    var quote: Quote?
+    
+    func quoteActions(author: String, quote: String, image: Data?, indexPath: IndexPath) {
+        
+        
+>>>>>>> version2ID
         let alert = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
         
         let shareQuoteButton = UIAlertAction(title: "Share Quote", style: .default) { (share) in
@@ -32,7 +40,46 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
             self.createSharedQuote(author: author, quote: quote, title: title, image: image)
         }
         
+<<<<<<< HEAD
         
+=======
+        let deleteButton = UIAlertAction(title: "Delete Quote", style: .default) { (delete) in
+            
+            guard let quote = self.quotewall?.quotes[indexPath.row],
+            let recordID = quote.ckRecordID
+                else { return }
+            
+            guard let sharedQuote = self.person?.sharedQuotes.first,
+                let person = self.person
+                else { return }
+            
+            PersonController.shared.removeSharedQuote(quote: sharedQuote, from: person, completion: {})
+            
+            
+            CloudKitController.shared.deleteRecord(recordID, with: {
+                self.deleteSuccessful()
+                
+                DispatchQueue.main.async {
+                    
+                    self.collectionView.reloadData()
+                }
+            })
+            
+            
+            
+            
+        }
+        
+        let removeFromSharedButton = UIAlertAction(title: "Remove Shared", style: .default) { (remove) in
+            
+            guard let sharedQuote = self.person?.sharedQuotes.first,
+                let person = self.person
+                else { return }
+            
+            PersonController.shared.removeSharedQuote(quote: sharedQuote, from: person, completion: {})
+            
+        }
+>>>>>>> version2ID
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         cancel.setValue(UIColor.red, forKey: "titleTextColor")
@@ -46,7 +93,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     override func viewDidLoad() {
-        
+
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gesture:)))
         longPress.minimumPressDuration = 0.5
         longPress.delegate = self as? UIGestureRecognizerDelegate
@@ -70,7 +117,13 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         gradient.frame = view.frame
         self.view.layer.insertSublayer(gradient, at: 0)
         
+<<<<<<< HEAD
 
+=======
+     
+        
+        QuotewallController.shared.currentQuotewall = self.quotewall
+>>>>>>> version2ID
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,9 +141,19 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quoteCollectionCell", for: indexPath) as? QuotesCollectionViewCell else { return QuotesCollectionViewCell() }
         
+        
         cell.authorNameLabel?.text = newquotes.name
         cell.quoteTextLabel?.text = newquotes.text
+<<<<<<< HEAD
         cell.titleLabel?.text = newquotes.title
+=======
+        
+        if let data = newquotes.image,
+            let image = UIImage(data: data) {
+            cell.backgroundImage.image = image.fixOrientation()
+            cell.backgroundImage.contentMode = .scaleToFill
+        }
+>>>>>>> version2ID
         
         cellShadowing(cell)
         
@@ -98,11 +161,16 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
+<<<<<<< HEAD
         guard let quotewall = quotewall else { return 0 }
         
         return quotewall.quotes.count
+=======
+        return QuotewallController.shared.currentQuotewall?.quotes.count ?? 0
+
+>>>>>>> version2ID
         
     }
     
@@ -113,6 +181,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         return spacing
         
     }
+    
 
     // MARK: - Prepare for Segue
     
@@ -173,6 +242,7 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         
         let p = gesture.location(in: self.collectionView)
         
+        
         if let indexPath = self.collectionView.indexPathForItem(at: p) {
             
             guard let cell = quotewall?.quotes[indexPath.row] else { return }
@@ -181,9 +251,13 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
                 let quote = cell.text
                 let image = cell.image
         
+<<<<<<< HEAD
             guard let title = cell.title else { return }
             
             quoteActions(cell: cell, author: author, quote: quote, title: title, image: image)
+=======
+            quoteActions(author: author, quote: quote, image: image, indexPath: indexPath)
+>>>>>>> version2ID
         } else {
             NSLog("Couldn't find the right index path")
         }
@@ -204,7 +278,12 @@ class QuoteCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
         
     }
+<<<<<<< HEAD
  
+=======
+    
+  
+>>>>>>> version2ID
 }
 
 

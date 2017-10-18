@@ -16,6 +16,7 @@ class LaunchScreenViewController: UIViewController, UITextFieldDelegate {
     let gradient = CAGradientLayer()
     let person = PersonController()
     var cellTextField = UITextField()
+    var contributorNameTextField = UITextField()
     
     override func viewDidLoad() {
         
@@ -75,13 +76,21 @@ class LaunchScreenViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Add user's name so they can see who shared it
     
     func createUser() {
         
         var phoneNumberTextField: UITextField?
+        var contributorTextField: UITextField?
         
         let alert = UIAlertController(title: "Please Enter Your Phone Number", message: "This will allow your friends and family to follow any quotes you want to share", preferredStyle: .alert)
         
+        alert.addTextField { (textField) in
+            contributorTextField = textField
+            textField.delegate = self
+            self.contributorNameTextField = textField
+            
+        }
         alert.addTextField { (textField) in
             phoneNumberTextField = textField
             textField.delegate = self
