@@ -123,11 +123,14 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
     
     @IBAction func addFavoriteButtonTapped(_ sender: Any) {
         
-        print("Favorite button tapped")
         guard let quote = quoteTextField.text,
             let author = personNameTextField.text
             
-            else { return }
+            else {
+                
+                unableToSaveFavoriteAlert()
+                
+                return }
         
         var backgroundData: Data? = nil
         if let backgroundImage = backgroundImage.image {
@@ -233,6 +236,14 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         present(alert, animated: true, completion: nil)
     }
     
+    fileprivate func unableToSaveFavoriteAlert() {
+        let alert = UIAlertController(title: "Unable To Add To Favorites", message: "Please fill in a quote and author and try again", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okButton)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     func photoSelectCellSelected(backgroundImageButtonTapped: UIButton) {
         selectPhotoTapped(sender: backgroundImageButtonTapped)
     }
@@ -243,6 +254,7 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
         alert.addAction(okButton)
         present(alert, animated: true, completion: nil)
     }
+    
     
     func updateViews() {
         guard let quote = quote else { return }
@@ -277,6 +289,8 @@ class QuotesTemplateViewController: UIViewController, UIImagePickerControllerDel
             return print("Success")
         }
     }
+    
+
     
 }
 

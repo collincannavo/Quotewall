@@ -127,7 +127,6 @@ class SharedQuotesViewController: UIViewController, UICollectionViewDataSource, 
         
         contactsDispatchGroup.notify(queue: DispatchQueue.main) {
 
-            
             guard let currentPerson = PersonController.shared.currentPerson?.ckRecord else { return }
             
             CloudKitController.shared.updateRecord(currentPerson) { (ckRecords, ckRecordID, error) in

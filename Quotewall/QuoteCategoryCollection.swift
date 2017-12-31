@@ -99,7 +99,6 @@ class QuoteCategoryViewController: UIViewController, UICollectionViewDelegate, U
         present(alert, animated: true, completion: nil)
         
     }
-
     
     // MARK: - Long Gesture Press Function
     
